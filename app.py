@@ -163,9 +163,9 @@ generated_descriptors = generate(SMILES)
 
 #Import pretrained models
 #mlp_model_import = pickle.load(open('models/model_reg_94.pkl', 'rb'))
-#trained_model= xgb.Booster()
-#trained_model.load_model('models/model_xgb_95 2.bin')
-rf_model_import = pickle.load(open('models/model_rf_93.pkl', 'rb'))
+trained_model= xgb.Booster()
+trained_model.load_model('models/model_xgb_95 2.bin')
+#rf_model_import = pickle.load(open('models/model_rf_93.pkl', 'rb'))
 mols = [Chem.rdmolfiles.MolFromSmiles(SMILES_string) for SMILES_string in SMILES]
 #Convert training molecules into training fingerprints
 bi = {}
@@ -190,8 +190,8 @@ df1=pd.concat([fingerprints_array,generated_descriptors],axis=1)
 #predict test data (MLP,XGB,RF)
 #pred_mlp = mlp_model_import.predict(df1)   
 #df3 = xgb.DMatrix(df1)
-#pred_xgb = trained_model.predict(df3)
-pred_rf = rf_model_import.predict(df1)
+pred_xgb = trained_model.predict(df1)
+#pred_rf = rf_model_import.predict(df1)
 mol_liter =10**pred_rf
 #mol = Chem.MolFromSmiles(SMILES)
 #MolWt = Chem.Descriptors.MolWt(mol)
