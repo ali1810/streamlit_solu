@@ -132,7 +132,7 @@ st.image(image, use_column_width=False)
 #st.set_wide_mode()
 #st.set_page_config(layout="wide")
 #st.set_option('wideMode' , True)
-3#st.set_page_config(
+#st.set_page_config(
   #   page_title="SOlubility Prediction App",
   #   page_icon="🧊",
   #   layout="wide",
