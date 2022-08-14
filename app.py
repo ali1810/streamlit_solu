@@ -198,7 +198,7 @@ def smiles_to_sol(SMILES):
     solubility = html.find(name='TOCHeading', string='Solubility')
     if solubility ==None:
       return None
-else:
+    else:
       solub=solubility.find_next_sibling('Information').find(name='String').string
       return solub
 
