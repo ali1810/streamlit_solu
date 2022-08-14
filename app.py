@@ -125,6 +125,7 @@ st.write("""# Solibility Prediction on Aqueous Solvent """)
 
 image = Image.open('sol_image.jpeg')
 st.image(image, use_column_width=False)
+st. set_page_config(layout="wide")
 
 
 ######################
