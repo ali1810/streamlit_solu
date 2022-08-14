@@ -126,19 +126,19 @@ st.write("""# Solibility Prediction on Aqueous Solvent """)
 image = Image.open('sol_image.jpeg')
 st.image(image, use_column_width=False)
 #st.set_wide_mode()
-#st. set_page_config(layout="wide")
+st.set_page_config(layout="wide")
 #st.set_option('wideMode' , True)
-st.set_page_config(
-     page_title="SOlubility Prediction App",
-     page_icon="🧊",
-     layout="wide",
-     initial_sidebar_state="expanded",
-     menu_items={
-         'Get Help': 'https://www.extremelycoolapp.com/help',
-         'Report a bug': "https://www.extremelycoolapp.com/bug",
-         'About': "# This is a header. This is an SOlubility Prediction App!"
-     }
- )
+3#st.set_page_config(
+  #   page_title="SOlubility Prediction App",
+  #   page_icon="🧊",
+  #   layout="wide",
+  #   initial_sidebar_state="expanded",
+  #   menu_items={
+   #      'Get Help': 'https://www.extremelycoolapp.com/help',
+   #      'Report a bug': "https://www.extremelycoolapp.com/bug",
+   #      'About': "# This is a header. This is an SOlubility Prediction App!"
+    # }
+ #)
 
 
 ######################
