@@ -192,7 +192,7 @@ df1=pd.concat([fingerprints_array,generated_descriptors],axis=1)
 df3 = xgb.DMatrix(df1)
 pred_xgb = trained_model.predict(df3)
 #pred_rf = rf_model_import.predict(df1)
-mol_liter =10**pred_rf
+mol_liter =10**pred_xgb
 #mol = Chem.MolFromSmiles(SMILES)
 #MolWt = Chem.Descriptors.MolWt(mol)
  
