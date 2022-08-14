@@ -120,11 +120,8 @@ def remove_invalid(smiles):
 ######################
 
 
-st.set_page_config(page_title="AqSolPred: Online Solubility Prediction Tool",layout="wide",
-		   menu_items={
-         'Get Help': 'www.linkedin.com/in/mushtaq-ali/',
-         'Report a bug': "www.linkedin.com/in/mushtaq-ali/",
-         'About': "# This is a header. This is an SOlubility Prediction App!"})
+st.set_page_config(page_title="AqSolPred: Online Solubility Prediction Tool",layout="wide")
+		   
 st.write("""# Solibility Prediction on Aqueous Solvent """)
 
 image = Image.open('sol_image.jpeg')
@@ -149,7 +146,7 @@ st.image(image, use_column_width=False)
 # Input molecules (Side Panel)
 ######################
 
-st.sidebar.write('**Type SMILES below**')
+st.sidebar.write('**Type SMILES below, In one line one smiles (At least enter two smiles)**')
 
 ## Read SMILES input
 SMILES_input = "CN1C=NC2=C1C(=O)N(C(=O)N2C)C\nCC(=O)OC1=CC=CC=C1C(=O)O"
