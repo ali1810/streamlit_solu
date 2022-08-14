@@ -120,7 +120,11 @@ def remove_invalid(smiles):
 ######################
 
 
-st.set_page_config(page_title="AqSolPred: Online Solubility Prediction Tool",layout="wide",)
+st.set_page_config(page_title="AqSolPred: Online Solubility Prediction Tool",layout="wide",
+		   menu_items={
+         'Get Help': 'www.linkedin.com/in/mushtaq-ali/',
+         'Report a bug': "www.linkedin.com/in/mushtaq-ali/",
+         'About': "# This is a header. This is an SOlubility Prediction App!")
 st.write("""# Solibility Prediction on Aqueous Solvent """)
 
 image = Image.open('sol_image.jpeg')
@@ -150,7 +154,7 @@ st.sidebar.write('**Type SMILES below**')
 ## Read SMILES input
 SMILES_input = "CN1C=NC2=C1C(=O)N(C(=O)N2C)C\nCC(=O)OC1=CC=CC=C1C(=O)O"
 
-SMILES = st.sidebar.text_area('then press ctrl+enter', SMILES_input, height=15)
+SMILES = st.sidebar.text_area('then press ctrl+enter', SMILES_input, height=17)
 SMILES = SMILES.split('\n')
 SMILES, msg = remove_invalid(SMILES)
 st.sidebar.write(msg)
