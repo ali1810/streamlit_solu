@@ -224,6 +224,7 @@ def smiles_to_sol(SMILES):
 #pred_mlp = mlp_model_import.predict(df1)   
 df3 = xgb.DMatrix(df1)
 pred_xgb = trained_model.predict(df3)
+pred_xgb = pred_xgb-0.18
 #pred_rf = rf_model_import.predict(df1)
 mol_liter =10**pred_xgb
 #mol = Chem.MolFromSmiles(SMILES)
