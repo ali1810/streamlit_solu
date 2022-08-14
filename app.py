@@ -124,7 +124,7 @@ st.set_page_config(page_title="AqSolPred: Online Solubility Prediction Tool",lay
 		   menu_items={
          'Get Help': 'www.linkedin.com/in/mushtaq-ali/',
          'Report a bug': "www.linkedin.com/in/mushtaq-ali/",
-         'About': "# This is a header. This is an SOlubility Prediction App!")
+         'About': "# This is a header. This is an SOlubility Prediction App!"})
 st.write("""# Solibility Prediction on Aqueous Solvent """)
 
 image = Image.open('sol_image.jpeg')
