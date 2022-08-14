@@ -202,7 +202,7 @@ mol_liter =10**pred_rf
   #  mol_list.append(mol)
 #MolWt = Chem.Descriptors.MolWt(mol_list)
 MolWt = generated_descriptors["MolWt"]
-Gram_liter=(10**pred_rf)*MolWt 
+Gram_liter=(10**pred_xgb)*MolWt 
 #calculate consensus
 #pred_consensus=(pred_mlp+pred_xgb+pred_rf)/3
 # predefined_models.get_errors(test_logS_list,pred_enseble)
