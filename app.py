@@ -191,7 +191,7 @@ def smiles_to_sol(SMILES):
    #print(y)
     x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/%s/xml"
     data=requests.get(x % y)
-    print(data)
+    #print(data)
     html = BeautifulSoup(data.content, "xml")
     solubility = html.find(name='TOCHeading', string='Solubility')
     if solubility ==None:
