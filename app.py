@@ -189,8 +189,8 @@ df1=pd.concat([fingerprints_array,generated_descriptors],axis=1)
 
 #predict test data (MLP,XGB,RF)
 #pred_mlp = mlp_model_import.predict(df1)   
-#df3 = xgb.DMatrix(df1)
-pred_xgb = trained_model.predict(df1)
+df3 = xgb.DMatrix(df1)
+pred_xgb = trained_model.predict(df3)
 #pred_rf = rf_model_import.predict(df1)
 mol_liter =10**pred_rf
 #mol = Chem.MolFromSmiles(SMILES)
@@ -209,7 +209,7 @@ Gram_liter=(10**pred_rf)*MolWt
 
 # results=np.column_stack([pred_mlp,pred_xgb,pred_rf,pred_consensus])
 df_results = pd.DataFrame(SMILES, columns=['SMILES'])
-df_results["Predicted - LogS"]=pred_rf
+df_results["Predicted - LogS"]=pred_xgb
 df_results=df_results.round(3)
 df_results["Mol/Liter"]=mol_liter
 df_results["Gram/Liter"]=Gram_liter
