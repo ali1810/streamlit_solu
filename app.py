@@ -10,6 +10,7 @@ Created on Sun Oct 18 14:54:37 2020
 ######################
 import streamlit as st
 import pickle
+import pubchempy as pcp
 from PIL import Image
 import pandas as pd
 from rdkit import Chem
@@ -202,7 +203,16 @@ mol_liter =10**pred_xgb
   #  mol_list.append(mol)
 #MolWt = Chem.Descriptors.MolWt(mol_list)
 MolWt = generated_descriptors["MolWt"]
-Gram_liter=(10**pred_xgb)*MolWt 
+Gram_liter=(10**pred_xgb)*MolWt
+P_sol=[] ## List where I am storing the solubility data 
+for i in range(len(SMILES)): ## Dataframe which has SMILES 
+  try:
+    #time.sleep(1) # Sleep for 3 seconds
+    sol=smiles_to_sol(SMILES[i]) ### Function to get the data from PubChem 
+    P_sol.append(sol)
+  except AttributeError as e:
+    sol=='No string'
+    P_sol.append(sol)
 #calculate consensus
 #pred_consensus=(pred_mlp+pred_xgb+pred_rf)/3
 # predefined_models.get_errors(test_logS_list,pred_enseble)
@@ -213,6 +223,7 @@ df_results["Predicted - LogS"]=pred_xgb
 df_results=df_results.round(3)
 df_results["Mol/Liter"]=mol_liter
 df_results["Gram/Liter"]=Gram_liter
+df_results["Experiment Solubility-PubChem"]=P_sol
 
     #df
 # df_results.to_csv("results/predicted-"+test_data_name+".csv",index=False)
