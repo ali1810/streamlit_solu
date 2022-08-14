@@ -151,7 +151,7 @@ st.sidebar.write('**Type SMILES below, In one line one smiles (At least enter tw
 ## Read SMILES input
 SMILES_input = "CN1C=NC2=C1C(=O)N(C(=O)N2C)C\nCC(=O)OC1=CC=CC=C1C(=O)O"
 
-SMILES = st.sidebar.text_area('then press ctrl+enter', SMILES_input, height=17,max_chars=2000,initial_sidebar_state="expanded")
+SMILES = st.sidebar.text_area('then press ctrl+enter', SMILES_input, height=17,max_chars=2000)
 SMILES = SMILES.split('\n')
 SMILES, msg = remove_invalid(SMILES)
 st.sidebar.write(msg)
