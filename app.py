@@ -247,10 +247,11 @@ if st.sidebar.button('Predict'):
     #print(array.shape)
 #print(fingerprints_array1)
 #mols = [Chem.rdmolfiles.MolFromSmiles(SMILES_string) for SMILES_string in smiles]
-    rf_model_import = pickle.load(open('models/model_rf_93.pkl', 'rb'))
+    trained_model= xgb.Booster()
+    trained_model.load_model('models/model_xgb_95 2.bin')
     df3=pd.concat([array,generated_descriptors1],axis=1)
 #print(df3)
-    pred_rf1 = rf_model_import.predict(df3)
+    pred_rf1 = trained_model..predict(df3)
     mol_liter1 =10**pred_rf1
 #mol = Chem.MolFromSmiles(SMILES)
 #MolWt = Chem.Descriptors.MolWt(mol)
@@ -308,7 +309,7 @@ if st.sidebar.button('Prediction for input file'):
     # data
     SMILES=data["SMILES"]
     generated_descriptors = generate(SMILES)
-    rf_model_import = pickle.load(open('models/model_rf_93.pkl', 'rb'))
+    #rf_model_import = pickle.load(open('models/model_rf_93.pkl', 'rb'))
     mols = [Chem.rdmolfiles.MolFromSmiles(SMILES_string) for SMILES_string in SMILES]
 #Convert training molecules into training fingerprints
     bi = {}
@@ -337,7 +338,7 @@ if st.sidebar.button('Prediction for input file'):
 #pred_mlp = mlp_model_import.predict(df1)   
 #df3 = xgb.DMatrix(df1)
 #pred_xgb = trained_model.predict(df3)
-    pred_rf = rf_model_import.predict(df1)
+    pred_rf = trained_model.predict(df1)
     mol_liter =10**pred_rf
 #mol = Chem.MolFromSmiles(SMILES)
 #MolWt = Chem.Descriptors.MolWt(mol)
