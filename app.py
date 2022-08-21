@@ -44,7 +44,7 @@ from bs4 import BeautifulSoup
 
 
 ######################
-# Custom function. ..
+# Custom function. ...
 ######################
 ## Calculate molecular descriptors
 def smiles_to_sol(SMILES):
