@@ -251,7 +251,7 @@ if st.sidebar.button('Predict'):
     trained_model.load_model('models/model_xgb_95 2.bin')
     df3=pd.concat([array,generated_descriptors1],axis=1)
 #print(df3)
-    pred_rf1 = trained_model..predict(df3)
+    pred_rf1 = trained_model.predict(df3)
     mol_liter1 =10**pred_rf1
 #mol = Chem.MolFromSmiles(SMILES)
 #MolWt = Chem.Descriptors.MolWt(mol)
