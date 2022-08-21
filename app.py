@@ -327,7 +327,7 @@ if st.sidebar.button('Prediction for input file'):
 
     fingerprints_array=pd.DataFrame(fingerprints_array)
     df1=pd.concat([fingerprints_array,generated_descriptors],axis=1)
-    pred_rf = rf_model_import.predict(df1)
+    pred_rf = trained_model.predict(df1)
     mol_liter =10**pred_rf
 
 #print(df1)
