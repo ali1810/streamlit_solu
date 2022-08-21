@@ -250,6 +250,8 @@ if st.sidebar.button('Predict'):
     trained_model= xgb.Booster()
     trained_model.load_model('models/model_xgb_95 2.bin')
     df3=pd.concat([array,generated_descriptors1],axis=1)
+    df3 = xgb.DMatrix(df3)
+	
 #print(df3)
     pred_rf1 = trained_model.predict(df3)
     mol_liter1 =10**pred_rf1
@@ -327,8 +329,8 @@ if st.sidebar.button('Prediction for input file'):
 
     fingerprints_array=pd.DataFrame(fingerprints_array)
     df1=pd.concat([fingerprints_array,generated_descriptors],axis=1)
-    pred_rf = trained_model.predict(df1)
-    mol_liter =10**pred_rf
+    #pred_rf = trained_model.predict(df1)
+    #mol_liter =10**pred_rf
 
 #print(df1)
 ### Funtion to get data from Pubchem 
@@ -336,9 +338,9 @@ if st.sidebar.button('Prediction for input file'):
 
 #predict test data (MLP,XGB,RF)
 #pred_mlp = mlp_model_import.predict(df1)   
-#df3 = xgb.DMatrix(df1)
+    df3 = xgb.DMatrix(df1)
 #pred_xgb = trained_model.predict(df3)
-    pred_rf = trained_model.predict(df1)
+    pred_rf = trained_model.predict(df3)
     mol_liter =10**pred_rf
 #mol = Chem.MolFromSmiles(SMILES)
 #MolWt = Chem.Descriptors.MolWt(mol)
