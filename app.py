@@ -166,7 +166,7 @@ uploaded_file = st.sidebar.file_uploader("Choose a file")
 if uploaded_file is not None:
     data = pd.read_csv(uploaded_file)
     # data
-    SMILES=data["SMILES"]  
+    SMILES=data["SMILESs"]  
 
 
 # st.header('Input SMILES')
