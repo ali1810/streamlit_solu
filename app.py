@@ -254,7 +254,7 @@ if st.sidebar.button('Predict'):
 	
 #print(df3)
     pred_rf1 = trained_model.predict(df3)
-    pred_rf1=     pred_rf1+0.30	
+    pred_rf1=     pred_rf1-0.30	
     mol_liter1 =10**pred_rf1
 #mol = Chem.MolFromSmiles(SMILES)
 #MolWt = Chem.Descriptors.MolWt(mol)
@@ -342,7 +342,7 @@ if st.sidebar.button('Prediction for input file'):
     df3 = xgb.DMatrix(df1)
 #pred_xgb = trained_model.predict(df3)
     pred_rf = trained_model.predict(df3)
-    pred_rf= pred_rf1+0.30	
+    pred_rf= pred_rf1-0.30	
 	
     mol_liter =10**pred_rf
 #mol = Chem.MolFromSmiles(SMILES)
