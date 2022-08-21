@@ -336,7 +336,8 @@ if st.sidebar.button('Prediction for input file'):
 #print(df1)
 ### Funtion to get data from Pubchem 
 
-
+    trained_model= xgb.Booster()
+    trained_model.load_model('models/model_xgb_95 2.bin')
 #predict test data (MLP,XGB,RF)
 #pred_mlp = mlp_model_import.predict(df1)   
     df3 = xgb.DMatrix(df1)
