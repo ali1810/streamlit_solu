@@ -8,6 +8,8 @@ Created on Sun August 12 14:54:37 2020
 ######################
 # Import libraries
 ######################
+from stmol import showmol
+import py3Dmol
 import re
 import numpy as np 
 from rdkit.Chem import AllChem
@@ -46,6 +48,21 @@ from bs4 import BeautifulSoup
 ######################
 # Custom function. ...
 ######################
+def makeblock(smi):
+    mol = Chem.MolFromSmiles(smi)
+    mol = Chem.AddHs(mol)
+    AllChem.EmbedMolecule(mol)
+    mblock = Chem.MolToMolBlock(mol)
+    return mblock
+
+def render_mol(xyz):
+    xyzview = py3Dmol.view()#(width=400,height=400)
+    xyzview.addModel(xyz,'mol')
+    xyzview.setStyle({'stick':{}})
+    xyzview.setBackgroundColor('white')
+    xyzview.zoomTo()
+    showmol(xyzview,height=500,width=500)
+
 ## Calculate molecular descriptors
 def smiles_to_sol(SMILES):
     prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
@@ -237,6 +254,8 @@ smiles = st.sidebar.text_input('then press predict button', value ="")
 #with st.sidebar:
  #      st.button('Predict')
 if st.sidebar.button('Predict'):
+    st.header("Structure of the smiles")
+    s=blk=makeblock(smiles)	
     generated_descriptors1= predictSingle(smiles)
     mol = Chem.MolFromSmiles(smiles)
     fp = AllChem.GetMorganFingerprintAsBitVect(mol, 2, nBits=512)
@@ -269,6 +288,7 @@ if st.sidebar.button('Predict'):
     Gram_liter1=(10**pred_rf1)*MolWt1 
     P_sol1=smiles_to_sol(smiles) ## calling function to get the solubility from <pubchem
 #df_results = pd.DataFrame(df_results1)
+    render_mol(blk)
     data = dict(SMILES=smiles, Predicted_LogS=pred_rf1, 
     Mol_Liter=mol_liter1,Gram_Liter=Gram_liter1,Experiment_Solubility_PubChem=P_sol1)
     df = pd.DataFrame(data, index=[0])
