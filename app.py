@@ -48,6 +48,16 @@ from bs4 import BeautifulSoup
 ######################
 # Custom function. ...
 ######################
+CACTUS = "https://cactus.nci.nih.gov/chemical/structure/{0}/{1}"
+### Function to get the compound name ...
+def smiles_to_iupac(smiles):
+    rep = "iupac_name"
+    url = CACTUS.format(smiles, rep)
+    response = requests.get(url)
+    response.raise_for_status()
+    return response.text
+
+
 def makeblock(smi):
     mol = Chem.MolFromSmiles(smi)
     mol = Chem.AddHs(mol)
@@ -56,12 +66,24 @@ def makeblock(smi):
     return mblock
 
 def render_mol(xyz):
-    xyzview = py3Dmol.view()#(width=400,height=400)
+    xyzview = py3Dmol.view(width=400,height=300)
     xyzview.addModel(xyz,'mol')
-    xyzview.setStyle({'stick':{}})
-    xyzview.setBackgroundColor('white')
+    #xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
+    bcolor = st.sidebar.color_picker('Pick background Color', '#CBC2AF')
+    style = st.sidebar.selectbox('Chemical structure',['line','cross','stick','sphere'])
+#spin = st.sidebar.checkbox('Spin', value = False)
+    spin = st.sidebar.checkbox('Animation', value = False)
+    #xyzview.spin(True)
+    if spin:
+      xyzview.spin(True)
+    else:
+      xyzview.spin(False)
+    #xyzview.setStyle({'sphere':{}})
+    xyzview.setBackgroundColor(bcolor)
     xyzview.zoomTo()
-    showmol(xyzview,height=500,width=500)
+    xyzview.setStyle({style:{'color':'spectrum'}})
+    showmol(xyzview,height=300,width=400) 
+
 
 ## Calculate molecular descriptors
 def smiles_to_sol(SMILES):
@@ -235,7 +257,8 @@ st.write("""# Solibility Prediction on Aqueous Solvent """)
 
 image = Image.open('sol_image.jpeg')
 st.image(image, use_column_width=False)
-
+st.header("Structure of the smiles")
+st.write("""Use mouse pointer to rotae the structure""")
 
 ######################
 # Input molecules (Side Panel)
@@ -253,9 +276,11 @@ smiles = st.sidebar.text_input('then press predict button', value ="")
 #st.sidebar.write(msg)
 #with st.sidebar:
  #      st.button('Predict')
+blk=makeblock(smiles)
+render_mol(blk)	
 if st.sidebar.button('Predict'):
-    st.header("Structure of the smiles")
-    s=blk=makeblock(smiles)	
+    #st.header("Structure of the smiles")
+    #s=blk=makeblock(smiles)	
     generated_descriptors1= predictSingle(smiles)
     mol = Chem.MolFromSmiles(smiles)
     fp = AllChem.GetMorganFingerprintAsBitVect(mol, 2, nBits=512)
@@ -275,6 +300,7 @@ if st.sidebar.button('Predict'):
     pred_rf1 = trained_model.predict(df3)
     pred_rf1=     pred_rf1-0.30	
     mol_liter1 =10**pred_rf1
+    c_name=smiles_to_iupac(smiles)
 #mol = Chem.MolFromSmiles(SMILES)
 #MolWt = Chem.Descriptors.MolWt(mol)
  
@@ -289,7 +315,7 @@ if st.sidebar.button('Predict'):
     P_sol1=smiles_to_sol(smiles) ## calling function to get the solubility from <pubchem
 #df_results = pd.DataFrame(df_results1)
     render_mol(blk)
-    data = dict(SMILES=smiles, Predicted_LogS=pred_rf1, 
+    data = dict(Comp_name=c_name,SMILES=smiles, Predicted_LogS=pred_rf1, 
     Mol_Liter=mol_liter1,Gram_Liter=Gram_liter1,Experiment_Solubility_PubChem=P_sol1)
     df = pd.DataFrame(data, index=[0])
     st.header('Predicted LogS values for single smiles')
@@ -366,6 +392,7 @@ if st.sidebar.button('Prediction for input file'):
     pred_rf= pred_rf-0.30	
 	
     mol_liter =10**pred_rf
+    
 #mol = Chem.MolFromSmiles(SMILES)
 #MolWt = Chem.Descriptors.MolWt(mol)
  
