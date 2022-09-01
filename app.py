@@ -270,7 +270,7 @@ st.sidebar.write('**Type SMILES below**')
 #SMILES_input = "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
 #\nCC(=O)OC1=CC=CC=C1C(=O)O"
 #SMILES_input = " "
-smiles = st.sidebar.text_input('then press predict button', value ="")
+smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
 #SMILES = SMILES.split('\n')
 #smiles, msg = remove_invalid(smiles)
 #st.sidebar.write(msg)
