@@ -314,7 +314,7 @@ if st.sidebar.button('Predict'):
     Gram_liter1=(10**pred_rf1)*MolWt1 
     P_sol1=smiles_to_sol(smiles) ## calling function to get the solubility from <pubchem
 #df_results = pd.DataFrame(df_results1)
-    render_mol(blk)
+    #render_mol(blk)
     data = dict(Comp_name=c_name,SMILES=smiles, Predicted_LogS=pred_rf1, 
     Mol_Liter=mol_liter1,Gram_Liter=Gram_liter1,Experiment_Solubility_PubChem=P_sol1)
     df = pd.DataFrame(data, index=[0])
