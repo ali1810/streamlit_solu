@@ -300,7 +300,7 @@ if st.sidebar.button('Predict'):
     pred_rf1 = trained_model.predict(df3)
     pred_rf1=     pred_rf1-0.30	
     mol_liter1 =10**pred_rf1
-    c_name=smiles_to_iupac(smiles)
+    #c_name=smiles_to_iupac(smiles)
 #mol = Chem.MolFromSmiles(SMILES)
 #MolWt = Chem.Descriptors.MolWt(mol)
  
@@ -315,7 +315,7 @@ if st.sidebar.button('Predict'):
     P_sol1=smiles_to_sol(smiles) ## calling function to get the solubility from <pubchem
 #df_results = pd.DataFrame(df_results1)
     #render_mol(blk)
-    data = dict(Comp_name=c_name,SMILES=smiles, Predicted_LogS=pred_rf1, 
+    data = dict(SMILES=smiles, Predicted_LogS=pred_rf1, 
     Mol_Liter=mol_liter1,Gram_Liter=Gram_liter1,Experiment_Solubility_PubChem=P_sol1)
     df = pd.DataFrame(data, index=[0])
     st.header('Predicted LogS values for single smiles')
