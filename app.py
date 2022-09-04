@@ -56,9 +56,9 @@ def smiles_to_iupac(smiles):
     response = requests.get(url)
     response.raise_for_status()
     return response.text
-def smiles_iupac(smiles):
+def smiles_iupac(sm):
 #smiles = 'CC(=O)OC1=CC=CC=C1C(=O)O'
-  compounds = pubchempy.get_compounds(smiles, namespace='smiles')
+  compounds = pubchempy.get_compounds(sm, namespace='smiles')
   #print(compounds)
   match = compounds[0]
   return match.iupac_name
@@ -76,9 +76,9 @@ def render_mol(xyz):
     xyzview.addModel(xyz,'mol')
     #xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
     bcolor = st.sidebar.color_picker('Pick background Color', '#0C0C0B')
-    style = st.sidebar.selectbox('Chemical structure',['line','cross','stick','sphere'])
+    style = st.sidebar.selectbox('Chemical structure',['stick','line','cross','sphere'])
 #spin = st.sidebar.checkbox('Spin', value = False)
-    spin = st.sidebar.checkbox('Animation', value = False)
+    spin = st.sidebar.checkbox('Animation', value = True)
     #xyzview.spin(True)
     if spin:
       xyzview.spin(True)
@@ -306,8 +306,8 @@ if st.sidebar.button('Predict'):
     pred_rf1 = trained_model.predict(df3)
     pred_rf1=     pred_rf1-0.30	
     mol_liter1 =10**pred_rf1
-    smiles1='smiles'	
-    c_name=smiles_iupac(smiles1)
+    #smiles1='smiles'	
+    c_name=smiles_iupac(smiles)
 #mol = Chem.MolFromSmiles(SMILES)
 #MolWt = Chem.Descriptors.MolWt(mol)
  
