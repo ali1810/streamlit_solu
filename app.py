@@ -303,13 +303,13 @@ if st.sidebar.button('Predict'):
     df3 = xgb.DMatrix(df3)
 	
 #print(df3)
-    pred_rf1   = trained_model.predict(df3)
+    pred_rf1      = trained_model.predict(df3)
     pred_rf1    =     pred_rf1-0.30
     pred_rf1    =     round(pred_rf1,2)	
-    mol_liter1 =  10**pred_rf1
-    mol_liter1 = round(mol_liter1,2)
+    mol_liter1   =  10**pred_rf1
+    mol_liter1   = round(mol_liter1,2)
     #smiles1='smiles'	
-    c_name=smiles_iupac(smiles)
+    c_name    =smiles_iupac(smiles)
 #mol = Chem.MolFromSmiles(SMILES)
 #MolWt = Chem.Descriptors.MolWt(mol)
  
@@ -318,11 +318,11 @@ if st.sidebar.button('Predict'):
  #   mol = Chem.MolFromSmiles(smiles)
   #  mol_list.append(mol)
 #MolWt = Chem.Descriptors.MolWt(mol_list)
-    MolWt1 = generated_descriptors1["MolWt"]
+    MolWt1     = generated_descriptors1["MolWt"]
 #print(MolWt1)
-    Gram_liter1=(10**pred_rf1)*MolWt1
-    Gram_liter1=round(Gram_liter1,2) 	
-    P_sol1=smiles_to_sol(smiles) ## calling function to get the solubility from <pubchem
+    Gram_liter1  =(10**pred_rf1)*MolWt1
+    Gram_liter1 =round(Gram_liter1,2) 	
+    P_sol1 =smiles_to_sol(smiles) ## calling function to get the solubility from <pubchem
 #df_results = pd.DataFrame(df_results1)
     #render_mol(blk)
     data = dict(IUPAC_Name=c_name,SMILES=smiles, Predicted_LogS=pred_rf1, 
