@@ -323,7 +323,7 @@ if st.sidebar.button('Predict'):
     MolWt1     = generated_descriptors1["MolWt"]
 #print(MolWt1)
     Gram_liter1  =(10**pred_rf1)*MolWt1
-    Gram_liter1 =round(Gram_liter1,2) 	
+    Gram_liter1 = round(Gram_liter1,2) 	
     P_sol1 =smiles_to_sol(smiles) ## calling function to get the solubility from <pubchem
 #df_results = pd.DataFrame(df_results1)
     #render_mol(blk)
