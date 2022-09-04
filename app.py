@@ -306,9 +306,9 @@ if st.sidebar.button('Predict'):
 #print(df3)
     pred_rf1 = trained_model.predict(df3)
     pred_rf1 =  pred_rf1-0.30
-    #pred_rf2 =  round(pred_rf1,2)	
+    pred_rf2 =  np.around(pred_rf1,2)	
     mol_liter1   =  10**pred_rf1
-    #mol_liter1   = round(mol_liter1,2)
+    mol_liter2   = np.around(mol_liter1,2)
     #smiles1='smiles'	
     c_name    =smiles_iupac(smiles)
 #mol = Chem.MolFromSmiles(SMILES)
@@ -326,8 +326,8 @@ if st.sidebar.button('Predict'):
     P_sol1 =smiles_to_sol(smiles) ## calling function to get the solubility from <pubchem
 #df_results = pd.DataFrame(df_results1)
     #render_mol(blk)
-    data = dict(IUPAC_Name=c_name,SMILES=smiles, Predicted_LogS=pred_rf1, 
-    Mol_Liter=mol_liter1,Gram_Liter=Gram_liter1,Experiment_Solubility_PubChem=P_sol1)
+    data = dict(IUPAC_Name=c_name,SMILES=smiles, Predicted_LogS=pred_rf2, 
+    Mol_Liter=mol_liter2,Gram_Liter=Gram_liter1,Experiment_Solubility_PubChem=P_sol1)
     df = pd.DataFrame(data, index=[0])
     st.header('Predicted LogS values for single smiles')
     df
@@ -401,9 +401,9 @@ if st.sidebar.button('Prediction for input file'):
 #pred_xgb = trained_model.predict(df3)
     pred_rf = trained_model.predict(df3)
     pred_rf= pred_rf-0.30	
-	
+    #pred_rf1=np.around(pred_rf, decimals=2)	
     mol_liter =10**pred_rf
-    
+    #mol_liter1 =np.around(mol_liter, decimals=2)	
 #mol = Chem.MolFromSmiles(SMILES)
 #MolWt = Chem.Descriptors.MolWt(mol)
  
