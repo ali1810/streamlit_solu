@@ -306,7 +306,8 @@ if st.sidebar.button('Predict'):
     pred_rf1 = trained_model.predict(df3)
     pred_rf1=     pred_rf1-0.30	
     mol_liter1 =10**pred_rf1
-    c_name=smiles_iupac(smiles)
+    smiles1='smiles'	
+    c_name=smiles_iupac(smiles1)
 #mol = Chem.MolFromSmiles(SMILES)
 #MolWt = Chem.Descriptors.MolWt(mol)
  
