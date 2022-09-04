@@ -303,9 +303,9 @@ if st.sidebar.button('Predict'):
     df3 = xgb.DMatrix(df3)
 	
 #print(df3)
-    pred_rf1 = trained_model.predict(df3)
-    pred_rf1 =     pred_rf1-0.30
-    pred_rf1 =     round(pred_rf1,2)	
+    pred_rf1   = trained_model.predict(df3)
+    pred_rf1    =     pred_rf1-0.30
+    pred_rf1    =     round(pred_rf1,2)	
     mol_liter1 =  10**pred_rf1
     mol_liter1 = round(mol_liter1,2)
     #smiles1='smiles'	
