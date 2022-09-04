@@ -56,6 +56,12 @@ def smiles_to_iupac(smiles):
     response = requests.get(url)
     response.raise_for_status()
     return response.text
+def smiles_iupac(smiles):
+#smiles = 'CC(=O)OC1=CC=CC=C1C(=O)O'
+  compounds = pubchempy.get_compounds(smiles, namespace='smiles')
+  #print(compounds)
+  match = compounds[0]
+  return match.iupac_name
 
 
 def makeblock(smi):
@@ -300,7 +306,7 @@ if st.sidebar.button('Predict'):
     pred_rf1 = trained_model.predict(df3)
     pred_rf1=     pred_rf1-0.30	
     mol_liter1 =10**pred_rf1
-    #c_name=smiles_to_iupac(smiles)
+    c_name=smiles_iupac(smiles)
 #mol = Chem.MolFromSmiles(SMILES)
 #MolWt = Chem.Descriptors.MolWt(mol)
  
@@ -315,7 +321,7 @@ if st.sidebar.button('Predict'):
     P_sol1=smiles_to_sol(smiles) ## calling function to get the solubility from <pubchem
 #df_results = pd.DataFrame(df_results1)
     #render_mol(blk)
-    data = dict(SMILES=smiles, Predicted_LogS=pred_rf1, 
+    data = dict(IUPAC_Name=c_name,SMILES=smiles, Predicted_LogS=pred_rf1, 
     Mol_Liter=mol_liter1,Gram_Liter=Gram_liter1,Experiment_Solubility_PubChem=P_sol1)
     df = pd.DataFrame(data, index=[0])
     st.header('Predicted LogS values for single smiles')
