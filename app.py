@@ -58,10 +58,10 @@ def smiles_to_iupac(smiles):
     return response.text
 def smiles_iupac(sm):
 #smiles = 'CC(=O)OC1=CC=CC=C1C(=O)O'
-     compounds = pubchempy.get_compounds(sm, namespace='smiles')
+    compounds = pubchempy.get_compounds(sm, namespace='smiles')
   #print(compounds)
-     match = compounds[0]
-     return match.iupac_name
+    match = compounds[0]
+    return match.iupac_name
 
 
 def makeblock(smi):
