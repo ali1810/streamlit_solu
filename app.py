@@ -39,6 +39,8 @@ from streamlit_shap import st_shap
 import shap
 from xgboost import XGBRegressor
 import xgboost as xgb
+from urllib.request import urlopen
+from PIL import Image
 #from flask.wrappers import Request
 #import threading
 import requests
