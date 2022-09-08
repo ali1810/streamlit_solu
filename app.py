@@ -109,6 +109,16 @@ def smiles_to_sol(SMILES):
     else:
       solub=solubility.find_next_sibling('Information').find(name='String').string
       return solub
+def smiles_to_img(SMILES):
+    prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
+    x = list(map(lambda x: x["CID"], prop))
+    y=x[0]
+    #print(y)
+    x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/%s/PNG?image_size=400x300"
+    url=(x % y)
+#print(url)
+    img = Image.open(urlopen(url))
+    return img 
 
 def getAromaticProportion(m):
     aromatic_list = [m.GetAtomWithIdx(i).GetIsAromatic() for i in range(m.GetNumAtoms())]
@@ -283,8 +293,16 @@ smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC
 #st.sidebar.write(msg)
 #with st.sidebar:
  #      st.button('Predict')
-blk=makeblock(smiles)
-render_mol(blk)	
+img=smiles_to_img(smiles)
+st.write("a logo and text next to eachother")
+col1, mid, col2 = st.columns([25,10,50])
+with col1:
+    st.image(img, use_column_width=False)
+with col2:
+    blk=makeblock(smiles)
+    render_mol(blk)	
+#blk=makeblock(smiles)
+#render_mol(blk)	
 if st.sidebar.button('Predict'):
     #st.header("Structure of the smiles")
     #s=blk=makeblock(smiles)	
