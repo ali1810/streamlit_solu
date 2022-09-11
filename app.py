@@ -293,7 +293,7 @@ with col3:
 #image = Image.open('sol_image.jpeg')
 #st.image(image, use_column_width=4)
         st.write("")
-col1, col2, col3 = st.columns([6,2,4])
+col1, col2, col3 = st.columns([4,2,4])
 
 with col1:
 	st.header("   2 D representation  of the smiles      ")
