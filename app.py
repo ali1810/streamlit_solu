@@ -273,12 +273,13 @@ def remove_invalid(smiles):
 #st.set_page_config(page_title="AqSolPred: Online Solubility Prediction Tool")
 st.set_page_config(page_title="AqSolPred: Online Solubility Prediction Tool",layout="wide")
 st.write("""# Solibility Prediction on Aqueous Solvent """)
+image = Image.open('sol_image.jpeg')
 col1, col2, col3 = st.columns([5,2,5])
 with col1:
 	st.write("")
 
 with col2:
-	image = Image.open('sol_image.jpeg')
+	
         st.image(image, use_column_width=None)
 with col3:	
         st.write("")
