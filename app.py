@@ -375,11 +375,12 @@ if st.sidebar.button('Predict'):
     #st.table(df)
 
     # Custom formatting
-    st.table(df.style.format({"Predicted_LogS": "{:.2f}","Mol_Liter":"{:.2f}","Gram_Liter":"{:.2f}"}))
+
 
 
     #df.round(4)
     st.header('Predicted LogS values for single smiles')
+    st.table(df.style.format({"Predicted_LogS": "{:.2f}","Mol_Liter":"{:.2f}","Gram_Liter":"{:.2f}"}))
     #df
     #st.write('Good Morning') #displayed when the button is clicked
     st.header('Computed molecular descriptors')
