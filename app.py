@@ -276,10 +276,10 @@ st.write("""# Solibility Prediction on Aqueous Solvent """)
 
 image = Image.open('sol_image.jpeg')
 st.image(image, use_column_width=False)
-col1, col2, col3 = st.beta_columns([1,2,1])
+col1, col2, col3 = st.columns([4,2,4])
 
 with col1:
-	st.header("    Two Dimensional Structure of the smiles      ")
+	st.header("   2 D representation  of the smiles      ")
 
 with col2:
 	
@@ -293,7 +293,7 @@ with col3:
 	
 #st.write("")
 #st.write("""          Use mouse pointer to rotae the structure.             """)
-        st.header(" Three Dimensinal  Structure of the smiles")
+        st.header(" 3 D representation  of the smiles")
         st.write("""Use mouse pointer to rotae the structure""")
 
 ######################
