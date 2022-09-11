@@ -290,7 +290,7 @@ with col3:
 #st.image("https://i.imgflip.com/amucx.jpg")
         #st.write("")
 
-col1, col2, col3 = st.columns([1,2,1])
+col1, col2, col3 = st.columns([5,2,5])
 
 with col1:
 	st.header("   2 D representation  of the smiles      ")
