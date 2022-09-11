@@ -293,13 +293,13 @@ with col3:
 col1, col2, col3 = st.columns([8,2,8])
 
 with col1:
-	st.header(""   2 D representation  of the smiles  "")
+	st.header("   2 D representation  of the smiles  ")
 
 with col2:
 	st.write("")
 with col3:
-        st.header("" 3 D representation  of the smiles"")
-        st.write("""Use mouse pointer to rotae the structure""")
+        st.header(" 3 D representation  of the smiles")
+        st.write("""Use mouse pointer to rotate the structure""")
 
 ######################
 # Input molecules (Side Panel)
