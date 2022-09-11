@@ -353,7 +353,7 @@ if st.sidebar.button('Predict'):
     st.table(df)
 
     # Custom formatting
-    st.table(df.style.format({"Predicted_LogS": "{:.2f}","Mol_Liter":"{:.2f}","Gram_Liter":":"{:.2f}"))
+    st.table(df.style.format({"Predicted_LogS": "{:.2f}","Mol_Liter":"{:.2f}","Gram_Liter":"{:.2f}"))
 
 
     #df.round(4)
