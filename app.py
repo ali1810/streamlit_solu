@@ -275,8 +275,8 @@ st.set_page_config(page_title="AqSolPred: Online Solubility Prediction Tool",lay
 st.write("""# Solibility Prediction on Aqueous Solvent """)
 
 image = Image.open('sol_image.jpeg')
-st.image(image, use_column_width=False)
-col1, col2, col3 = st.columns([4,2,4])
+st.image(image, use_column_width=4)
+col1, col2, col3 = st.columns([5,2,5])
 
 with col1:
 	st.header("   2 D representation  of the smiles      ")
