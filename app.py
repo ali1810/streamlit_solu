@@ -276,8 +276,8 @@ st.write("""# Solibility Prediction on Aqueous Solvent """)
 
 image = Image.open('sol_image.jpeg')
 st.image(image, use_column_width=False)
-st.header("Structure of the smiles")
-st.write("""Use mouse pointer to rotae the structure""")
+st.header(".     2D and 3D Structure of the smiles.       ")
+st.write("""          Use mouse pointer to rotae the structure.             """)
 
 ######################
 # Input molecules (Side Panel)
@@ -297,7 +297,7 @@ smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC
  #      st.button('Predict')
 img=smiles_to_img(smiles)
 #st.write("a logo and text next to eachother")
-col1, mid, col2 = st.columns([25,2,25])
+col1, mid, col2 = st.columns([20,1,20])
 with col1:
     st.image(img, use_column_width=False)
 with col2:
