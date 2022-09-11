@@ -282,7 +282,7 @@ with col1:
 st.write("    2D and 3D Structure of the smiles      ")
 
 with col2:
-st.header("    2D and 3D Structure of the smiles      ")
+#st.header("    2D and 3D Structure of the smiles      ")
 #st.image("https://i.imgflip.com/amucx.jpg")
 st.write("")
 with col3:
