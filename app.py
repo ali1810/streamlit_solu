@@ -274,7 +274,7 @@ def remove_invalid(smiles):
 st.set_page_config(page_title="AqSolPred: Online Solubility Prediction Tool",layout="wide")
 st.write("""# Solibility Prediction on Aqueous Solvent """)
 image = Image.open('sol_image.jpeg')
-col1, col2, col3 = st.columns([5,2,5])
+col1, col2, col3 = st.columns([2,2,2])
 with col1:
 	st.write("")
 
@@ -288,12 +288,9 @@ with col3:
 	
        #st.header("    2D and 3D Structure of the smiles      ")
 #st.image("https://i.imgflip.com/amucx.jpg")
-        st.write("")
-with col3:
-#image = Image.open('sol_image.jpeg')
-#st.image(image, use_column_width=4)
-        st.write("")
-col1, col2, col3 = st.columns([4,2,4])
+        #st.write("")
+
+col1, col2, col3 = st.columns([1,2,1])
 
 with col1:
 	st.header("   2 D representation  of the smiles      ")
