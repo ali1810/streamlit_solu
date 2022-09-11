@@ -276,7 +276,19 @@ st.write("""# Solibility Prediction on Aqueous Solvent """)
 
 image = Image.open('sol_image.jpeg')
 st.image(image, use_column_width=False)
-st.header(".     2D and 3D Structure of the smiles.       ")
+col1, col2, col3 = st.beta_columns([1,6,1])
+
+with col1:
+st.write("    2D and 3D Structure of the smiles      ")
+
+with col2:
+st.header("    2D and 3D Structure of the smiles      ")
+#st.image("https://i.imgflip.com/amucx.jpg")
+st.write("")
+with col3:
+#st.write("")
+#st.write("""          Use mouse pointer to rotae the structure.             """)
+#st.header(".     2D and 3D Structure of the smiles.       ")
 st.write("""          Use mouse pointer to rotae the structure.             """)
 
 ######################
@@ -297,7 +309,7 @@ smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC
  #      st.button('Predict')
 img=smiles_to_img(smiles)
 #st.write("a logo and text next to eachother")
-col1, mid, col2 = st.columns([20,1,20])
+col1, mid, col2 = st.columns([20,0.5,20])
 with col1:
     st.image(img, use_column_width=False)
 with col2:
