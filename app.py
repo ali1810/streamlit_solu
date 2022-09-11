@@ -297,7 +297,7 @@ smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC
  #      st.button('Predict')
 img=smiles_to_img(smiles)
 #st.write("a logo and text next to eachother")
-col1, mid, col2 = st.columns([25,10,25])
+col1, mid, col2 = st.columns([25,5,25])
 with col1:
     st.image(img, use_column_width=False)
 with col2:
@@ -349,6 +349,7 @@ if st.sidebar.button('Predict'):
     data = dict(IUPAC_Name=c_name,SMILES=smiles, Predicted_LogS=pred_rf2, 
     Mol_Liter=mol_liter2,Gram_Liter=Gram_liter1,Experiment_Solubility_PubChem=P_sol1)
     df = pd.DataFrame(data, index=[0])
+    df.round(4)
     st.header('Predicted LogS values for single smiles')
     df
     #st.write('Good Morning') #displayed when the button is clicked
