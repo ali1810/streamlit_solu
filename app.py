@@ -280,7 +280,7 @@ with col1:
 
 with col2:
 	
-        st.image(image, use_column_width=None)
+        st.image(image, use_column_width=4)
 with col3:	
         st.write("")
 	
