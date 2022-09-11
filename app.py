@@ -297,7 +297,7 @@ smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC
  #      st.button('Predict')
 img=smiles_to_img(smiles)
 #st.write("a logo and text next to eachother")
-col1, mid, col2 = st.columns([25,10,50])
+col1, mid, col2 = st.columns([25,10,25])
 with col1:
     st.image(img, use_column_width=False)
 with col2:
@@ -325,10 +325,10 @@ if st.sidebar.button('Predict'):
 	
 #print(df3)
     pred_rf1 = trained_model.predict(df3)
-    pred_rf1 =  pred_rf1-0.30
-    pred_rf2 =  np.around(pred_rf1,2)	
+    pred_rf1 =  (pred_rf1-0.30)
+    pred_rf2 =  np.round(pred_rf1,2)	
     mol_liter1   =  10**pred_rf1
-    mol_liter2   = np.around(mol_liter1,2)
+    mol_liter2   = np.round(mol_liter1,2)
     #smiles1='smiles'	
     c_name    =smiles_iupac(smiles)
 #mol = Chem.MolFromSmiles(SMILES)
