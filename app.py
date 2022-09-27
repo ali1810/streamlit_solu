@@ -603,7 +603,7 @@ else:
 
 
 st.write("""
-# About AqSolPred
+# About AqSolPred1
 Sol Prediction  is an  accurate solubility prediction model that consists consensus of 3 ML algorithms (Neural Nets, Random Forest, and XGBoost). 
 AqSolPred is developed using a quality-oriented data selection method described in [1] and trained on AqSolDB [2] largest publicly available aqueous solubility dataset.
 AqSolPred showed a top-performance (R2 - 0.95 )
