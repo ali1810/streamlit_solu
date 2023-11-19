@@ -2,7 +2,7 @@ Pillow
 py3Dmol==1.8.1
 stmol
 pandas~=1.4.2
-streamlit~=1.10.0
+streamlit~=1.12.2
 shap~=0.41.0
 xgboost~=1.6.1
 scikit-learn~=1.0.1
