@@ -75,7 +75,7 @@ def makeblock(smi):
     return mblock
 
 def render_mol(xyz):
-    #xyzview = py3Dmol.view(width=400,height=300)
+    xyzview = py3Dmol.view(width=400,height=300)
     xyzview = py3Dmol.view(query=′pdb:1A2C′)
     xyzview.addModel(xyz,'mol')
     xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
@@ -92,7 +92,7 @@ def render_mol(xyz):
     xyzview.setBackgroundColor(bcolor)
     xyzview.zoomTo()
     xyzview.setStyle({style:{'color':'spectrum'}})
-    showmol(xyzview,height=400,width=300) 
+    showmol(xyzview,height=300,width=400) 
 
 
 ## Calculate molecular descriptors
