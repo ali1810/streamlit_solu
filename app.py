@@ -324,7 +324,8 @@ with col1:
     st.image(img, use_column_width=False)
 with col2:
     blk=makeblock(smiles)
-    render_mol(blk)	
+    #render_mol(blk)
+    st.image(render_mol(blk), use_column_width=False)
 #blk=makeblock(smiles)
 #render_mol(blk)	
 if st.sidebar.button('Predict'):
