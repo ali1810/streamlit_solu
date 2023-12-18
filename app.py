@@ -76,7 +76,7 @@ def makeblock(smi):
 
 def render_mol(xyz):
     xyzview = py3Dmol.view(width=400,height=300)
-    xyzview = py3Dmol.view(query=′pdb:1A2C′)
+    #xyzview = py3Dmol.view(query=′pdb:1A2C′)
     xyzview.addModel(xyz,'mol')
     xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
     bcolor = st.sidebar.color_picker('Pick background Color', '#0C0C0B')
