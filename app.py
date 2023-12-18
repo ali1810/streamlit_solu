@@ -91,7 +91,7 @@ def render_mol(xyz):
     xyzview.setBackgroundColor(bcolor)
     xyzview.zoomTo()
     xyzview.setStyle({style:{'color':'spectrum'}})
-    showmol(xyzview,height=300,width=400) 
+    showmol(xyzview,height=500,width=800) 
 
 
 ## Calculate molecular descriptors
