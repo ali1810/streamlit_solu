@@ -319,13 +319,13 @@ smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC
  #      st.button('Predict')
 img=smiles_to_img(smiles)
 #st.write("a logo and text next to eachother")
-col1, mid, col2 = st.columns([20,0.5,20])
+col1, mid, col2 = st.columns([15,0.5,15])
 with col1:
     st.image(img, use_column_width=False)
 with col2:
     blk=makeblock(smiles)
-    #render_mol(blk)
-    st.image(render_mol(blk), use_column_width=False)
+    render_mol(blk)
+    #st.image(render_mol(blk), use_column_width=False)
 #blk=makeblock(smiles)
 #render_mol(blk)	
 if st.sidebar.button('Predict'):
