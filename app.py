@@ -79,7 +79,7 @@ def render_mol(xyz):
     #xyzview = py3Dmol.view(query=′pdb:1A2C′)
     xyzview.addModel(xyz,'mol')
     xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
-    #bcolor = st.sidebar.color_picker('Pick background Color', '#0C0C0B')
+    bcolor = st.sidebar.color_picker('Pick background Color', '#0C0C0B')
     style = st.sidebar.selectbox('Chemical structure',['stick','line','cross','sphere'])
 #spin = st.sidebar.checkbox('Spin', value = False)
     spin = st.sidebar.checkbox('Animation', value = True)
@@ -89,7 +89,7 @@ def render_mol(xyz):
     else:
       xyzview.spin(False)
     #xyzview.setStyle({'sphere':{}})
-    xyzview.setBackgroundColor('#0C0C0B')
+    xyzview.setBackgroundColor(bcolor)
     xyzview.zoomTo()
     xyzview.setStyle({style:{'color':'spectrum'}})
     showmol(xyzview,height=300,width=400) 
@@ -281,7 +281,7 @@ with col1:
 
 with col2:
 	
-        st.image(image, use_column_width=4)
+        st.image(image, use_column_width=6)
 with col3:	
         st.write("")
 	
