@@ -80,7 +80,7 @@ def render_mol(xyz):
     xyzview.addModel(xyz,'mol')
     xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
     #bcolor = st.sidebar.color_picker('Pick background Color', '#0C0C0B')
-    style = st.sidebar.selectbox('Chemical structure',['stick','line','cross','sphere'])
+    style = st.sidebar.selectbox('Chemical structure',['stick','line','cross','sphere','parabola'])
 #spin = st.sidebar.checkbox('Spin', value = False)
     spin = st.sidebar.checkbox('Animation', value = True)
     xyzview.spin(True)
