@@ -14,8 +14,6 @@ def page1():
     with col3:	
         st.write("")
 	
-
-    
 def page2():
     st.title("Page 2")
     st.write("This is the content of Page 2.")
