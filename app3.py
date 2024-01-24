@@ -4,8 +4,8 @@ from PIL import Image
 
 def page1():
     #st.title("AqSolPred: Online Solubility Prediction Tool")
-    st.markdown("<h1 style='text-align: center; color: blue;'>Page 1</h1>", unsafe_allow_html=True)
-    st.title("AqSolPred: Online Solubility Prediction Tool")
+    st.markdown("<h1 style='text-align: center; color: blue;'>AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
+    #st.title("AqSolPred: Online Solubility Prediction Tool")
     #st.write("This is the content of Page 1.")
 
     #st.write("This is the content of Page 1.")
