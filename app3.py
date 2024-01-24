@@ -1,1 +1,27 @@
+import streamlit as st
 
+def page1():
+    st.title("Page 1")
+    st.write("This is the content of Page 1.")
+    
+def page2():
+    st.title("Page 2")
+    st.write("This is the content of Page 2.")
+    
+def page3():
+    st.title("Page 3")
+    st.write("This is the content of Page 3.")
+
+def main():
+    st.sidebar.title("Navigation")
+    selected_page = st.sidebar.radio("Go to", ["Page 1", "Page 2", "Page 3"])
+
+    if selected_page == "Page 1":
+        page1()
+    elif selected_page == "Page 2":
+        page2()
+    elif selected_page == "Page 3":
+        page3()
+
+if __name__ == "__main__":
+    main()
