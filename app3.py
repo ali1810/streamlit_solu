@@ -9,11 +9,11 @@ def page1():
     image = Image.open('Flow.jpeg')
     col1, col2, col3 = st.columns([0.5,2.0,0.5])
     with col1:
-	st.write("")
+	    st.write("")
     with col2:
-        st.image(image, use_column_width=6)
+            st.image(image, use_column_width=6)
     with col3:	
-        st.write("")
+            st.write("")
 def page2():
     st.title("Page 2")
     st.write("This is the content of Page 2.")
