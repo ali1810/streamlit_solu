@@ -7,7 +7,7 @@ def page1():
     
     #st.markdown("<h1 style='text-align: left;position: fixed;  width: 100%; color: blue; margin-top: -0; padding-top: -0.45;'>AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
     st.markdown("<h1 style='text-align: left; color: blue; position: fixed;margin-top: -1; padding-top: -1; width: 100%;
-    >AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
+    '>AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
 	
     #st.markdown("<h1 style='text-align: center; color: blue;margin-top: 0; padding-top: 0;>AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
     #st.title("AqSolPred: Online Solubility Prediction Tool")
