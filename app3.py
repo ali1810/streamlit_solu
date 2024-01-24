@@ -1,4 +1,6 @@
 import streamlit as st
+from PIL import Image
+
 
 def page1():
     st.title("AqSolPred: Online Solubility Prediction Tool")
