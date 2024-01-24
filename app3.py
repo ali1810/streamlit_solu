@@ -4,7 +4,7 @@ from PIL import Image
 
 def page1():
     #st.title("AqSolPred: Online Solubility Prediction Tool")
-    st.markdown("<h1 style='text-align: left;position: fixed; top: 0; width: 75%; color: blue; margin-top: -0.25; padding-top: -0.25;'>AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: left;position: fixed;  width: 70%; color: blue; margin-top: -0.25; padding-top: -0.25;'>AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
     #st.markdown("<h1 style='text-align: center; color: blue; margin-top: 0; padding-top: 0; position: absolute; top: 0; width: 100%;'>AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
 	
     #st.markdown("<h1 style='text-align: center; color: blue;margin-top: 0; padding-top: 0;>AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
