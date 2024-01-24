@@ -1,9 +1,9 @@
 import streamlit as st
 
 def page1():
-    #st.title("AqSolPred: Online Solubility Prediction Tool")
+    st.title("AqSolPred: Online Solubility Prediction Tool")
     #st.write("This is the content of Page 1.")
-    st.set_page_config(page_title="AqSolPred: Online Solubility Prediction Tool",layout="wide")
+    #st.set_page_config(page_title="AqSolPred: Online Solubility Prediction Tool",layout="wide")
     st.write("""# Solibility Prediction on Aqueous Solvent """)
     image = Image.open('Flow.jpeg')
     col1, col2, col3 = st.columns([0.5,2.0,0.5])
