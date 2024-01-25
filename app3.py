@@ -46,10 +46,10 @@ def page1():
             st.write("")
 def page2():
     st.title("Page 2")
-    st.write("This is the content of Page 2.")
+    st.write("This is the page for project details")
 def page3():
     st.title("Page 3")
-    st.write("This is the content of Page 3.")
+    st.write("This is the content of Institute and contact details .")
 
 def main():
     st.sidebar.title("Navigation")
