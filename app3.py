@@ -1,6 +1,26 @@
 import streamlit as st
 from PIL import Image
 
+def render_mol(xyz):
+    xyzview = py3Dmol.view(width=400,height=300)
+    #xyzview = py3Dmol.view(query=′pdb:1A2C′)
+    xyzview.addModel(xyz,'mol')
+    xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
+    #bcolor = st.sidebar.color_picker('Pick background Color', '#0C0C0B')
+    style = st.sidebar.selectbox('Chemical structure',['stick','line','cross','sphere'])
+#spin = st.sidebar.checkbox('Spin', value = False)
+    spin = st.sidebar.checkbox('Animation', value = True)
+    xyzview.spin(True)
+    if spin:
+      xyzview.spin(True)
+    else:
+      xyzview.spin(False)
+    #xyzview.setStyle({'sphere':{}})
+    xyzview.setBackgroundColor('#EAE5E5')
+    xyzview.zoomTo()
+    xyzview.setStyle({style:{'color':'spectrum'}})
+    showmol(xyzview,height=300,width=400) 
+
 
 def page1():
     #st.title("AqSolPred: Online Solubility Prediction Tool")
