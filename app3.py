@@ -25,7 +25,7 @@ def render_mol(xyz):
 def page1():
     #st.title("AqSolPred: Online Solubility Prediction Tool")
     
-    st.markdown("<h1 style='text-align: left;position: fixed;  top: 0; width: 100%; color: blue; margin-top: -1; padding-top: -1;'>AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
+    #st.markdown("<h1 style='text-align: left;position: fixed;  top: 0; width: 100%; color: blue; margin-top: -1; padding-top: -1;'>AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
     #st.markdown("<h1 style='font-size: 34px ;position: fixed;  top: 0.1; width: 100%; color: blue; margin-top: 0.5; padding-top: 0.5;'>AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
  
 	
@@ -45,7 +45,7 @@ def page1():
     with col1:
 	    st.write("")
     with col2:
-            st.image(image, use_column_width=6)
+            st.image(image, use_column_width=10)
     with col3:	
             st.write("")
 def page2():
