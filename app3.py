@@ -40,7 +40,7 @@ def page1():
     #st.set_page_config(page_title="AqSolPred: Online Solubility Prediction Tool",layout="wide")
     #st.write("""# Solibility Prediction on Aqueous Solvent """)
     
-    image = Image.open('Flow.jpeg')
+    image = Image.open('Flow2.jpeg')
     col1, col2, col3 = st.columns([0.5,2.0,0.5])
     with col1:
 	    st.write("")
