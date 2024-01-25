@@ -45,7 +45,7 @@ def page1():
     with col1:
 	    st.write("")
     with col2:
-            st.image(image, use_column_width=6)
+            st.image(image, use_column_width=10)
     with col3:	
             st.write("")
 def page2():
