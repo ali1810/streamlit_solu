@@ -54,7 +54,7 @@ def page3():
 def main():
     st.sidebar.title("Navigation")
     selected_page = st.sidebar.radio("Go to", ["Page 1", "Page 2", "Page 3"])
-    selected_option = st.selectbox("Choose an option", ["Option 1", "Option 2", "Option 3"])
+    #selected_option = st.selectbox("Choose an option", ["Option 1", "Option 2", "Option 3"])
 	
 
     if selected_page ==   "Page 1":
