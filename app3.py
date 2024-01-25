@@ -41,7 +41,7 @@ def page1():
     #st.write("""# Solibility Prediction on Aqueous Solvent """)
     
     image = Image.open('Flow2.jpeg')
-    col1, col2, col3 = st.columns([0.01,2.0,0.5])
+    col1, col2, col3 = st.columns([0.001,2.0,0.5])
     with col1:
 	    st.write("")
     with col2:
