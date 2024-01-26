@@ -50,14 +50,22 @@ def page1():
 
     st.sidebar.write('**Type SMILES below**')
     smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
-    img=smiles_to_img(smiles)
+    prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
+    x = list(map(lambda x: x["CID"], prop))
+    y=x[0]
+    #print(y)
+    x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/%s/PNG?image_size=400x300"
+    url=(x % y)
+#print(url)
+    img = Image.open(urlopen(url))
+    # img=smiles_to_img(smiles)
 #st.write("a logo and text next to eachother")
     col1, mid, col2 = st.columns([15,0.5,15])
     with col1:
            st.image(img, use_column_width=False)
-    with col2:
-           blk=makeblock(smiles)
-           render_mol(blk)
+    #with col2:
+     #      blk=makeblock(smiles)
+      #     render_mol(blk)
 	
     
     #def smiles_to_img(SMILES):
