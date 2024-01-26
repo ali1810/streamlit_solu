@@ -42,7 +42,7 @@ def page1():
          x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/%s/PNG?image_size=400x300"
          url=(x % y)
 #print(url)
-        img = Image.open(urlopen(url))
+         img = Image.open(urlopen(url))
     return img 
 	
 	
