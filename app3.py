@@ -64,13 +64,13 @@ def page1():
             st.header(" 3 D Structure  of the smiles")
             st.write("""Use mouse pointer to rotate the structure""")
     img=smiles_to_img(smiles)
-#st.write("a logo and text next to eachother")
+    #st.write("a logo and text next to eachother")
    col1, mid, col2 = st.columns([15,0.5,15])
-   with col1:
-      st.image(img, use_column_width=False)
-   with col2:
-      blk=makeblock(smiles)
-      render_mol(blk)
+    with col1:
+            st.image(img, use_column_width=False)
+    with col2:
+           blk=makeblock(smiles)
+    render_mol(blk)
 
 
 
