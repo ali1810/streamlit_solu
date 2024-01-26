@@ -41,7 +41,7 @@ def page1():
 
 
 def page2():
-    st.title("Page 2")
+    #st.title("Page 2")
     st.write("This is the page for project details")
     image = Image.open('Flow2.jpeg')
     col1, col2, col3 = st.columns([0.001,2.0,0.5])
@@ -52,7 +52,7 @@ def page2():
     with col3:	
             st.write("")	
 def page3():
-    st.title("Page 3")
+    #st.title("Page 3")
     st.write("This is the content of Institute and contact details .")
 
 def main():
@@ -64,6 +64,16 @@ def main():
 	
 
     if selected_page ==   "Solubility Prediction":
+	col1, col2, col3 = st.columns([10,2,11.5])
+
+        with col1:
+	        st.header("   2 D Structure of the smiles  ")
+
+        with col2:
+	        st.write("")
+        with col3:
+                st.header(" 3 D Structure  of the smiles")
+                st.write("""Use mouse pointer to rotate the structure""")
         page1()
     elif selected_page == "Project Detail":
         page2()
