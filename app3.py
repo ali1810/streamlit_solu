@@ -34,7 +34,7 @@ def render_mol(xyz):
 
 def page1():
     
-    def smiles_to_img(SMILES):
+    #def smiles_to_img(SMILES):
          prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
          x = list(map(lambda x: x["CID"], prop))
          y=x[0]
@@ -43,7 +43,7 @@ def page1():
          url=(x % y)
 #print(url)
          img = Image.open(urlopen(url))
-    return img 
+    #return img 
 	
 	
 	
@@ -77,7 +77,7 @@ def page1():
     with col3:
             st.header(" 3 D Structure  of the smiles")
             st.write("""Use mouse pointer to rotate the structure""")
-    img=smiles_to_img(smiles)
+    #img=smiles_to_img(smiles)
     #st.write("a logo and text next to eachother")
     col1, mid, col2 = st.columns([15,0.5,15])
     with col1:
