@@ -57,17 +57,17 @@ def page3():
 
 def main():
     st.sidebar.title("Navigation")
-    selected_page = st.sidebar.radio("Visit for ", ["Solubility Prediction", "Project Detail", "Contact detail"])
+    selected_page = st.sidebar.radio("Visit for ", ["Solubility Prediction", "Project Detail", "Contact Detail"])
     #st.sidebar.[element_name]
 	
     #selected_option = st.selectbox("Choose an option", ["Option 1", "Option 2", "Option 3"])
 	
 
-    if selected_page ==   "Page 1":
+    if selected_page ==   "Solubility Prediction":
         page1()
-    elif selected_page == "Page 2":
+    elif selected_page == ""Project Detail":
         page2()
-    elif selected_page == "Page 3":
+    elif selected_page == "Contact Detail":
         page3()
 if __name__ == "__main__":
     main()
