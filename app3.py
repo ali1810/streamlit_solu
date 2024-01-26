@@ -78,9 +78,7 @@ def main():
 	
 
     if selected_page ==   "Solubility Prediction":
-	    
-
-    page1()
+        page1()
     elif selected_page == "Project Detail":
         page2()
     elif selected_page == "Contact Detail":
