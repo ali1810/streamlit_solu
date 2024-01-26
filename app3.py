@@ -41,11 +41,11 @@ def render_mol(xyz):
     xyzview.setStyle({style:{'color':'spectrum'}})
     showmol(xyzview,height=300,width=400) 
 col1, mid, col2 = st.columns([15,0.5,15])
-    with col1:
-            st.image(img, use_column_width=False)
-    with col2:
-           blk=makeblock(smiles)
-    render_mol(blk)
+with col1:
+        st.image(img, use_column_width=False)
+with col2:
+        blk=makeblock(smiles)
+        render_mol(blk)
 
 
 def page1():
