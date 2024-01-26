@@ -1,6 +1,15 @@
 import streamlit as st
 from PIL import Image
 
+
+
+st.sidebar.write('**Type SMILES below**')
+
+    ## Read SMILES input
+    #SMILES_input = "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
+    #\nCC(=O)OC1=CC=CC=C1C(=O)O"
+    #SMILES_input = " "
+smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
 def smiles_to_img(SMILES):
     prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
     x = list(map(lambda x: x["CID"], prop))
@@ -31,6 +40,13 @@ def render_mol(xyz):
     xyzview.zoomTo()
     xyzview.setStyle({style:{'color':'spectrum'}})
     showmol(xyzview,height=300,width=400) 
+col1, mid, col2 = st.columns([15,0.5,15])
+    with col1:
+            st.image(img, use_column_width=False)
+    with col2:
+           blk=makeblock(smiles)
+    render_mol(blk)
+
 
 def page1():
 	
@@ -46,9 +62,7 @@ def page1():
          smiles1 = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
     #SMILES = SMILES.split('\n')
    #col1, col2, col3 = st.columns([10,2,11.5]) 
-	prop=pcp.get_properties([ 'MolecularWeight'], smiles1, 'smiles')
-        x = list(map(lambda x: x["CID"], prop))
-        y=x[0]
+	
     #print(y)
         x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/%s/PNG?image_size=400x300"
         url=(x % y)
