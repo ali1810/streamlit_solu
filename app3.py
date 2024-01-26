@@ -106,13 +106,13 @@ def page1():
     
     # calculate the aromatic proportion descriptor
          #single_AP = getAromaticProportion(mol1)
-	 aromatic_list = [mol1.GetAtomWithIdx(i).GetIsAromatic() for i in range(m.GetNumAtoms())]
-         aromatic = 0
-         for i in aromatic_list:
+	  aromatic_list = [mol1.GetAtomWithIdx(i).GetIsAromatic() for i in range(m.GetNumAtoms())]
+          aromatic = 0
+          for i in aromatic_list:
              if i:
                 aromatic += 1
-         heavy_atom = Lipinski.HeavyAtomCount(mol1)
-         single_AP = aromatic / heavy_atom if heavy_atom != 0 else 0   
+          heavy_atom = Lipinski.HeavyAtomCount(mol1)
+          single_AP = aromatic / heavy_atom if heavy_atom != 0 else 0   
 
     # Calculate ring count 
          single_RC= Descriptors.RingCount(mol1)
