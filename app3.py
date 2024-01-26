@@ -3,13 +3,7 @@ from PIL import Image
 
 
 
-st.sidebar.write('**Type SMILES below**')
 
-    ## Read SMILES input
-    #SMILES_input = "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
-    #\nCC(=O)OC1=CC=CC=C1C(=O)O"
-    #SMILES_input = " "
-smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
 def smiles_to_img(SMILES):
     prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
     x = list(map(lambda x: x["CID"], prop))
