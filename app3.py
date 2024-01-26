@@ -1,6 +1,17 @@
 import streamlit as st
 from PIL import Image
 
+def smiles_to_img(SMILES):
+    prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
+    x = list(map(lambda x: x["CID"], prop))
+    y=x[0]
+    #print(y)
+    x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/%s/PNG?image_size=400x300"
+    url=(x % y)
+#print(url)
+    img = Image.open(urlopen(url))
+    return img 
+
 def render_mol(xyz):
     xyzview = py3Dmol.view(width=400,height=300)
     #xyzview = py3Dmol.view(query=′pdb:1A2C′)
@@ -42,8 +53,31 @@ def page1():
     #SMILES_input = " "
     smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
     #SMILES = SMILES.split('\n')
+    col1, col2, col3 = st.columns([10,2,11.5])
+
+    with col1:
+	 st.header("   2 D Structure of the smiles  ")
+
+    with col2:
+	 st.write("")
+    with col3:
+         st.header(" 3 D Structure  of the smiles")
+         st.write("""Use mouse pointer to rotate the structure""")
+    img=smiles_to_img(smiles)
+#st.write("a logo and text next to eachother")
+   col1, mid, col2 = st.columns([15,0.5,15])
+   with col1:
+      st.image(img, use_column_width=False)
+   with col2:
+      blk=makeblock(smiles)
+      render_mol(blk)
 
 
+
+
+def page2():
+    st.title("Page 2")
+    st.write("This is the page for project details")
     image = Image.open('Flow2.jpeg')
     col1, col2, col3 = st.columns([0.001,2.0,0.5])
     with col1:
@@ -51,10 +85,7 @@ def page1():
     with col2:
             st.image(image, use_column_width=2)
     with col3:	
-            st.write("")
-def page2():
-    st.title("Page 2")
-    st.write("This is the page for project details")
+            st.write("")	
 def page3():
     st.title("Page 3")
     st.write("This is the content of Institute and contact details .")
