@@ -64,17 +64,17 @@ def main():
 	
 
     if selected_page ==   "Solubility Prediction":
-	col1, col2, col3 = st.columns([10,2,11.5])
+	    col1, col2, col3 = st.columns([10,2,11.5])
 
-        with col1:
-	        st.header("   2 D Structure of the smiles  ")
+            with col1:
+	            st.header("   2 D Structure of the smiles  ")
 
-        with col2:
-	        st.write("")
-        with col3:
-                st.header(" 3 D Structure  of the smiles")
-                st.write("""Use mouse pointer to rotate the structure""")
-        page1()
+            with col2:
+	            st.write("")
+            with col3:
+                    st.header(" 3 D Structure  of the smiles")
+                    st.write("""Use mouse pointer to rotate the structure""")
+            page1()
     elif selected_page == "Project Detail":
         page2()
     elif selected_page == "Contact Detail":
