@@ -94,26 +94,26 @@ def page1():
     if st.sidebar.button('Predict'):
 	    
 	 # define the rdkit moleculer object
-           mol1 = Chem.MolFromSmiles(SMILES)
+         mol1 = Chem.MolFromSmiles(SMILES)
     
     # calculate the log octanol/water partition descriptor
-           single_MolLogP = Descriptors.MolLogP(mol1)
+         single_MolLogP = Descriptors.MolLogP(mol1)
     
     # calculate the molecular weight descriptor
-           single_MolWt   = Descriptors.MolWt(mol1)
+         single_MolWt   = Descriptors.MolWt(mol1)
     
     # calculate of the number of rotatable bonds descriptor
-           single_NumRotatableBonds = Descriptors.NumRotatableBonds(mol1)
+         single_NumRotatableBonds = Descriptors.NumRotatableBonds(mol1)
     
     # calculate the aromatic proportion descriptor
          #single_AP = getAromaticProportion(mol1)
-	  aromatic_list = [mol1.GetAtomWithIdx(i).GetIsAromatic() for i in range(mol1.GetNumAtoms())]
-          aromatic = 0
-          for i in aromatic_list:
+	 aromatic_list = [mol1.GetAtomWithIdx(i).GetIsAromatic() for i in range(mol1.GetNumAtoms())]
+         aromatic = 0
+         for i in aromatic_list:
              if i:
                 aromatic += 1
-          heavy_atom = Lipinski.HeavyAtomCount(mol1)
-          single_AP = aromatic / heavy_atom if heavy_atom != 0 else 0   
+         heavy_atom = Lipinski.HeavyAtomCount(mol1)
+         single_AP = aromatic / heavy_atom if heavy_atom != 0 else 0   
 
     # Calculate ring count 
          single_RC= Descriptors.RingCount(mol1)
