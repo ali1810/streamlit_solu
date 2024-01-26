@@ -46,9 +46,9 @@ def page1():
          smiles1 = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
     #SMILES = SMILES.split('\n')
    #col1, col2, col3 = st.columns([10,2,11.5]) 
-	 prop=pcp.get_properties([ 'MolecularWeight'], smiles1, 'smiles')
-         x = list(map(lambda x: x["CID"], prop))
-         y=x[0]
+	prop=pcp.get_properties([ 'MolecularWeight'], smiles1, 'smiles')
+        x = list(map(lambda x: x["CID"], prop))
+        y=x[0]
     #print(y)
         x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/%s/PNG?image_size=400x300"
         url=(x % y)
