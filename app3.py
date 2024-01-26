@@ -45,7 +45,7 @@ def page1():
     #SMILES_input = " "
         smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
     #SMILES = SMILES.split('\n')
-        col1, col2, col3 = st.columns([10,2,11.5]) 
+   #col1, col2, col3 = st.columns([10,2,11.5]) 
 	prop=pcp.get_properties([ 'MolecularWeight'], smiles, 'smiles')
         x = list(map(lambda x: x["CID"], prop))
         y=x[0]
