@@ -58,6 +58,13 @@ def page3():
 def main():
     st.sidebar.title("Navigation")
     selected_page = st.sidebar.radio("Visit for ", ["Solubility Prediction", "Project Detail", "Contact Detail"])
+    
+    #st.sidebar.[element_name]
+	
+    #selected_option = st.selectbox("Choose an option", ["Option 1", "Option 2", "Option 3"])
+	
+
+    if selected_page ==   "Solubility Prediction":
     col1, col2, col3 = st.columns([10,2,11.5])
     with col1:
 	    st.header("   2 D Structure of the smiles  ")
@@ -66,14 +73,8 @@ def main():
     with col3:
             st.header(" 3 D Structure  of the smiles")
             st.write("""Use mouse pointer to rotate the structure""")	
-    #st.sidebar.[element_name]
-	
-    #selected_option = st.selectbox("Choose an option", ["Option 1", "Option 2", "Option 3"])
-	
 
-    if selected_page ==   "Solubility Prediction":
-
-            page1()
+    page1()
     elif selected_page == "Project Detail":
         page2()
     elif selected_page == "Contact Detail":
