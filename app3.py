@@ -70,7 +70,7 @@ def page1():
     #st.markdown("<h1 style='text-align: center; color: blue;margin-top: 0; padding-top: 0;>AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
     #st.title("AqSolPred: Online Solubility Prediction Tool")
     #st.write("This is the content of Page 1.")
-          st.sidebar.write('**Type SMILES below**')
+        st.sidebar.write('**Type SMILES below**')
 
     ## Read SMILES input
     #SMILES_input = "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
