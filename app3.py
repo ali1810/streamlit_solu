@@ -111,8 +111,8 @@ def page1():
          for i in aromatic_list:
              if i:
                 aromatic += 1
-         heavy_atom = Lipinski.HeavyAtomCount(m)
-         single_AP=aromatic / heavy_atom if heavy_atom != 0 else 0   
+         heavy_atom = Lipinski.HeavyAtomCount(mol1)
+         single_AP = aromatic / heavy_atom if heavy_atom != 0 else 0   
 
     # Calculate ring count 
          single_RC= Descriptors.RingCount(mol1)
