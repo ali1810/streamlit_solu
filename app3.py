@@ -6,23 +6,23 @@ from PIL import Image
 def page1():
 	
 	
+	
     
     #def smiles_to_img(SMILES):
-         st.sidebar.write('**Type SMILES below**')
+    st.sidebar.write('**Type SMILES below**')
 
     ## Read SMILES input
     #SMILES_input = "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
     #\nCC(=O)OC1=CC=CC=C1C(=O)O"
     #SMILES_input = " "
-         smiles1 = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
-	 col1, col2, col3 = st.columns([10,2,11.5])
+    smiles1 = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
+    col1, col2, col3 = st.columns([10,2,11.5])
 
-         with col1:
-	        st.header("   2 D Structure of the smiles  ")
-
-         with col2:
-	        st.write("")
-         with col3:
+    with col1:
+	   st.header("   2 D Structure of the smiles  ")
+    with col2:
+	    st.write("")
+    with col3:
                 st.header(" 3 D Structure  of the smiles")
                 st.write("""Use mouse pointer to rotate the structure""")
 
