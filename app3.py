@@ -1,7 +1,41 @@
 import streamlit as st
 from PIL import Image
-
-
+from stmol import showmol
+import py3Dmol
+import re
+import numpy as np 
+from rdkit.Chem import AllChem
+import pubchempy as pcp
+import streamlit as st
+import pickle
+from PIL import Image
+import pandas as pd
+from rdkit import Chem
+#from rdkit.Chem import Draw
+import xgboost
+from sklearn.neural_network import MLPRegressor
+from sklearn.ensemble import RandomForestRegressor
+import base64
+import pickle
+import numpy as np
+import pandas as pd
+from rdkit import Chem,DataStructs
+from rdkit.Chem import MolFromSmiles, Descriptors
+from rdkit.ML.Descriptors import MoleculeDescriptors
+from rdkit.Chem import Descriptors
+from rdkit.Chem import Lipinski
+from rdkit.Chem import Crippen
+import streamlit as st
+import base64
+from streamlit_shap import st_shap
+import shap
+from xgboost import XGBRegressor
+import xgboost as xgb
+from urllib.request import urlopen
+from PIL import Image
+#from flask.wrappers import Request
+#import threading
+import requests
 
 def page1():
     col1, col2, col3 = st.columns([10,2,11.5])
@@ -15,7 +49,15 @@ def page1():
             st.write("""Use mouse pointer to rotate the structure""")
 
     st.sidebar.write('**Type SMILES below**')
-    smiles1 = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
+    smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
+    img=smiles_to_img(smiles)
+#st.write("a logo and text next to eachother")
+    col1, mid, col2 = st.columns([15,0.5,15])
+    with col1:
+           st.image(img, use_column_width=False)
+    with col2:
+           blk=makeblock(smiles)
+           render_mol(blk)
 	
     
     #def smiles_to_img(SMILES):
@@ -47,11 +89,7 @@ def page1():
 	
     #st.markdown("<h1 style='text-align: center; color: blue;margin-top: 0; padding-top: 0;>AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
     #st.title("AqSolPred: Online Solubility Prediction Tool")
-    #st.write("This is the content of Page 1.")
-        
-
-
-
+    #st.write("This is the content of Page 1.")        
 def page2():
     #st.title("Page 2")
     st.write("This is the page for project details")
