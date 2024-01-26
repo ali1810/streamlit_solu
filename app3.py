@@ -138,57 +138,57 @@ def page1():
     
 
     # put the descriptors in a list
-        rows = np.array([single_MolLogP, single_MolWt, single_NumRotatableBonds, single_AP,single_RC,
-        single_TPSA,single_Hdonors,single_SR,single_AR,
-        single_HA,single_Heter,single_Max_Partial_Charge,single_FP_density,single_num_valence_electrons,
-        single_NHOH_count,single_SP3_frac,single_SP_bonds])
+         rows = np.array([single_MolLogP, single_MolWt, single_NumRotatableBonds, single_AP,single_RC,
+         single_TPSA,single_Hdonors,single_SR,single_AR,
+         single_HA,single_Heter,single_Max_Partial_Charge,single_FP_density,single_num_valence_electrons,
+         single_NHOH_count,single_SP3_frac,single_SP_bonds])
     
     # add the list to a pandas dataframe
     #single_df = pd.DataFrame(single_list).T
-        baseData = np.vstack([rows])
+         baseData = np.vstack([rows])
     # rename the header columns of the dataframe
     
     #columnNames = ["MolLogP", "MolWt", "NumRotatableBonds", "AromaticProportion","Ring_Count","TPSA","H_donors","Saturated_Rings","AliphaticRings","H_Acceptors","Heteroatoms"]
-        columnNames = ["MolP","MolWt", 
+         columnNames = ["MolP","MolWt", 
                    "NumRotatableBonds", "AromaticProportion"
                   ,"Ring_Count","TPSA","H_donors", "Saturated_Rings","AliphaticRings","H_Acceptors","Heteroatoms","Max_Partial_Charge",
                   "valence_electrons","FP_density","NHOH_count","SP3_frac","SP_bonds"]
  
-        generated_descriptors1 = pd.DataFrame(data=baseData, columns=columnNames)
+         generated_descriptors1 = pd.DataFrame(data=baseData, columns=columnNames)
       
 	    
         #generated_descriptors1= predictSingle(smiles)
-        mol = Chem.MolFromSmiles(smiles)
-        fp = AllChem.GetMorganFingerprintAsBitVect(mol, 2, nBits=512)
-        arr = np.zeros((0,), dtype=np.int8)
-        arr1=DataStructs.ConvertToNumpyArray(fp,arr)
-        arr2 =pd.DataFrame(arr)
-        array = arr2.T
-        trained_model= xgb.Booster()
-        trained_model.load_model('models/model_xgb_95 2.bin')
-        df3=pd.concat([array,generated_descriptors1],axis=1)
-        df3 = xgb.DMatrix(df3)
-        pred_rf1 = trained_model.predict(df3)
-        pred_rf1 =  (pred_rf1-0.30)
-        pred_rf2 =  np.round(pred_rf1,2)	
-        mol_liter1   =  10**pred_rf1
-        mol_liter2   = np.round(mol_liter1,2)
-        c_name    =smiles_iupac(smiles)
-        mol = Chem.MolFromSmiles(smiles)
-        MolWt1     = generated_descriptors1["MolWt"]
-        Gram_liter1  =(10**pred_rf1)*MolWt1
-        P_sol1 =smiles_to_sol(smiles) ## calling function to get the solubility from <pubchem
-        data = dict(IUPAC_Name=c_name,SMILES=smiles, Predicted_LogS=pred_rf2, 
-        Mol_Liter=mol_liter2,Gram_Liter=Gram_liter1,Experiment_Solubility_PubChem=P_sol1)
-        df = pd.DataFrame(data, index=[0])
-        st.header('Predicted LogS values for single smiles')
-        st.table(df.style.format({"Predicted_LogS": "{:.2f}","Mol_Liter":"{:.2f}","Gram_Liter":"{:.2f}"}))
+         mol = Chem.MolFromSmiles(smiles)
+         fp = AllChem.GetMorganFingerprintAsBitVect(mol, 2, nBits=512)
+         arr = np.zeros((0,), dtype=np.int8)
+         arr1=DataStructs.ConvertToNumpyArray(fp,arr)
+         arr2 =pd.DataFrame(arr)
+         array = arr2.T
+         trained_model= xgb.Booster()
+         trained_model.load_model('models/model_xgb_95 2.bin')
+         df3=pd.concat([array,generated_descriptors1],axis=1)
+         df3 = xgb.DMatrix(df3)
+         pred_rf1 = trained_model.predict(df3)
+         pred_rf1 =  (pred_rf1-0.30)
+         pred_rf2 =  np.round(pred_rf1,2)	
+         mol_liter1   =  10**pred_rf1
+         mol_liter2   = np.round(mol_liter1,2)
+         c_name    =smiles_iupac(smiles)
+         mol = Chem.MolFromSmiles(smiles)
+         MolWt1     = generated_descriptors1["MolWt"]
+         Gram_liter1  =(10**pred_rf1)*MolWt1
+         P_sol1 =smiles_to_sol(smiles) ## calling function to get the solubility from <pubchem
+         data = dict(IUPAC_Name=c_name,SMILES=smiles, Predicted_LogS=pred_rf2, 
+         Mol_Liter=mol_liter2,Gram_Liter=Gram_liter1,Experiment_Solubility_PubChem=P_sol1)
+         df = pd.DataFrame(data, index=[0])
+         st.header('Predicted LogS values for single smiles')
+         st.table(df.style.format({"Predicted_LogS": "{:.2f}","Mol_Liter":"{:.2f}","Gram_Liter":"{:.2f}"}))
     #df
     #st.write('Good Morning') #displayed when the button is clicked
-        st.header('Computed molecular descriptors')
-        generated_descriptors1 # Skips the dummy first item
+         st.header('Computed molecular descriptors')
+         generated_descriptors1 # Skips the dummy first item
     else:
-        st.write('Note for users - 1>Enter Single smiles and click on predict button') #displayed when the button is unclicked
+         st.write('Note for users - 1>Enter Single smiles and click on predict button') #displayed when the button is unclicked
 	
     
     #def smiles_to_img(SMILES):
