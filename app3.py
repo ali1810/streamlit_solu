@@ -33,25 +33,27 @@ def render_mol(xyz):
     showmol(xyzview,height=300,width=400) 
 
 def page1():
+	
+	
     
     #def smiles_to_img(SMILES):
-          st.sidebar.write('**Type SMILES below**')
+        st.sidebar.write('**Type SMILES below**')
 
     ## Read SMILES input
     #SMILES_input = "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
     #\nCC(=O)OC1=CC=CC=C1C(=O)O"
     #SMILES_input = " "
-          smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
+        smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
     #SMILES = SMILES.split('\n')
-          col1, col2, col3 = st.columns([10,2,11.5]) 
-	  prop=pcp.get_properties([ 'MolecularWeight'], smiles, 'smiles')
-          x = list(map(lambda x: x["CID"], prop))
-          y=x[0]
+        col1, col2, col3 = st.columns([10,2,11.5]) 
+	prop=pcp.get_properties([ 'MolecularWeight'], smiles, 'smiles')
+        x = list(map(lambda x: x["CID"], prop))
+        y=x[0]
     #print(y)
-          x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/%s/PNG?image_size=400x300"
-          url=(x % y)
+        x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/%s/PNG?image_size=400x300"
+        url=(x % y)
 #print(url)
-          img = Image.open(urlopen(url))
+        img = Image.open(urlopen(url))
     #return img 
 	
 	
