@@ -136,7 +136,7 @@ def page2():
             st.write("")	
 def page3():
     #st.title("Page 3")
-    st.write("This is the content of Institute and contact details .")
+    #st.write("This is the content of Institute and contact details .")
     st.write("""
 # About AqSolPred1
 Sol Prediction  is an  accurate solubility prediction model that consists consensus of 3 ML algorithms (Neural Nets, Random Forest, and XGBoost). 
