@@ -59,10 +59,10 @@ def page1():
 	    st.header("   2 D Structure of the smiles  ")
 
     with col2:
-	   st.write("")
+	    st.write("")
     with col3:
-          st.header(" 3 D Structure  of the smiles")
-          st.write("""Use mouse pointer to rotate the structure""")
+            st.header(" 3 D Structure  of the smiles")
+            st.write("""Use mouse pointer to rotate the structure""")
     img=smiles_to_img(smiles)
 #st.write("a logo and text next to eachother")
    col1, mid, col2 = st.columns([15,0.5,15])
