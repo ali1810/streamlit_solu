@@ -3,7 +3,6 @@ from PIL import Image
 
 
 
-
 def smiles_to_img(SMILES):
     prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
     x = list(map(lambda x: x["CID"], prop))
