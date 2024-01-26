@@ -4,7 +4,7 @@ from PIL import Image
 
 
 def page1():
-	col1, col2, col3 = st.columns([10,2,11.5])
+col1, col2, col3 = st.columns([10,2,11.5])
 
 with col1:
 	st.header("   2 D Structure of the smiles  ")
