@@ -68,19 +68,18 @@ def page1():
     #st.markdown("<h1 style='text-align: center; color: blue;margin-top: 0; padding-top: 0;>AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
     #st.title("AqSolPred: Online Solubility Prediction Tool")
     #st.write("This is the content of Page 1.")
-         st.sidebar.write('**Type SMILES below**')
+          st.sidebar.write('**Type SMILES below**')
 
     ## Read SMILES input
     #SMILES_input = "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
     #\nCC(=O)OC1=CC=CC=C1C(=O)O"
     #SMILES_input = " "
-         smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
+          smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
     #SMILES = SMILES.split('\n')
     col1, col2, col3 = st.columns([10,2,11.5])
 
     with col1:
 	    st.header("   2 D Structure of the smiles  ")
-
     with col2:
 	    st.write("")
     with col3:
