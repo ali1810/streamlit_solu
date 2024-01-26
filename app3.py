@@ -116,7 +116,7 @@ def page1():
          #single_AP = aromatic / heavy_atom if heavy_atom != 0 else 0   
 
     # Calculate ring count 
-         single_RC= Descriptors.RingCount(mol1)
+         #single_RC= Descriptors.RingCount(mol1)
 
     # Calculate TPSA 
          single_TPSA=Descriptors.TPSA(mol1)
