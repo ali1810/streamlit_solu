@@ -35,14 +35,23 @@ def render_mol(xyz):
 def page1():
     
     #def smiles_to_img(SMILES):
-         prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
-         x = list(map(lambda x: x["CID"], prop))
-         y=x[0]
+          st.sidebar.write('**Type SMILES below**')
+
+    ## Read SMILES input
+    #SMILES_input = "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
+    #\nCC(=O)OC1=CC=CC=C1C(=O)O"
+    #SMILES_input = " "
+          smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
+    #SMILES = SMILES.split('\n')
+          col1, col2, col3 = st.columns([10,2,11.5]) 
+	  prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
+          x = list(map(lambda x: x["CID"], prop))
+          y=x[0]
     #print(y)
-         x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/%s/PNG?image_size=400x300"
-         url=(x % y)
+          x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/%s/PNG?image_size=400x300"
+          url=(x % y)
 #print(url)
-         img = Image.open(urlopen(url))
+          img = Image.open(urlopen(url))
     #return img 
 	
 	
@@ -59,13 +68,13 @@ def page1():
     #st.markdown("<h1 style='text-align: center; color: blue;margin-top: 0; padding-top: 0;>AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
     #st.title("AqSolPred: Online Solubility Prediction Tool")
     #st.write("This is the content of Page 1.")
-    st.sidebar.write('**Type SMILES below**')
+         st.sidebar.write('**Type SMILES below**')
 
     ## Read SMILES input
     #SMILES_input = "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
     #\nCC(=O)OC1=CC=CC=C1C(=O)O"
     #SMILES_input = " "
-    smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
+         smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
     #SMILES = SMILES.split('\n')
     col1, col2, col3 = st.columns([10,2,11.5])
 
