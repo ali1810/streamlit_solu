@@ -113,112 +113,113 @@ def page1():
            #render_mol(blk)
     if st.sidebar.button('Predict'):
 	    
+	    
 	 # define the rdkit moleculer object
-	 mol1 = Chem.MolFromSmiles(SMILES)
+	    mol1 = Chem.MolFromSmiles(SMILES)
     
     # calculate the log octanol/water partition descriptor
-        single_MolLogP = Descriptors.MolLogP(mol1)
+            single_MolLogP = Descriptors.MolLogP(mol1)
     
     # calculate the molecular weight descriptor
 
         #single_MolWt   = Descriptors.MolWt(mol1)
-        single_MolWt   = Descriptors.MolWt(mol1)
+            single_MolWt   = Descriptors.MolWt(mol1)
     
     # calculate of the number of rotatable bonds descriptor
-        single_NumRotatableBonds = Descriptors.NumRotatableBonds(mol1)
+            single_NumRotatableBonds = Descriptors.NumRotatableBonds(mol1)
              
     # calculate the aromatic proportion descriptor
          #single_AP = getAromaticProportion(mol1)
-	#aromatic_list = [mol1.GetAtomWithIdx(i).GetIsAromatic() for i in range(mol1.GetNumAtoms())]
-        #aromatic = 0
-        #for i in aromatic_list:
-         #   if i:
-          #      aromatic += 1
-        #heavy_atom = Lipinski.HeavyAtomCount(mol1)
-        #single_AP = aromatic / heavy_atom if heavy_atom != 0 else 0   
+	    aromatic_list = [mol1.GetAtomWithIdx(i).GetIsAromatic() for i in range(mol1.GetNumAtoms())]
+            aromatic = 0
+            for i in aromatic_list:
+                if i:
+                  aromatic += 1
+            heavy_atom = Lipinski.HeavyAtomCount(mol1)
+            single_AP = aromatic / heavy_atom if heavy_atom != 0 else 0   
 
     # Calculate ring count 
-        single_RC= Descriptors.RingCount(mol1)
+            single_RC= Descriptors.RingCount(mol1)
 
     # Calculate TPSA 
-        single_TPSA=Descriptors.TPSA(mol1)
+            single_TPSA=Descriptors.TPSA(mol1)
 
     # Calculate H Donors  
-        single_Hdonors=Lipinski.NumHDonors(mol1)
+            single_Hdonors=Lipinski.NumHDonors(mol1)
 
     # Calculate saturated Rings 
-        single_SR= Lipinski.NumSaturatedRings(mol1) 
+            single_SR= Lipinski.NumSaturatedRings(mol1) 
 
     # Calculate Aliphatic rings 
-        single_AR =Lipinski.NumAliphaticRings(mol1)
+            single_AR =Lipinski.NumAliphaticRings(mol1)
     
     # Calculate Hydrogen Acceptors 
-        single_HA = Lipinski.NumHAcceptors(mol1)
+            single_HA = Lipinski.NumHAcceptors(mol1)
 
     # Calculate Heteroatoms
-        single_Heter = Lipinski.NumHeteroatoms(mol1)
+            single_Heter = Lipinski.NumHeteroatoms(mol1)
 
-        single_Max_Partial_Charge =  Descriptors.MaxPartialCharge(mol1)
-        single_FP_density =  Descriptors.FpDensityMorgan1(mol1)
-        single_num_valence_electrons = Descriptors.NumValenceElectrons(mol1)
-        single_NHOH_count = Lipinski.NHOHCount(mol1)
-        single_SP3_frac = Lipinski.FractionCSP3(mol1)
-        single_SP_bonds = len(mol1.GetSubstructMatches(Chem.MolFromSmarts('[^1]')))
+            single_Max_Partial_Charge =  Descriptors.MaxPartialCharge(mol1)
+            single_FP_density =  Descriptors.FpDensityMorgan1(mol1)
+            single_num_valence_electrons = Descriptors.NumValenceElectrons(mol1)
+            single_NHOH_count = Lipinski.NHOHCount(mol1)
+            single_SP3_frac = Lipinski.FractionCSP3(mol1)
+            single_SP_bonds = len(mol1.GetSubstructMatches(Chem.MolFromSmarts('[^1]')))
         
     
 
     # put the descriptors in a list
-        rows = np.array([single_MolLogP, single_MolWt, single_NumRotatableBonds, single_AP,single_RC,
-        single_TPSA,single_Hdonors,single_SR,single_AR,
-        single_HA,single_Heter,single_Max_Partial_Charge,single_FP_density,single_num_valence_electrons,
-        single_NHOH_count,single_SP3_frac,single_SP_bonds])
+            rows = np.array([single_MolLogP, single_MolWt, single_NumRotatableBonds, single_AP,single_RC,
+            single_TPSA,single_Hdonors,single_SR,single_AR,
+            single_HA,single_Heter,single_Max_Partial_Charge,single_FP_density,single_num_valence_electrons,
+            single_NHOH_count,single_SP3_frac,single_SP_bonds])
     
     # add the list to a pandas dataframe
     #single_df = pd.DataFrame(single_list).T
-        baseData = np.vstack([rows])
+            baseData = np.vstack([rows])
     # rename the header columns of the dataframe
     
     #columnNames = ["MolLogP", "MolWt", "NumRotatableBonds", "AromaticProportion","Ring_Count","TPSA","H_donors","Saturated_Rings","AliphaticRings","H_Acceptors","Heteroatoms"]
-        columnNames = ["MolP","MolWt", 
+            columnNames = ["MolP","MolWt", 
                    "NumRotatableBonds", "AromaticProportion"
                   ,"Ring_Count","TPSA","H_donors", "Saturated_Rings","AliphaticRings","H_Acceptors","Heteroatoms","Max_Partial_Charge",
                   "valence_electrons","FP_density","NHOH_count","SP3_frac","SP_bonds"]
  
-        generated_descriptors1 = pd.DataFrame(data=baseData, columns=columnNames)
+            generated_descriptors1 = pd.DataFrame(data=baseData, columns=columnNames)
       
 	    
         #generated_descriptors1= predictSingle(smiles)
-        mol = Chem.MolFromSmiles(smiles)
-        fp = AllChem.GetMorganFingerprintAsBitVect(mol, 2, nBits=512)
-        arr = np.zeros((0,), dtype=np.int8)
-        arr1=DataStructs.ConvertToNumpyArray(fp,arr)
-        arr2 =pd.DataFrame(arr)
-        array = arr2.T
-        trained_model= xgb.Booster()
-        trained_model.load_model('models/model_xgb_95 2.bin')
-        df3=pd.concat([array,generated_descriptors1],axis=1)
-        df3 = xgb.DMatrix(df3)
-        pred_rf1 = trained_model.predict(df3)
-        pred_rf1 =  (pred_rf1-0.30)
-        pred_rf2 =  np.round(pred_rf1,2)	
-        mol_liter1   =  10**pred_rf1
-        mol_liter2   = np.round(mol_liter1,2)
-        c_name    =smiles_iupac(smiles)
-        mol = Chem.MolFromSmiles(smiles)
-        MolWt1     = generated_descriptors1["MolWt"]
-        Gram_liter1  =(10**pred_rf1)*MolWt1
-        P_sol1 =smiles_to_sol(smiles) ## calling function to get the solubility from <pubchem
-        data = dict(IUPAC_Name=c_name,SMILES=smiles, Predicted_LogS=pred_rf2, 
-        Mol_Liter=mol_liter2,Gram_Liter=Gram_liter1,Experiment_Solubility_PubChem=P_sol1)
-        df = pd.DataFrame(data, index=[0])
-        st.header('Predicted LogS values for single smiles')
-        st.table(df.style.format({"Predicted_LogS": "{:.2f}","Mol_Liter":"{:.2f}","Gram_Liter":"{:.2f}"}))
+            mol = Chem.MolFromSmiles(smiles)
+            fp = AllChem.GetMorganFingerprintAsBitVect(mol, 2, nBits=512)
+            arr = np.zeros((0,), dtype=np.int8)
+            arr1=DataStructs.ConvertToNumpyArray(fp,arr)
+            arr2 =pd.DataFrame(arr)
+            array = arr2.T
+            trained_model= xgb.Booster()
+            trained_model.load_model('models/model_xgb_95 2.bin')
+            df3=pd.concat([array,generated_descriptors1],axis=1)
+            df3 = xgb.DMatrix(df3)
+            pred_rf1 = trained_model.predict(df3)
+            pred_rf1 =  (pred_rf1-0.30)
+            pred_rf2 =  np.round(pred_rf1,2)	
+            mol_liter1   =  10**pred_rf1
+            mol_liter2   = np.round(mol_liter1,2)
+            c_name    =smiles_iupac(smiles)
+            mol = Chem.MolFromSmiles(smiles)
+            MolWt1     = generated_descriptors1["MolWt"]
+            Gram_liter1  =(10**pred_rf1)*MolWt1
+            P_sol1 =smiles_to_sol(smiles) ## calling function to get the solubility from <pubchem
+            data = dict(IUPAC_Name=c_name,SMILES=smiles, Predicted_LogS=pred_rf2, 
+            Mol_Liter=mol_liter2,Gram_Liter=Gram_liter1,Experiment_Solubility_PubChem=P_sol1)
+            df = pd.DataFrame(data, index=[0])
+            st.header('Predicted LogS values for single smiles')
+            st.table(df.style.format({"Predicted_LogS": "{:.2f}","Mol_Liter":"{:.2f}","Gram_Liter":"{:.2f}"}))
     #df
     #st.write('Good Morning') #displayed when the button is clicked
-        st.header('Computed molecular descriptors')
-        generated_descriptors1 # Skips the dummy first item
-    else:
-         st.write('Note for users - 1>Enter Single smiles and click on predict button') #displayed when the button is unclicked
+           st.header('Computed molecular descriptors')
+           generated_descriptors1 # Skips the dummy first item
+     else:
+           st.write('Note for users - 1>Enter Single smiles and click on predict button') #displayed when the button is unclicked
 	   
     
     #def smiles_to_img(SMILES):
