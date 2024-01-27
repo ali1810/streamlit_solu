@@ -56,9 +56,9 @@ import streamlit as st
 # Display a clickable heading
 if st.sidebar.button("Solubility Prediction "):
         page1()
-if st.sidebar.button("Solubility Prediction "):
+if st.sidebar.button("Project details "):
         page2()
-if st.sidebar.button("Solubility Prediction "):
+if st.sidebar.button("Contact Details"):
         page3()
 
 
