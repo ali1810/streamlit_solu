@@ -301,9 +301,9 @@ def main():
     else:
          st.write('Note for users - 1>Enter Single smiles and click on predict button') #displayed when the button is unclicked
 	   
-if button2_clicked:
+    if button2_clicked:
          page2()
-if button3_clicked:
+    if button3_clicked:
          page3()
 
 
