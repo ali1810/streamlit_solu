@@ -54,12 +54,7 @@ import streamlit as st
  #   st.write("This is the target page. You can put any content here.")
 
 # Display a clickable heading
-if st.sidebar.button("Solubility Prediction "):
-        page1()
-if st.sidebar.button("Project details "):
-        page2()
-if st.sidebar.button("Contact Details"):
-        page3()
+
 
 
 def page1():
@@ -290,19 +285,24 @@ This web app is developed based on the tutorials and the template of [DataProfes
 **Contact over Linkdin :** [Mushtaq Ali](www.linkedin.com/in/mushtaq-ali/)	""")
 
 def main():
-    st.sidebar.title("Navigation")
-    selected_page = st.sidebar.radio("Visit for ", ["Solubility Prediction", "Project Detail", "Contact Detail"])
+    #st.sidebar.title("Navigation")
+    #selected_page = st.sidebar.radio("Visit for ", ["Solubility Prediction", "Project Detail", "Contact Detail"])
     
     #st.sidebar.[element_name]
 	
     #selected_option = st.selectbox("Choose an option", ["Option 1", "Option 2", "Option 3"])
-	
+    if st.sidebar.button("Solubility Prediction "):
+         page1()
+      elif st.sidebar.button("Project details "):
+         page2()
+      elif st.sidebar.button("Contact Details"):
+         page3()	
 
-    if selected_page ==   "Solubility Prediction":
-        page1()
-    elif selected_page == "Project Detail":
-        page2()
-    elif selected_page == "Contact Detail":
-        page3()
+    #if selected_page ==   "Solubility Prediction":
+     #   page1()
+    #elif selected_page == "Project Detail":
+     #   page2()
+    #elif selected_page == "Contact Detail":
+     #   page3()
 if __name__ == "__main__":
     main()
