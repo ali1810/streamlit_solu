@@ -114,7 +114,6 @@ def page1():
     if st.sidebar.button('Predict'):
 	 # define the rdkit moleculer object
 	    mol1 = Chem.MolFromSmiles(SMILES)
-    
     # calculate the log octanol/water partition descriptor
             single_MolLogP = Descriptors.MolLogP(mol1)
     
