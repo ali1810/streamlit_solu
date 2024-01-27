@@ -290,15 +290,27 @@ def main():
     #selected_page = 
     #st.sidebar.button(["Solubility Prediction", "Project Detail", "Contact Detail"])
     
-    #st.sidebar.[element_name]
+    button1_clicked = st.button("("Solubility Prediction 1")
+    button2_clicked = st.button("Project details")
+    button3_clicked = st.button("Contact Details")
+    
+    if button1_clicked:
+         page1()
+    elif button2_clicked:
+         page(2)
+    elif button3_clicked:
+         page2()
+
+
+
 	
     #selected_option = st.selectbox("Choose an option", ["Option 1", "Option 2", "Option 3"])
-    if st.sidebar.button("Solubility Prediction "):
-        page1()
-    if st.sidebar.button("Project details "):
-         page2()
-    if st.sidebar.button("Contact Details"):
-         page3()	
+   # if st.sidebar.button("Solubility Prediction "):
+    #    page1()
+    #if st.sidebar.button("Project details "):
+     #    page2()
+    #if st.sidebar.button("Contact Details"):
+     #    page3()	
 
     #if selected_page ==   "Solubility Prediction":
      #   page1()
