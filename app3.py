@@ -126,17 +126,17 @@ def page1():
          single_NumRotatableBonds = Descriptors.NumRotatableBonds(mol1)
     
     # calculate the aromatic proportion descriptor
-         #single_AP = getAromaticProportion(mol1)
-	 #aromatic_list = [mol1.GetAtomWithIdx(i).GetIsAromatic() for i in range(mol1.GetNumAtoms())]
-         #aromatic = 0
-         #for i in aromatic_list:
-          #   if i:
-           #     aromatic += 1
-         #heavy_atom = Lipinski.HeavyAtomCount(mol1)
-         #single_AP = aromatic / heavy_atom if heavy_atom != 0 else 0   
+         single_AP = getAromaticProportion(mol1)
+	 aromatic_list = [mol1.GetAtomWithIdx(i).GetIsAromatic() for i in range(mol1.GetNumAtoms())]
+         aromatic = 0
+         for i in aromatic_list:
+             if i:
+                aromatic += 1
+             heavy_atom = Lipinski.HeavyAtomCount(mol1)
+         single_AP = aromatic / heavy_atom if heavy_atom != 0 else 0   
 
     # Calculate ring count 
-         #single_RC= Descriptors.RingCount(mol1)
+         single_RC= Descriptors.RingCount(mol1)
 
     # Calculate TPSA 
          single_TPSA=Descriptors.TPSA(mol1)
