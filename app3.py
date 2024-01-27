@@ -288,16 +288,16 @@ def main():
     #st.sidebar.title("Navigation")
     #selected_page = st.sidebar.radio("Visit for ", ["Solubility Prediction", "Project Detail", "Contact Detail"])
     #selected_page = 
-    st.sidebar.button(["Solubility Prediction", "Project Detail", "Contact Detail"])
+    #st.sidebar.button(["Solubility Prediction", "Project Detail", "Contact Detail"])
     
     #st.sidebar.[element_name]
 	
     #selected_option = st.selectbox("Choose an option", ["Option 1", "Option 2", "Option 3"])
     if st.sidebar.button("Solubility Prediction "):
         page1()
-    elif st.sidebar.button("Project details "):
+    if st.sidebar.button("Project details "):
          page2()
-    elif st.sidebar.button("Contact Details"):
+    if st.sidebar.button("Contact Details"):
          page3()	
 
     #if selected_page ==   "Solubility Prediction":
