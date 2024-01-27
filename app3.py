@@ -112,8 +112,6 @@ def page1():
            showmol(xyzview,height=300,width=400) 
            #render_mol(blk)
     if st.sidebar.button('Predict'):
-	    
-	    
 	 # define the rdkit moleculer object
 	    mol1 = Chem.MolFromSmiles(SMILES)
     
