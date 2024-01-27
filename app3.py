@@ -297,7 +297,7 @@ def main():
     if button1_clicked:
          page1()
     elif button2_clicked:
-         page(2)
+         page()
     elif button3_clicked:
          page2()
 
