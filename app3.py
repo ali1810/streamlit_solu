@@ -199,6 +199,14 @@ def main():
         single_MolLogP = Descriptors.MolLogP(mol1)
     
     # calculate the molecular weight descriptor
+
+        #single_MolWt   = Descriptors.MolWt(mol1)
+        single_MolWt   = Descriptors.MolWt(mol1)
+    
+    # calculate of the number of rotatable bonds descriptor
+        single_NumRotatableBonds = Descriptors.NumRotatableBonds(mol1)
+    
+
              
     # calculate the aromatic proportion descriptor
          #single_AP = getAromaticProportion(mol1)
