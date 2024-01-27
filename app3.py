@@ -111,89 +111,10 @@ def page1():
     with col2:
            showmol(xyzview,height=300,width=400) 
            #render_mol(blk)
-
-    
-    #def smiles_to_img(SMILES):
-    
-
-    ## Read SMILES input
-    #SMILES_input = "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
-    #\nCC(=O)OC1=CC=CC=C1C(=O)O"
-    #SMILES_input = " "
-
-    
-    #SMILES = SMILES.split('\n')
-   #col1, col2, col3 = st.columns([10,2,11.5]) 
-	
-    #print(y)
-        
-    #return img 
-	
-	
-	
-	#st.title("AqSolPred: Online Solubility Prediction Tool")
-    
-    #st.markdown("<h1 style='text-align: left;position: fixed;  top: 0; width: 100%; color: blue; margin-top: -1; padding-top: -1;'>AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
-    #st.markdown("<h1 style='font-size: 34px ;position: fixed;  top: 0.1; width: 100%; color: blue; margin-top: 0.5; padding-top: 0.5;'>AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
- 
-	
-    #st.markdown("<h1 style='text-align: left; color: blue; position: fixed;margin-top: -1; padding-top: -1; width: 100%;
-    #'>AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
-	
-    #st.markdown("<h1 style='text-align: center; color: blue;margin-top: 0; padding-top: 0;>AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
-    #st.title("AqSolPred: Online Solubility Prediction Tool")
-    #st.write("This is the content of Page 1.")        
-def page2():
-    #st.title("Page 2")
-    #st.write("This is the page for project details")
-    image = Image.open('Flow2.jpeg')
-    col1, col2, col3 = st.columns([0.001,2.0,0.5])
-    with col1:
-	    st.write("")
-    with col2:
-            st.image(image, use_column_width=2)
-    with col3:	
-            st.write("")	
-def page3():
-    #st.title("Page 3")
-    #st.write("This is the content of Institute and contact details .")
-    st.write("""
-# About AqSolPred1
-Sol Prediction  is an  accurate solubility prediction model that consists consensus of 3 ML algorithms (Neural Nets, Random Forest, and XGBoost). 
-AqSolPred is developed using a quality-oriented data selection method described in [1] and trained on AqSolDB [2] largest publicly available aqueous solubility dataset.
-AqSolPred showed a top-performance (R2 - 0.95 )
-
-If you are using the predictions from Sol Pred on your work, 
- please cite these papers: [1, 2]
-
-[1] Sorkun, M. C., Koelman, J.M.V.A. & Er, S. (2021). [Pushing the limits of solubility prediction via quality-oriented data selection](https://www.cell.com/iscience/fulltext/S2589-0042(20)31158-5), iScience, 24(1), 101961.
-
-[2] Sorkun, M. C., Khetan, A., & Er, S. (2019).  [AqSolDB, a curated reference set of aqueous solubility and 2D descriptors for a diverse set of compounds](https://www.nature.com/articles/s41597-019-0151-1). Scientific data, 6(1), 1-8.
-
-[3] Huuskonen, J. Estimation of aqueous solubility for a diverse set of organic compounds based on molecular topology. Journal of Chemical Informationand Computer Sciences 40, 773–777 (2000).
-Special thanks: 
-
-This web app is developed based on the tutorials and the template of [DataProfessor's repository](https://github.com/dataprofessor/code/tree/master/streamlit/part7). 
-
-** For any feedback or suggestion please write me -- mushtaq.ali@kit.edu                                                                                         
-**Contact over Linkdin :** [Mushtaq Ali](www.linkedin.com/in/mushtaq-ali/)	""")
-
-def main():
-    #st.sidebar.title("Navigation")
-    #selected_page = st.sidebar.radio("Visit for ", ["Solubility Prediction", "Project Detail", "Contact Detail"])
-    #selected_page = 
-    #st.sidebar.button(["Solubility Prediction", "Project Detail", "Contact Detail"])
-    
-    button1_clicked = st.sidebar.button("Solubility Prediction 1")
-    button2_clicked = st.sidebar.button("Project details")
-    button3_clicked = st.sidebar.button("Contact Details")
-    
-    if button1_clicked:
-         page1()
     if st.sidebar.button('Predict'):
 	    
 	 # define the rdkit moleculer object
-        mol1 = Chem.MolFromSmiles(SMILES)
+	 mol1 = Chem.MolFromSmiles(SMILES)
     
     # calculate the log octanol/water partition descriptor
         single_MolLogP = Descriptors.MolLogP(mol1)
@@ -205,8 +126,6 @@ def main():
     
     # calculate of the number of rotatable bonds descriptor
         single_NumRotatableBonds = Descriptors.NumRotatableBonds(mol1)
-    
-
              
     # calculate the aromatic proportion descriptor
          #single_AP = getAromaticProportion(mol1)
@@ -301,6 +220,85 @@ def main():
     else:
          st.write('Note for users - 1>Enter Single smiles and click on predict button') #displayed when the button is unclicked
 	   
+    
+    #def smiles_to_img(SMILES):
+    
+
+    ## Read SMILES input
+    #SMILES_input = "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
+    #\nCC(=O)OC1=CC=CC=C1C(=O)O"
+    #SMILES_input = " "
+
+    
+    #SMILES = SMILES.split('\n')
+   #col1, col2, col3 = st.columns([10,2,11.5]) 
+	
+    #print(y)
+        
+    #return img 
+	
+	
+	
+	#st.title("AqSolPred: Online Solubility Prediction Tool")
+    
+    #st.markdown("<h1 style='text-align: left;position: fixed;  top: 0; width: 100%; color: blue; margin-top: -1; padding-top: -1;'>AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
+    #st.markdown("<h1 style='font-size: 34px ;position: fixed;  top: 0.1; width: 100%; color: blue; margin-top: 0.5; padding-top: 0.5;'>AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
+ 
+	
+    #st.markdown("<h1 style='text-align: left; color: blue; position: fixed;margin-top: -1; padding-top: -1; width: 100%;
+    #'>AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
+	
+    #st.markdown("<h1 style='text-align: center; color: blue;margin-top: 0; padding-top: 0;>AqSolPred: Online Solubility Prediction Tool</h1>", unsafe_allow_html=True)
+    #st.title("AqSolPred: Online Solubility Prediction Tool")
+    #st.write("This is the content of Page 1.")        
+def page2():
+    #st.title("Page 2")
+    #st.write("This is the page for project details")
+    image = Image.open('Flow2.jpeg')
+    col1, col2, col3 = st.columns([0.001,2.0,0.5])
+    with col1:
+	    st.write("")
+    with col2:
+            st.image(image, use_column_width=2)
+    with col3:	
+            st.write("")	
+def page3():
+    #st.title("Page 3")
+    #st.write("This is the content of Institute and contact details .")
+    st.write("""
+# About AqSolPred1
+Sol Prediction  is an  accurate solubility prediction model that consists consensus of 3 ML algorithms (Neural Nets, Random Forest, and XGBoost). 
+AqSolPred is developed using a quality-oriented data selection method described in [1] and trained on AqSolDB [2] largest publicly available aqueous solubility dataset.
+AqSolPred showed a top-performance (R2 - 0.95 )
+
+If you are using the predictions from Sol Pred on your work, 
+ please cite these papers: [1, 2]
+
+[1] Sorkun, M. C., Koelman, J.M.V.A. & Er, S. (2021). [Pushing the limits of solubility prediction via quality-oriented data selection](https://www.cell.com/iscience/fulltext/S2589-0042(20)31158-5), iScience, 24(1), 101961.
+
+[2] Sorkun, M. C., Khetan, A., & Er, S. (2019).  [AqSolDB, a curated reference set of aqueous solubility and 2D descriptors for a diverse set of compounds](https://www.nature.com/articles/s41597-019-0151-1). Scientific data, 6(1), 1-8.
+
+[3] Huuskonen, J. Estimation of aqueous solubility for a diverse set of organic compounds based on molecular topology. Journal of Chemical Informationand Computer Sciences 40, 773–777 (2000).
+Special thanks: 
+
+This web app is developed based on the tutorials and the template of [DataProfessor's repository](https://github.com/dataprofessor/code/tree/master/streamlit/part7). 
+
+** For any feedback or suggestion please write me -- mushtaq.ali@kit.edu                                                                                         
+**Contact over Linkdin :** [Mushtaq Ali](www.linkedin.com/in/mushtaq-ali/)	""")
+
+def main():
+    #st.sidebar.title("Navigation")
+    #selected_page = st.sidebar.radio("Visit for ", ["Solubility Prediction", "Project Detail", "Contact Detail"])
+    #selected_page = 
+    #st.sidebar.button(["Solubility Prediction", "Project Detail", "Contact Detail"])
+    
+    button1_clicked = st.sidebar.button("Solubility Prediction 1")
+    button2_clicked = st.sidebar.button("Project details")
+    button3_clicked = st.sidebar.button("Contact Details")
+    
+    if button1_clicked:
+         page1()
+    
     if button2_clicked:
          page2()
     if button3_clicked:
