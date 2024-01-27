@@ -42,12 +42,24 @@ import streamlit as st
 import streamlit as st
 
 # Function to display the target page
+if selected_page ==   "Solubility Prediction":
+        page1()
+    elif selected_page == "Project Detail":
+        page2()
+    elif selected_page == "Contact Detail":
+        page3()
+
+
 def target_page():
     st.write("This is the target page. You can put any content here.")
 
 # Display a clickable heading
-if st.sidebar.button("Click me to go to another page"):
-    target_page()
+if st.sidebar.button("Solubility Prediction "):
+            page1()
+    elif  st.sidebar.button("Project Details"):
+        page2()
+    elif st.sidebar.button("Contact Details"):
+        page3()
 
 
 def page1():
