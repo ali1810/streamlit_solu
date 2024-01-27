@@ -46,7 +46,7 @@ def target_page():
     st.write("This is the target page. You can put any content here.")
 
 # Display a clickable heading
-if st.button("Click me to go to another page"):
+if st.sidebar.button("Click me to go to another page"):
     target_page()
 
 
