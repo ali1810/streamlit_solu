@@ -37,7 +37,7 @@ from PIL import Image
 #import threading
 import requests
 import streamlit as st
-from streamlit.components.v1 import ComponentMeta
+#from streamlit.components.v1 import ComponentMeta
 
 import streamlit as st
 
