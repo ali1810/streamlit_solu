@@ -290,9 +290,9 @@ def main():
     #selected_page = 
     #st.sidebar.button(["Solubility Prediction", "Project Detail", "Contact Detail"])
     
-    button1_clicked = st.button("Solubility Prediction 1")
-    button2_clicked = st.button("Project details")
-    button3_clicked = st.button("Contact Details")
+    button1_clicked = st.sidebar.button("Solubility Prediction 1")
+    button2_clicked = st.sidebar.button("Project details")
+    button3_clicked = st.sidebar.button("Contact Details")
     
     if button1_clicked:
          page1()
