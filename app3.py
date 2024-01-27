@@ -293,9 +293,9 @@ def main():
     #selected_option = st.selectbox("Choose an option", ["Option 1", "Option 2", "Option 3"])
     if st.sidebar.button("Solubility Prediction "):
          page1()
-      elif st.sidebar.button("Project details "):
+    elif st.sidebar.button("Project details "):
          page2()
-      elif st.sidebar.button("Contact Details"):
+    elif st.sidebar.button("Contact Details"):
          page3()	
 
     #if selected_page ==   "Solubility Prediction":
