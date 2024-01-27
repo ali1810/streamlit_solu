@@ -39,22 +39,16 @@ import requests
 import streamlit as st
 from streamlit.components.v1 import ComponentMeta
 
-# Define the content of the target page
-def target_page_content():
+import streamlit as st
+
+# Function to display the target page
+def target_page():
     st.write("This is the target page. You can put any content here.")
 
-# Function to create a custom link that navigates to the target page
-def navigate_to_target_page():
-    target_page_script = ComponentMeta(
-        key="target_page",
-        content=target_page_content,
-        frontend_func="custom",
-    )
-    return target_page_script
+# Display a clickable heading
+if st.button("Click me to go to another page"):
+    target_page()
 
-# Add a heading to the sidebar that navigates to the target page when clicked
-if st.sidebar.button("Go to Another Page"):
-    navigate_to_target_page()
 
 def page1():
     col1, col2, col3 = st.columns([10,2,11.5])
