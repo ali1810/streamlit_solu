@@ -111,10 +111,6 @@ def page1():
     with col2:
            showmol(xyzview,height=300,width=400) 
            #render_mol(blk)
-        if st.sidebar.button('Predict'):
-	 # define the rdkit moleculer object
-	     mol1 = Chem.MolFromSmiles(SMILES)
-	     mol1
 
     
     #def smiles_to_img(SMILES):
@@ -194,7 +190,11 @@ def main():
     
     if button1_clicked:
          page1()
-    
+        if st.sidebar.button('Predict'):
+	 # define the rdkit moleculer object
+	     mol1 = Chem.MolFromSmiles(SMILES)
+	     mol1
+
     if button2_clicked:
          page2()
     if button3_clicked:
