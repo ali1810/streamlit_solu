@@ -190,12 +190,15 @@ def main():
     
     if button1_clicked:
          page1()
-       if st.sidebar.button('Predict'):
+	    
+           if st.sidebar.button('Predict'):
+		   
+	       
 	    
 	    
 	 # define the rdkit moleculer obje
-	    mol1 = Chem.MolFromSmiles(SMILES)
-	    mol1
+	         mol1 = Chem.MolFromSmiles(SMILES)
+	         mol1
     if button2_clicked:
          page2()
     if button3_clicked:
