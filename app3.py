@@ -116,7 +116,7 @@ def page1():
 
 
 
-    def page2():
+def page2():
     #st.title("Page 2")
     #st.write("This is the page for project details")
     image = Image.open('Flow2.jpeg')
