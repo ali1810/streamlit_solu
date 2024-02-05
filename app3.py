@@ -132,7 +132,7 @@ def page2():
     #with col2:
 	#    st.write("")
 	    
-    col1, mid, col2 = st.columns([15,0.5,15])
+    col1, mid, col2 = st.columns([10,0.5,15])
     with col1:
             st.image(image, use_column_width=False)
     with col2:
