@@ -123,12 +123,12 @@ def page2():
     #image_path = 'flow5.jpeg'
     col1, mid, col2 = st.columns([0.1,5,0.1])
     with col1:
-           st.write("")
+            st.write("")
     with mid:
            #showmol(xyzview,height=300,width=400)
 	    st.image(image, use_column_width=5)
     with col2:
-	   st.write("")
+	    st.write("")
 	    
     
 
