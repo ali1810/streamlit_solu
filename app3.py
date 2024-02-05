@@ -123,7 +123,7 @@ def page2():
     #image_path = 'flow5.jpeg'
     col1, col2, col3 = st.columns([1,2,1])
     with col1:
-	    st.image(image, use_column_width=True)
+	    st.image(image, use_column_width=2)
     with col2:
 	    st.write("")
     with col3:	
