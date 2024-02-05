@@ -119,25 +119,18 @@ def page1():
 def page2():
     #st.title("Page 2")
     #st.write("This is the page for project details")
-    #image = Image.open('flow5.jpeg')
-    image_path = 'flow5.jpeg'
-    #col1, mid, col2 = st.columns([8,0.5,2])
-    #with col1:
-     #      st.image(image, use_column_width=8)
-    #with col2:
+    image = Image.open('flow5.jpeg')
+    #image_path = 'flow5.jpeg'
+    col1, mid, col2 = st.columns([0.1,5,0.1])
+    with col1:
+           st.write("")
+    with mid:
            #showmol(xyzview,height=300,width=400)
-	#    st.write("")
-    col_center = st.column()
+	    st.image(image, use_column_width=5)
+    with col2:
+	   st.write("")
+	    
     
-    # Apply CSS to center the column
-    col_center.markdown(
-        f'<style>div.stButton > button {{"display": "block", "margin": "0 auto"}} </style>',
-        unsafe_allow_html=True
-    )
-    
-    # Display the image in the centered column
-    with col_center:
-        st.image(image_path, use_column_width=True)
 
 
 
