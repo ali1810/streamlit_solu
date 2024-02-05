@@ -121,9 +121,9 @@ def page2():
     #st.write("This is the page for project details")
     image = Image.open('flow5.jpeg')
     #image_path = 'flow5.jpeg'
-    col1, mid, col2 = st.columns([15,0.5,2])
+    col1, mid, col2 = st.columns([10,0.5,2])
     with col1:
-           st.image(image, use_column_width=15)
+           st.image(image, use_column_width=10)
     with col2:
            #showmol(xyzview,height=300,width=400)
 	    st.write("")
