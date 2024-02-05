@@ -121,11 +121,11 @@ def page2():
     #st.write("This is the page for project details")
     image = Image.open('flow5.jpeg')
     #image_path = 'flow5.jpeg'
-    col1, col2, col3 = st.columns([0.11,5,0.1])
+    col1, col2, col3 = st.columns([0.1,2,0.1])
     with col1:
 	    st.write("")
     with col2:
-	    st.image(image, use_column_width=5)
+	    st.image(image, use_column_width=2)
     with col3:	
             st.write("")
     #st.markdown(
