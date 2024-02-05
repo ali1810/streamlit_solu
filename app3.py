@@ -124,7 +124,7 @@ def page2():
     col1, mid, col2 = st.columns([20,1,1])
     with col1:
             #st.write("")
-	    st.image(image, use_column_width=3)
+	    st.image(image, use_column_width=False)
     with mid:
            #showmol(xyzview,height=300,width=400)
 	    #st.image(image, use_column_width=3)
