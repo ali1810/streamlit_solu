@@ -119,21 +119,21 @@ def page1():
 def page2():
     #st.title("Page 2")
     #st.write("This is the page for project details")
-    #image = Image.open('flow5.jpeg')
+    image = Image.open('flow5.jpeg')
     image_path = 'flow5.jpeg'
-    #col1, col2, col3 = st.columns([0.01,2.0,0.5])
-    #with col1:
-	#    st.write("")
-    #with col2:
-      #      st.image(image, use_column_width=2)
-    #with col3:	
-     #       st.write("")
-    st.markdown(
-        f'<div style="display: flex; justify-content: center;">'
-        f'<img src="{image_path}" style="width: 50%; height: auto;">'
-        f'</div>',
-        unsafe_allow_html=True
-    )	
+    col1, col2, col3 = st.columns([0.1,2.0,0.1])
+    with col1:
+	    st.write("")
+    with col2:
+            st.image(image, use_column_width=2)
+    with col3:	
+            st.write("")
+    #st.markdown(
+     #   f'<div style="display: flex; justify-content: center;">'
+      #  f'<img src="{image_path}" style="width: 50%; height: auto;">'
+      #  f'</div>',
+       # unsafe_allow_html=True
+    #)	
 def page3():
     #st.title("Page 3")
     #st.write("This is the content of Institute and contact details .")
