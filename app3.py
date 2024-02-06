@@ -119,7 +119,7 @@ def page1():
 def page2():
     #st.title("Page 2")
     #st.write("This is the page for project details")
-    image = Image.open('flow6.jpeg')
+    image = Image.open('flow7.jpeg')
     #image_path = 'flow5.jpeg'
     #col1, mid, col2 = st.columns([10,1,2])
     #with col1:
