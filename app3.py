@@ -132,9 +132,9 @@ def page2():
     #with col2:
 	#    st.write("")
 	    
-    col1, mid, col2 = st.columns([10,0.5,2])
+    col1, mid, col2 = st.columns([20,0.5,0.5])
     with col1:
-            st.image(image, height=300,width=400,use_column_width=False)
+            st.image(image,use_column_width=False)
     with col2:
             #showmol(xyzview,height=300,width=400)
 	    st.write("")
