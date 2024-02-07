@@ -108,7 +108,7 @@ def page5():
           if i:
             aromatic += 1
             heavy_atom = Lipinski.HeavyAtomCount(m)
-          aromatic / heavy_atom if heavy_atom != 0 else 0
+            ap=aromatic / heavy_atom if heavy_atom != 0 else 0
      #def predictSingle(SMILES):
     """
     This function predicts the four molecular descriptors: the octanol/water partition coefficient (LogP),
@@ -131,7 +131,7 @@ def page5():
     single_NumRotatableBonds = Descriptors.NumRotatableBonds(mol1)
     
     # calculate the aromatic proportion descriptor
-    single_AP = getAromaticProportion(mol1)
+    single_AP = ap#getAromaticProportion(mol1)
 
     # Calculate ring count 
     single_RC= Descriptors.RingCount(mol1)
@@ -183,19 +183,19 @@ def page5():
     descriptors1 = pd.DataFrame(data=baseData, columns=columnNames)
        #return descriptors1 
        #def generate(smiles):
-        moldata = []
-        for elem in smiles:
-          mol = Chem.MolFromSmiles(elem)
+    moldata = []
+    for elem in smiles:
+         mol = Chem.MolFromSmiles(elem)
           moldata.append(mol)
 
           baseData = np.arange(1, 1)
-          i = 0
-          for mol in moldata:
+        i = 0
+        for mol in moldata:
 
              desc_MolLogP = Crippen.MolLogP(mol)
              desc_MolWt = Descriptors.MolWt(mol)
              desc_NumRotatableBonds = Lipinski.NumRotatableBonds(mol)
-             desc_AromaticProportion = getAromaticProportion(mol)
+             desc_AromaticProportion = ap#getAromaticProportion(mol)
              desc_Ringcount        =   Descriptors.RingCount(mol)
              desc_TPSA = Descriptors.TPSA(mol)
              desc_Hdonrs=Lipinski.NumHDonors(mol)
@@ -234,15 +234,15 @@ def page5():
                    ,"Ring_Count","TPSA","H_donors", "Saturated_Rings","AliphaticRings","H_Acceptors","Heteroatoms","Max_Partial_Charge",
                    "valence_electrons","FP_density","NHOH_count","SP3_frac","SP_bonds"]
                   #,"Ipc","HallKierAlpha","Labute_ASA"]
-                 descriptors = pd.DataFrame(data=baseData, columns=columnNames)
+    descriptors = pd.DataFrame(data=baseData, columns=columnNames)
     
         #      return descriptors
 
 # Page Title
 ######################
 #st.set_page_config(page_title="AqSolPred: Online Solubility Prediction Tool")
-             st.set_page_config(page_title="AqSolPred: Online Solubility Prediction Tool",layout="wide")
-             st.write("""# Solibility Prediction on Aqueous Solvent """)
+    st.set_page_config(page_title="AqSolPred: Online Solubility Prediction Tool",layout="wide")
+    st.write("""# Solibility Prediction on Aqueous Solvent """)
 #image = Image.open('Flow.jpeg')
 #col1, col2, col3 = st.columns([0.5,2.0,0.5])
 #with col1:
@@ -260,14 +260,14 @@ def page5():
 #st.image("https://i.imgflip.com/amucx.jpg")
         #st.write("")
 
-            col1, col2, col3 = st.columns([10,2,11.5])
+     col1, col2, col3 = st.columns([10,2,11.5])
 
-             with col1:
-	       st.header("   2 D Structure of the smiles  ")
+     with col1:
+	   st.header("   2 D Structure of the smiles  ")
 
-             with col2:
+     with col2:
 	       st.write("")
-             with col3:
+     with col3:
                st.header(" 3 D Structure  of the smiles")
                st.write("""Use mouse pointer to rotate the structure""")
 
