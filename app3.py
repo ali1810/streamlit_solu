@@ -63,9 +63,9 @@ def page5():
     spin = st.sidebar.checkbox('Animation', value = True)
     xyzview.spin(True)
     if spin:
-        xyzview.spin(True)
+       xyzview.spin(True)
     else:
-	xyzview.spin(False)
+       xyzview.spin(False)
     #xyzview.setStyle({'sphere':{}})
     xyzview.setBackgroundColor('#EAE5E5')
     xyzview.zoomTo()
