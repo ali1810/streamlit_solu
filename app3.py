@@ -260,16 +260,16 @@ def page5():
 #st.image("https://i.imgflip.com/amucx.jpg")
         #st.write("")
 
-     col1, col2, col3 = st.columns([10,2,11.5])
+   col1, col2, col3 = st.columns([10,2,11.5])
 
-     with col1:
+   with col1:
 	   st.header("   2 D Structure of the smiles  ")
 
-     with col2:
-	       st.write("")
-     with col3:
-               st.header(" 3 D Structure  of the smiles")
-               st.write("""Use mouse pointer to rotate the structure""")
+   with col2:
+	st.write("")
+   with col3:
+           st.header(" 3 D Structure  of the smiles")
+	   st.write("""Use mouse pointer to rotate the structure""")
 
 ######################
 # Input molecules (Side Panel)
@@ -289,12 +289,12 @@ def page5():
  #      st.button('Predict')
          # img=smiles_to_img(smiles)
 #st.write("a logo and text next to eachother")
-          col1, mid, col2 = st.columns([15,0.5,15])
-          with col1:
-            st.image(img, use_column_width=False)
-          with col2:
-            blk=makeblock(smiles)
-            render_mol(blk)
+    col1, mid, col2 = st.columns([15,0.5,15])
+    with col1:
+        st.image(img, use_column_width=False)
+    with col2:
+        blk=makeblock(smiles)
+        render_mol(blk)
     #st.image(render_mol(blk), use_column_width=False)
 #blk=makeblock(smiles)
 #render_mol(blk)	
