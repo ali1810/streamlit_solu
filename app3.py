@@ -186,11 +186,11 @@ def page5():
     moldata = []
     for elem in smiles:
          mol = Chem.MolFromSmiles(elem)
-          moldata.append(mol)
+         moldata.append(mol)
 
-          baseData = np.arange(1, 1)
-        i = 0
-        for mol in moldata:
+         baseData = np.arange(1, 1)
+         i = 0
+         for mol in moldata:
 
              desc_MolLogP = Crippen.MolLogP(mol)
              desc_MolWt = Descriptors.MolWt(mol)
