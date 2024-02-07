@@ -43,66 +43,59 @@ from bs4 import BeautifulSoup
 
 import streamlit as st
 def page5():
-	def smiles_to_iupac(smiles):
-           rep = "iupac_name"
-           url = CACTUS.format(smiles, rep)
-           response = requests.get(url)
-           response.raise_for_status()
-        return response.text
-        def smiles_iupac(sm):
-#smiles = 'CC(=O)OC1=CC=CC=C1C(=O)O'
-            compounds = pcp.get_compounds(sm, namespace='smiles')
-  #print(compounds)
-            match = compounds[0]
-        return match.iupac_name
-
-
-        def makeblock(smi):
-           mol = Chem.MolFromSmiles(smi)
-           mol = Chem.AddHs(mol)
-           AllChem.EmbedMolecule(mol)
-           mblock = Chem.MolToMolBlock(mol)
-        return mblock
-
-       def render_mol(xyz):
-          xyzview = py3Dmol.view(width=400,height=300)
+	st.sidebar.write('**Type SMILES below**')
+	smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
+        rep = "iupac_name"
+        url = CACTUS.format(smiles, rep)
+        response = requests.get(url)
+        response.raise_for_status()
+        response.text
+        compounds = pcp.get_compounds(sm, namespace='smiles')
+        match = compounds[0]
+        match.iupac_name
+        mol = Chem.MolFromSmiles(smiles)
+        mol = Chem.AddHs(mol)
+        AllChem.EmbedMolecule(mol)
+        mblock = Chem.MolToMolBlock(mol)
+        #return mblock
+        xyzview = py3Dmol.view(width=400,height=300)
     #xyzview = py3Dmol.view(query=′pdb:1A2C′)
-          xyzview.addModel(xyz,'mol')
-          xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
+        xyzview.addModel(xyz,'mol')
+        xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
     #bcolor = st.sidebar.color_picker('Pick background Color', '#0C0C0B')
-          style = st.sidebar.selectbox('Chemical structure',['stick','ball-and-stick','line','cross','sphere'])
+        style = st.sidebar.selectbox('Chemical structure',['stick','ball-and-stick','line','cross','sphere'])
 #spin = st.sidebar.checkbox('Spin', value = False)
-          spin = st.sidebar.checkbox('Animation', value = True)
-          xyzview.spin(True)
-          if spin:
+        spin = st.sidebar.checkbox('Animation', value = True)
+        xyzview.spin(True)
+        if spin:
             xyzview.spin(True)
-         else:
+        else:
             xyzview.spin(False)
     #xyzview.setStyle({'sphere':{}})
-         xyzview.setBackgroundColor('#EAE5E5')
-         xyzview.zoomTo()
-         xyzview.setStyle({style:{'color':'spectrum'}})
-       showmol(xyzview,height=300,width=400) 
+        xyzview.setBackgroundColor('#EAE5E5')
+        xyzview.zoomTo()
+        xyzview.setStyle({style:{'color':'spectrum'}})
+        showmol(xyzview,height=300,width=400) 
 
 
 ## Calculate molecular descriptors
-      def smiles_to_sol(SMILES):
-    prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
-      x = list(map(lambda x: x["CID"], prop))
-      y=x[0]
+      #def smiles_to_sol(SMILES):
+        prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
+        x = list(map(lambda x: x["CID"], prop))
+        y=x[0]
    #print(y)
-      x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/%s/xml"
-      data=requests.get(x % y)
+        x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/%s/xml"
+        data=requests.get(x % y)
     # print(data)
-      html = BeautifulSoup(data.content, "xml")
-      solubility = html.find(name='TOCHeading', string='Solubility')
-      if solubility ==None:
-        return None
+        html = BeautifulSoup(data.content, "xml")
+        solubility = html.find(name='TOCHeading', string='Solubility')
+        if solubility ==None:
+          return None
 #sol.append(solub)
-      else:
-         solub=solubility.find_next_sibling('Information').find(name='String').string
-      return solub
-      def smiles_to_img(SMILES):
+        else:
+          solub=solubility.find_next_sibling('Information').find(name='String').string
+        return solub
+      #def smiles_to_img(SMILES):
         prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
         x = list(map(lambda x: x["CID"], prop))
         y=x[0]
@@ -111,17 +104,18 @@ def page5():
         url=(x % y)
 #print(url)
         img = Image.open(urlopen(url))
-      return img 
+      #return img 
 
-     def getAromaticProportion(m):
-        aromatic_list = [m.GetAtomWithIdx(i).GetIsAromatic() for i in range(m.GetNumAtoms())]
+     #def getAromaticProportion(m):
+        mol1 = Chem.MolFromSmiles(smiles)
+        aromatic_list = [m.GetAtomWithIdx(i).GetIsAromatic() for i in range(mol1.GetNumAtoms())]
         aromatic = 0
-     for i in aromatic_list:
-        if i:
+        for i in aromatic_list:
+          if i:
             aromatic += 1
-     heavy_atom = Lipinski.HeavyAtomCount(m)
-     return aromatic / heavy_atom if heavy_atom != 0 else 0
-     def predictSingle(SMILES):
+            heavy_atom = Lipinski.HeavyAtomCount(m)
+          aromatic / heavy_atom if heavy_atom != 0 else 0
+     #def predictSingle(SMILES):
     """
     This function predicts the four molecular descriptors: the octanol/water partition coefficient (LogP),
     the molecular weight (Mw), the number of rotatable bonds (NRb), and the aromatic proportion (AP) 
@@ -131,7 +125,7 @@ def page5():
     """
     
     # define the rdkit moleculer object
-        mol1 = Chem.MolFromSmiles(SMILES)
+        #mol1 = Chem.MolFromSmiles(SMILES)
     
     # calculate the log octanol/water partition descriptor
         single_MolLogP = Descriptors.MolLogP(mol1)
@@ -183,20 +177,20 @@ def page5():
     
     # add the list to a pandas dataframe
     #single_df = pd.DataFrame(single_list).T
-       baseData = np.vstack([rows])
+        baseData = np.vstack([rows])
     # rename the header columns of the dataframe
     
     #columnNames = ["MolLogP", "MolWt", "NumRotatableBonds", "AromaticProportion","Ring_Count","TPSA","H_donors","Saturated_Rings","AliphaticRings","H_Acceptors","Heteroatoms"]
-       columnNames = ["MolP","MolWt", 
+        columnNames = ["MolP","MolWt", 
                    "NumRotatableBonds", "AromaticProportion"
                   ,"Ring_Count","TPSA","H_donors", "Saturated_Rings","AliphaticRings","H_Acceptors","Heteroatoms","Max_Partial_Charge",
                   "valence_electrons","FP_density","NHOH_count","SP3_frac","SP_bonds"]
  
-       descriptors1 = pd.DataFrame(data=baseData, columns=columnNames)
-       return descriptors1 
-       def generate(smiles):
-          moldata = []
-          for elem in smiles:
+        descriptors1 = pd.DataFrame(data=baseData, columns=columnNames)
+       #return descriptors1 
+       #def generate(smiles):
+        moldata = []
+        for elem in smiles:
           mol = Chem.MolFromSmiles(elem)
           moldata.append(mol)
 
@@ -248,7 +242,7 @@ def page5():
                   #,"Ipc","HallKierAlpha","Labute_ASA"]
                  descriptors = pd.DataFrame(data=baseData, columns=columnNames)
     
-              return descriptors
+        #      return descriptors
 
 # Page Title
 ######################
@@ -287,13 +281,13 @@ def page5():
 # Input molecules (Side Panel)
 ######################
 
-          st.sidebar.write('**Type SMILES below**')
+          #
 
 ## Read SMILES input
 #SMILES_input = "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
 #\nCC(=O)OC1=CC=CC=C1C(=O)O"
 #SMILES_input = " "
-          smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
+          #smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
 #SMILES = SMILES.split('\n')
 #smiles, msg = remove_invalid(smiles)
 #st.sidebar.write(msg)
@@ -410,33 +404,33 @@ def page5():
         fingerprints = [Chem.rdMolDescriptors.GetMorganFingerprintAsBitVect(m, radius=2, bitInfo= bi, nBits=512) for m in mols]
 
 #Convert training fingerprints into binary, and put all training binaries into arrays
-    import numpy as np 
-    import pubchempy as pcp
+        import numpy as np 
+        import pubchempy as pcp
 
-    fingerprints_array = []
-    for fingerprint in fingerprints:
-        array = np.zeros((1,), dtype= int)
-        DataStructs.ConvertToNumpyArray(fingerprint, array)
-        fingerprints_array.append(array)
+        fingerprints_array = []
+        for fingerprint in fingerprints:
+          array = np.zeros((1,), dtype= int)
+          DataStructs.ConvertToNumpyArray(fingerprint, array)
+          fingerprints_array.append(array)
 
-    fingerprints_array=pd.DataFrame(fingerprints_array)
-    df1=pd.concat([fingerprints_array,generated_descriptors],axis=1)
+        fingerprints_array=pd.DataFrame(fingerprints_array)
+        df1=pd.concat([fingerprints_array,generated_descriptors],axis=1)
     #pred_rf = trained_model.predict(df1)
     #mol_liter =10**pred_rf
 
 #print(df1)
 ### Funtion to get data from Pubchem 
 
-    trained_model= xgb.Booster()
-    trained_model.load_model('models/model_xgb_95 2.bin')
+        trained_model= xgb.Booster()
+        trained_model.load_model('models/model_xgb_95 2.bin')
 #predict test data (MLP,XGB,RF)
 #pred_mlp = mlp_model_import.predict(df1)   
-    df3 = xgb.DMatrix(df1)
+        df3 = xgb.DMatrix(df1)
 #pred_xgb = trained_model.predict(df3)
-    pred_rf = trained_model.predict(df3)
-    pred_rf= pred_rf-0.30	
+        pred_rf = trained_model.predict(df3)
+        pred_rf= pred_rf-0.30	
     #pred_rf1=np.around(pred_rf, decimals=2)	
-    mol_liter =10**pred_rf
+        mol_liter =10**pred_rf
     #mol_liter1 =np.around(mol_liter, decimals=2)	
 #mol = Chem.MolFromSmiles(SMILES)
 #MolWt = Chem.Descriptors.MolWt(mol)
@@ -446,47 +440,47 @@ def page5():
  #   mol = Chem.MolFromSmiles(smiles)
   #  mol_list.append(mol)
 #MolWt = Chem.Descriptors.MolWt(mol_list)
-    MolWt = generated_descriptors["MolWt"]
-    Gram_liter=(10**pred_rf)*MolWt 
-    P_sol=[] ## List where I am storing the solubility data 
-    for i in range(len(SMILES)):
-        try:
+       MolWt = generated_descriptors["MolWt"]
+       Gram_liter=(10**pred_rf)*MolWt 
+       P_sol=[] ## List where I am storing the solubility data 
+       for i in range(len(SMILES)):
+         try:
     #time.sleep(1) # Sleep for 3 seconds
           sol=smiles_to_sol(SMILES[i]) ### Function to get the data from PubChem 
           P_sol.append(sol)
-        except AttributeError as e:
-         sol=='No string'
-         P_sol.append(sol)
+         except AttributeError as e:
+           sol=='No string'
+           P_sol.append(sol)
 #exp_sol = P_sol
 #calculate consensus
 #pred_consensus=(pred_mlp+pred_xgb+pred_rf)/3
 # predefined_models.get_errors(test_logS_list,pred_enseble)
 
 # results=np.column_stack([pred_mlp,pred_xgb,pred_rf,pred_consensus])
-    df_results = pd.DataFrame(SMILES, columns=['SMILES'])
-    df_results["Predicted - LogS"]=pred_rf
-    df_results=df_results.round(3)
-    df_results["Mol/Liter"]=mol_liter
-    df_results["Gram/Liter"]=Gram_liter
-    df_results["Experiment Solubility-PubChem"]=P_sol
+       df_results = pd.DataFrame(SMILES, columns=['SMILES'])
+       df_results["Predicted - LogS"]=pred_rf
+       df_results=df_results.round(3)
+       df_results["Mol/Liter"]=mol_liter
+       df_results["Gram/Liter"]=Gram_liter
+       df_results["Experiment Solubility-PubChem"]=P_sol
 
     #df
 # df_results.to_csv("results/predicted-"+test_data_name+".csv",index=False)
 #st.header('Predicted LogS values for single smiles')
 #df
-    st.header('Predicted LogS values for a file')
+      st.header('Predicted LogS values for a file')
 #df_results # Skips the dummy first item
-    df_results
+      df_results
 
-    csv = df_results.to_csv(index=False)
-    b64 = base64.b64encode(csv.encode()).decode()  # some strings
-    linko= f'<a href="data:file/csv;base64,{b64}" download="aqsolpred_predictions.csv">Download csv file</a>'
-    st.markdown(linko, unsafe_allow_html=True)
+      csv = df_results.to_csv(index=False)
+      b64 = base64.b64encode(csv.encode()).decode()  # some strings
+      linko= f'<a href="data:file/csv;base64,{b64}" download="aqsolpred_predictions.csv">Download csv file</a>'
+      st.markdown(linko, unsafe_allow_html=True)
  
-    st.header('Computed molecular descriptors')
-    generated_descriptors # Skips the dummy first item  
-else:
-    st.write('2>Click on browse files and enter csv files with more than one smiles and then click on predict with input files button')
+      st.header('Computed molecular descriptors')
+      generated_descriptors # Skips the dummy first item  
+      else:
+        st.write('2>Click on browse files and enter csv files with more than one smiles and then click on predict with input files button')
 
 
 
@@ -628,7 +622,7 @@ def main():
     button3_clicked = st.sidebar.button("Contact Details")
     
     if button1_clicked:
-         page1()
+         page5()
 	          
     if button2_clicked:
          page2()
