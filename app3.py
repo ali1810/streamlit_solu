@@ -75,20 +75,20 @@ def page5():
 
 ## Calculate molecular descriptors
       #def smiles_to_sol(SMILES):
-        prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
-        x = list(map(lambda x: x["CID"], prop))
-        y=x[0]
+    prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
+    x = list(map(lambda x: x["CID"], prop))
+    y=x[0]
    #print(y)
-        x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/%s/xml"
-        data=requests.get(x % y)
+    x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/%s/xml"
+    data=requests.get(x % y)
     # print(data)
-        html = BeautifulSoup(data.content, "xml")
-        solubility = html.find(name='TOCHeading', string='Solubility')
-        if solubility ==None:
-          return None
+    html = BeautifulSoup(data.content, "xml")
+    solubility = html.find(name='TOCHeading', string='Solubility')
+    if solubility ==None:
+        return None
 #sol.append(solub)
-        else:
-          solub=solubility.find_next_sibling('Information').find(name='String').string
+    else:
+      solub=solubility.find_next_sibling('Information').find(name='String').string
         return solub
       #def smiles_to_img(SMILES):
         prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
