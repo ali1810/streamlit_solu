@@ -89,23 +89,22 @@ def page5():
 #sol.append(solub)
     else:
       solub=solubility.find_next_sibling('Information').find(name='String').string
-        return solub
+      return solub
       #def smiles_to_img(SMILES):
-        prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
-        x = list(map(lambda x: x["CID"], prop))
-        y=x[0]
+    prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
+    x = list(map(lambda x: x["CID"], prop))
+    y=x[0]
     #print(y)
-        x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/%s/PNG?image_size=400x300"
-        url=(x % y)
-#print(url)
-        img = Image.open(urlopen(url))
+    x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/%s/PNG?image_size=400x300"
+    url=(x % y)
+    img = Image.open(urlopen(url))
       #return img 
 
      #def getAromaticProportion(m):
-        mol1 = Chem.MolFromSmiles(smiles)
-        aromatic_list = [m.GetAtomWithIdx(i).GetIsAromatic() for i in range(mol1.GetNumAtoms())]
-        aromatic = 0
-        for i in aromatic_list:
+    mol1 = Chem.MolFromSmiles(smiles)
+    aromatic_list = [mol1.GetAtomWithIdx(i).GetIsAromatic() for i in range(mol1.GetNumAtoms())]
+    aromatic = 0
+    for i in aromatic_list:
           if i:
             aromatic += 1
             heavy_atom = Lipinski.HeavyAtomCount(m)
