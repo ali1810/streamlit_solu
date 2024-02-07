@@ -45,14 +45,9 @@ import streamlit as st
 def page5():
 	st.sidebar.write('**Type SMILES below**')
 	smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
-        rep = "iupac_name"
-        url = CACTUS.format(smiles, rep)
-        response = requests.get(url)
-        response.raise_for_status()
-        response.text
         compounds = pcp.get_compounds(sm, namespace='smiles')
         match = compounds[0]
-        match.iupac_name
+        c_name=match.iupac_name
         mol = Chem.MolFromSmiles(smiles)
         mol = Chem.AddHs(mol)
         AllChem.EmbedMolecule(mol)
@@ -293,7 +288,7 @@ def page5():
 #st.sidebar.write(msg)
 #with st.sidebar:
  #      st.button('Predict')
-          img=smiles_to_img(smiles)
+         # img=smiles_to_img(smiles)
 #st.write("a logo and text next to eachother")
           col1, mid, col2 = st.columns([15,0.5,15])
           with col1:
@@ -329,7 +324,7 @@ def page5():
            mol_liter1   =  10**pred_rf1
            mol_liter2   = np.round(mol_liter1,2)
     #smiles1='smiles'	
-           c_name    =smiles_iupac(smiles)
+           #c_name    =smiles_iupac(smiles)
 #mol = Chem.MolFromSmiles(SMILES)
 #MolWt = Chem.Descriptors.MolWt(mol)
  
