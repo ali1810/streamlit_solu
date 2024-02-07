@@ -42,85 +42,86 @@ from bs4 import BeautifulSoup
 #from streamlit.components.v1 import ComponentMeta
 
 import streamlit as st
-def smiles_to_iupac(smiles):
-    rep = "iupac_name"
-    url = CACTUS.format(smiles, rep)
-    response = requests.get(url)
-    response.raise_for_status()
-    return response.text
-def smiles_iupac(sm):
+def page5():
+	def smiles_to_iupac(smiles):
+           rep = "iupac_name"
+           url = CACTUS.format(smiles, rep)
+           response = requests.get(url)
+           response.raise_for_status()
+        return response.text
+        def smiles_iupac(sm):
 #smiles = 'CC(=O)OC1=CC=CC=C1C(=O)O'
-    compounds = pcp.get_compounds(sm, namespace='smiles')
+            compounds = pcp.get_compounds(sm, namespace='smiles')
   #print(compounds)
-    match = compounds[0]
-    return match.iupac_name
+            match = compounds[0]
+        return match.iupac_name
 
 
-def makeblock(smi):
-    mol = Chem.MolFromSmiles(smi)
-    mol = Chem.AddHs(mol)
-    AllChem.EmbedMolecule(mol)
-    mblock = Chem.MolToMolBlock(mol)
-    return mblock
+        def makeblock(smi):
+           mol = Chem.MolFromSmiles(smi)
+           mol = Chem.AddHs(mol)
+           AllChem.EmbedMolecule(mol)
+           mblock = Chem.MolToMolBlock(mol)
+        return mblock
 
-def render_mol(xyz):
-    xyzview = py3Dmol.view(width=400,height=300)
+       def render_mol(xyz):
+          xyzview = py3Dmol.view(width=400,height=300)
     #xyzview = py3Dmol.view(query=′pdb:1A2C′)
-    xyzview.addModel(xyz,'mol')
-    xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
+          xyzview.addModel(xyz,'mol')
+          xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
     #bcolor = st.sidebar.color_picker('Pick background Color', '#0C0C0B')
-    style = st.sidebar.selectbox('Chemical structure',['stick','ball-and-stick','line','cross','sphere'])
+          style = st.sidebar.selectbox('Chemical structure',['stick','ball-and-stick','line','cross','sphere'])
 #spin = st.sidebar.checkbox('Spin', value = False)
-    spin = st.sidebar.checkbox('Animation', value = True)
-    xyzview.spin(True)
-    if spin:
-      xyzview.spin(True)
-    else:
-      xyzview.spin(False)
+          spin = st.sidebar.checkbox('Animation', value = True)
+          xyzview.spin(True)
+          if spin:
+            xyzview.spin(True)
+         else:
+            xyzview.spin(False)
     #xyzview.setStyle({'sphere':{}})
-    xyzview.setBackgroundColor('#EAE5E5')
-    xyzview.zoomTo()
-    xyzview.setStyle({style:{'color':'spectrum'}})
-    showmol(xyzview,height=300,width=400) 
+         xyzview.setBackgroundColor('#EAE5E5')
+         xyzview.zoomTo()
+         xyzview.setStyle({style:{'color':'spectrum'}})
+       showmol(xyzview,height=300,width=400) 
 
 
 ## Calculate molecular descriptors
-def smiles_to_sol(SMILES):
+      def smiles_to_sol(SMILES):
     prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
-    x = list(map(lambda x: x["CID"], prop))
-    y=x[0]
+      x = list(map(lambda x: x["CID"], prop))
+      y=x[0]
    #print(y)
-    x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/%s/xml"
-    data=requests.get(x % y)
-    print(data)
-    html = BeautifulSoup(data.content, "xml")
-    solubility = html.find(name='TOCHeading', string='Solubility')
-    if solubility ==None:
-      return None
+      x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/%s/xml"
+      data=requests.get(x % y)
+    # print(data)
+      html = BeautifulSoup(data.content, "xml")
+      solubility = html.find(name='TOCHeading', string='Solubility')
+      if solubility ==None:
+        return None
 #sol.append(solub)
-    else:
-      solub=solubility.find_next_sibling('Information').find(name='String').string
+      else:
+         solub=solubility.find_next_sibling('Information').find(name='String').string
       return solub
-def smiles_to_img(SMILES):
-    prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
-    x = list(map(lambda x: x["CID"], prop))
-    y=x[0]
+      def smiles_to_img(SMILES):
+        prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
+        x = list(map(lambda x: x["CID"], prop))
+        y=x[0]
     #print(y)
-    x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/%s/PNG?image_size=400x300"
-    url=(x % y)
+        x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/%s/PNG?image_size=400x300"
+        url=(x % y)
 #print(url)
-    img = Image.open(urlopen(url))
-    return img 
+        img = Image.open(urlopen(url))
+      return img 
 
-def getAromaticProportion(m):
-    aromatic_list = [m.GetAtomWithIdx(i).GetIsAromatic() for i in range(m.GetNumAtoms())]
-    aromatic = 0
-    for i in aromatic_list:
+     def getAromaticProportion(m):
+        aromatic_list = [m.GetAtomWithIdx(i).GetIsAromatic() for i in range(m.GetNumAtoms())]
+        aromatic = 0
+     for i in aromatic_list:
         if i:
             aromatic += 1
-    heavy_atom = Lipinski.HeavyAtomCount(m)
-    return aromatic / heavy_atom if heavy_atom != 0 else 0
-def predictSingle(SMILES):
+     heavy_atom = Lipinski.HeavyAtomCount(m)
+     return aromatic / heavy_atom if heavy_atom != 0 else 0
+     def predictSingle(SMILES):
     """
     This function predicts the four molecular descriptors: the octanol/water partition coefficient (LogP),
     the molecular weight (Mw), the number of rotatable bonds (NRb), and the aromatic proportion (AP) 
@@ -130,96 +131,96 @@ def predictSingle(SMILES):
     """
     
     # define the rdkit moleculer object
-    mol1 = Chem.MolFromSmiles(SMILES)
+        mol1 = Chem.MolFromSmiles(SMILES)
     
     # calculate the log octanol/water partition descriptor
-    single_MolLogP = Descriptors.MolLogP(mol1)
+        single_MolLogP = Descriptors.MolLogP(mol1)
     
     # calculate the molecular weight descriptor
-    single_MolWt   = Descriptors.MolWt(mol1)
+        single_MolWt   = Descriptors.MolWt(mol1)
     
     # calculate of the number of rotatable bonds descriptor
-    single_NumRotatableBonds = Descriptors.NumRotatableBonds(mol1)
+        single_NumRotatableBonds = Descriptors.NumRotatableBonds(mol1)
     
     # calculate the aromatic proportion descriptor
-    single_AP = getAromaticProportion(mol1)
+        single_AP = getAromaticProportion(mol1)
 
     # Calculate ring count 
-    single_RC= Descriptors.RingCount(mol1)
+        single_RC= Descriptors.RingCount(mol1)
 
     # Calculate TPSA 
-    single_TPSA=Descriptors.TPSA(mol1)
+        single_TPSA=Descriptors.TPSA(mol1)
 
     # Calculate H Donors  
-    single_Hdonors=Lipinski.NumHDonors(mol1)
+        single_Hdonors=Lipinski.NumHDonors(mol1)
 
     # Calculate saturated Rings 
-    single_SR= Lipinski.NumSaturatedRings(mol1) 
+        single_SR= Lipinski.NumSaturatedRings(mol1) 
 
     # Calculate Aliphatic rings 
-    single_AR =Lipinski.NumAliphaticRings(mol1)
+        single_AR =Lipinski.NumAliphaticRings(mol1)
     
     # Calculate Hydrogen Acceptors 
-    single_HA = Lipinski.NumHAcceptors(mol1)
+        single_HA = Lipinski.NumHAcceptors(mol1)
 
     # Calculate Heteroatoms
-    single_Heter = Lipinski.NumHeteroatoms(mol1)
+        single_Heter = Lipinski.NumHeteroatoms(mol1)
 
-    single_Max_Partial_Charge =  Descriptors.MaxPartialCharge(mol1)
-    single_FP_density =  Descriptors.FpDensityMorgan1(mol1)
-    single_num_valence_electrons = Descriptors.NumValenceElectrons(mol1)
-    single_NHOH_count = Lipinski.NHOHCount(mol1)
-    single_SP3_frac = Lipinski.FractionCSP3(mol1)
-    single_SP_bonds = len(mol1.GetSubstructMatches(Chem.MolFromSmarts('[^1]')))
+        single_Max_Partial_Charge =  Descriptors.MaxPartialCharge(mol1)
+        single_FP_density =  Descriptors.FpDensityMorgan1(mol1)
+        single_num_valence_electrons = Descriptors.NumValenceElectrons(mol1)
+        single_NHOH_count = Lipinski.NHOHCount(mol1)
+        single_SP3_frac = Lipinski.FractionCSP3(mol1)
+        single_SP_bonds = len(mol1.GetSubstructMatches(Chem.MolFromSmarts('[^1]')))
         
     
 
     # put the descriptors in a list
-    rows = np.array([single_MolLogP, single_MolWt, single_NumRotatableBonds, single_AP,single_RC,
-    single_TPSA,single_Hdonors,single_SR,single_AR,
-    single_HA,single_Heter,single_Max_Partial_Charge,single_FP_density,single_num_valence_electrons,
-    single_NHOH_count,single_SP3_frac,single_SP_bonds])
+        rows = np.array([single_MolLogP, single_MolWt, single_NumRotatableBonds, single_AP,single_RC,
+        single_TPSA,single_Hdonors,single_SR,single_AR,
+        single_HA,single_Heter,single_Max_Partial_Charge,single_FP_density,single_num_valence_electrons,
+        single_NHOH_count,single_SP3_frac,single_SP_bonds])
     
     # add the list to a pandas dataframe
     #single_df = pd.DataFrame(single_list).T
-    baseData = np.vstack([rows])
+       baseData = np.vstack([rows])
     # rename the header columns of the dataframe
     
     #columnNames = ["MolLogP", "MolWt", "NumRotatableBonds", "AromaticProportion","Ring_Count","TPSA","H_donors","Saturated_Rings","AliphaticRings","H_Acceptors","Heteroatoms"]
-    columnNames = ["MolP","MolWt", 
+       columnNames = ["MolP","MolWt", 
                    "NumRotatableBonds", "AromaticProportion"
                   ,"Ring_Count","TPSA","H_donors", "Saturated_Rings","AliphaticRings","H_Acceptors","Heteroatoms","Max_Partial_Charge",
                   "valence_electrons","FP_density","NHOH_count","SP3_frac","SP_bonds"]
  
-    descriptors1 = pd.DataFrame(data=baseData, columns=columnNames)
-    return descriptors1 
-def generate(smiles):
-    moldata = []
-    for elem in smiles:
-        mol = Chem.MolFromSmiles(elem)
-        moldata.append(mol)
+       descriptors1 = pd.DataFrame(data=baseData, columns=columnNames)
+       return descriptors1 
+       def generate(smiles):
+          moldata = []
+          for elem in smiles:
+          mol = Chem.MolFromSmiles(elem)
+          moldata.append(mol)
 
-    baseData = np.arange(1, 1)
-    i = 0
-    for mol in moldata:
+          baseData = np.arange(1, 1)
+          i = 0
+          for mol in moldata:
 
-        desc_MolLogP = Crippen.MolLogP(mol)
-        desc_MolWt = Descriptors.MolWt(mol)
-        desc_NumRotatableBonds = Lipinski.NumRotatableBonds(mol)
-        desc_AromaticProportion = getAromaticProportion(mol)
-        desc_Ringcount        =   Descriptors.RingCount(mol)
-        desc_TPSA = Descriptors.TPSA(mol)
-        desc_Hdonrs=Lipinski.NumHDonors(mol)
-        desc_SaturatedRings = Lipinski.NumSaturatedRings(mol)   
-        desc_AliphaticRings = Lipinski.NumAliphaticRings(mol) 
-        desc_HAcceptors  =     Lipinski.NumHAcceptors(mol)
-        desc_Heteroatoms =    Lipinski.NumHeteroatoms(mol)
-        desc_Max_Partial_Charge =  Descriptors.MaxPartialCharge(mol)
-        desc_FP_density =  Descriptors.FpDensityMorgan1(mol)
-        desc_num_valence_electrons = Descriptors.NumValenceElectrons(mol)
-        NHOH_count = Lipinski.NHOHCount(mol)
-        SP3_frac = Lipinski.FractionCSP3(mol)
-        SP_bonds = len(mol.GetSubstructMatches(Chem.MolFromSmarts('[^1]')))
+             desc_MolLogP = Crippen.MolLogP(mol)
+             desc_MolWt = Descriptors.MolWt(mol)
+             desc_NumRotatableBonds = Lipinski.NumRotatableBonds(mol)
+             desc_AromaticProportion = getAromaticProportion(mol)
+             desc_Ringcount        =   Descriptors.RingCount(mol)
+             desc_TPSA = Descriptors.TPSA(mol)
+             desc_Hdonrs=Lipinski.NumHDonors(mol)
+             desc_SaturatedRings = Lipinski.NumSaturatedRings(mol)   
+             desc_AliphaticRings = Lipinski.NumAliphaticRings(mol) 
+             desc_HAcceptors  =     Lipinski.NumHAcceptors(mol)
+             desc_Heteroatoms =    Lipinski.NumHeteroatoms(mol)
+             desc_Max_Partial_Charge =  Descriptors.MaxPartialCharge(mol)
+             desc_FP_density =  Descriptors.FpDensityMorgan1(mol)
+             desc_num_valence_electrons = Descriptors.NumValenceElectrons(mol)
+             NHOH_count = Lipinski.NHOHCount(mol)
+             SP3_frac = Lipinski.FractionCSP3(mol)
+             SP_bonds = len(mol.GetSubstructMatches(Chem.MolFromSmarts('[^1]')))
         #Ipc      = Descriptors.Ipc(mol)
         #HallKierAlpha= Descriptors.HallKierAlpha(mol)
         #Labute_ASA = Descriptors.LabuteASA(mol)
@@ -227,42 +228,33 @@ def generate(smiles):
 
 
         #desc_molMR=Descriptors.MolMR(mol)
-        row = np.array([desc_MolLogP,
+             row = np.array([desc_MolLogP,
                         desc_MolWt, desc_NumRotatableBonds,
                         desc_AromaticProportion,desc_Ringcount,desc_TPSA,desc_Hdonrs,desc_SaturatedRings,desc_AliphaticRings,
                         desc_HAcceptors,desc_Heteroatoms,
                         desc_Max_Partial_Charge,desc_num_valence_electrons,desc_FP_density,NHOH_count,SP3_frac,SP_bonds])
                             #,Ipc,HallKierAlpha,Labute_ASA])#,desc_num_valence_electrons])
 
-        if i == 0:
-            baseData = row
-        else:
-            baseData = np.vstack([baseData, row])
-        i = i + 1
+             if i == 0:
+                baseData = row
+             else:
+                baseData = np.vstack([baseData, row])
+                i = i + 1
 
-    columnNames = ["MolP","MolWt", 
-                   "NumRotatableBonds", "AromaticProportion"
-                  ,"Ring_Count","TPSA","H_donors", "Saturated_Rings","AliphaticRings","H_Acceptors","Heteroatoms","Max_Partial_Charge",
-                  "valence_electrons","FP_density","NHOH_count","SP3_frac","SP_bonds"]
+                columnNames = ["MolP","MolWt", 
+                    "NumRotatableBonds", "AromaticProportion"
+                   ,"Ring_Count","TPSA","H_donors", "Saturated_Rings","AliphaticRings","H_Acceptors","Heteroatoms","Max_Partial_Charge",
+                   "valence_electrons","FP_density","NHOH_count","SP3_frac","SP_bonds"]
                   #,"Ipc","HallKierAlpha","Labute_ASA"]
-    descriptors = pd.DataFrame(data=baseData, columns=columnNames)
+                 descriptors = pd.DataFrame(data=baseData, columns=columnNames)
     
-    return descriptors
-def remove_invalid(smiles):
-    """
-    Removes invalid molecules from the dataset.
-    """
-    valid = [sm for sm in smiles if MolFromSmiles(sm)]
-    valid = Chem.MolFromSmiles(smiles)
-    if len(valid) == len(smiles):
-        return smiles, "Given  SMILES is valid!"
-    return valid, "SMILES is invalid! Showing results for valid SMILES only!"
-######################
+              return descriptors
+
 # Page Title
 ######################
 #st.set_page_config(page_title="AqSolPred: Online Solubility Prediction Tool")
-st.set_page_config(page_title="AqSolPred: Online Solubility Prediction Tool",layout="wide")
-st.write("""# Solibility Prediction on Aqueous Solvent """)
+             st.set_page_config(page_title="AqSolPred: Online Solubility Prediction Tool",layout="wide")
+             st.write("""# Solibility Prediction on Aqueous Solvent """)
 #image = Image.open('Flow.jpeg')
 #col1, col2, col3 = st.columns([0.5,2.0,0.5])
 #with col1:
@@ -280,70 +272,70 @@ st.write("""# Solibility Prediction on Aqueous Solvent """)
 #st.image("https://i.imgflip.com/amucx.jpg")
         #st.write("")
 
-col1, col2, col3 = st.columns([10,2,11.5])
+            col1, col2, col3 = st.columns([10,2,11.5])
 
-with col1:
-	st.header("   2 D Structure of the smiles  ")
+             with col1:
+	       st.header("   2 D Structure of the smiles  ")
 
-with col2:
-	st.write("")
-with col3:
-        st.header(" 3 D Structure  of the smiles")
-        st.write("""Use mouse pointer to rotate the structure""")
+             with col2:
+	       st.write("")
+             with col3:
+               st.header(" 3 D Structure  of the smiles")
+               st.write("""Use mouse pointer to rotate the structure""")
 
 ######################
 # Input molecules (Side Panel)
 ######################
 
-st.sidebar.write('**Type SMILES below**')
+          st.sidebar.write('**Type SMILES below**')
 
 ## Read SMILES input
 #SMILES_input = "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
 #\nCC(=O)OC1=CC=CC=C1C(=O)O"
 #SMILES_input = " "
-smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
+          smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
 #SMILES = SMILES.split('\n')
 #smiles, msg = remove_invalid(smiles)
 #st.sidebar.write(msg)
 #with st.sidebar:
  #      st.button('Predict')
-img=smiles_to_img(smiles)
+          img=smiles_to_img(smiles)
 #st.write("a logo and text next to eachother")
-col1, mid, col2 = st.columns([15,0.5,15])
-with col1:
-    st.image(img, use_column_width=False)
-with col2:
-    blk=makeblock(smiles)
-    render_mol(blk)
+          col1, mid, col2 = st.columns([15,0.5,15])
+          with col1:
+            st.image(img, use_column_width=False)
+          with col2:
+            blk=makeblock(smiles)
+            render_mol(blk)
     #st.image(render_mol(blk), use_column_width=False)
 #blk=makeblock(smiles)
 #render_mol(blk)	
-if st.sidebar.button('Predict'):
+          if st.sidebar.button('Predict'):
     #st.header("Structure of the smiles")
     #s=blk=makeblock(smiles)	
-    generated_descriptors1= predictSingle(smiles)
-    mol = Chem.MolFromSmiles(smiles)
-    fp = AllChem.GetMorganFingerprintAsBitVect(mol, 2, nBits=512)
-    arr = np.zeros((0,), dtype=np.int8)
-    arr1=DataStructs.ConvertToNumpyArray(fp,arr)
-    arr2 =pd.DataFrame(arr)
-    array = arr2.T
+           generated_descriptors1= predictSingle(smiles)
+           mol = Chem.MolFromSmiles(smiles)
+           fp = AllChem.GetMorganFingerprintAsBitVect(mol, 2, nBits=512)
+           arr = np.zeros((0,), dtype=np.int8)
+           arr1=DataStructs.ConvertToNumpyArray(fp,arr)
+           arr2 =pd.DataFrame(arr)
+           array = arr2.T
     #print(array.shape)
 #print(fingerprints_array1)
 #mols = [Chem.rdmolfiles.MolFromSmiles(SMILES_string) for SMILES_string in smiles]
-    trained_model= xgb.Booster()
-    trained_model.load_model('models/model_xgb_95 2.bin')
-    df3=pd.concat([array,generated_descriptors1],axis=1)
-    df3 = xgb.DMatrix(df3)
+           trained_model= xgb.Booster()
+           trained_model.load_model('models/model_xgb_95 2.bin')
+           df3=pd.concat([array,generated_descriptors1],axis=1)
+           df3 = xgb.DMatrix(df3)
 	
 #print(df3)
-    pred_rf1 = trained_model.predict(df3)
-    pred_rf1 =  (pred_rf1-0.30)
-    pred_rf2 =  np.round(pred_rf1,2)	
-    mol_liter1   =  10**pred_rf1
-    mol_liter2   = np.round(mol_liter1,2)
+           pred_rf1 = trained_model.predict(df3)
+           pred_rf1 =  (pred_rf1-0.30)
+           pred_rf2 =  np.round(pred_rf1,2)	
+           mol_liter1   =  10**pred_rf1
+           mol_liter2   = np.round(mol_liter1,2)
     #smiles1='smiles'	
-    c_name    =smiles_iupac(smiles)
+           c_name    =smiles_iupac(smiles)
 #mol = Chem.MolFromSmiles(SMILES)
 #MolWt = Chem.Descriptors.MolWt(mol)
  
@@ -352,16 +344,16 @@ if st.sidebar.button('Predict'):
  #   mol = Chem.MolFromSmiles(smiles)
   #  mol_list.append(mol)
 #MolWt = Chem.Descriptors.MolWt(mol_list)
-    MolWt1     = generated_descriptors1["MolWt"]
+          MolWt1     = generated_descriptors1["MolWt"]
 #print(MolWt1)
-    Gram_liter1  =(10**pred_rf1)*MolWt1
+          Gram_liter1  =(10**pred_rf1)*MolWt1
     #Gram_liter1 = round(Gram_liter1,2) 	
-    P_sol1 =smiles_to_sol(smiles) ## calling function to get the solubility from <pubchem
+          P_sol1 =smiles_to_sol(smiles) ## calling function to get the solubility from <pubchem
 #df_results = pd.DataFrame(df_results1)
     #render_mol(blk)
-    data = dict(IUPAC_Name=c_name,SMILES=smiles, Predicted_LogS=pred_rf2, 
-    Mol_Liter=mol_liter2,Gram_Liter=Gram_liter1,Experiment_Solubility_PubChem=P_sol1)
-    df = pd.DataFrame(data, index=[0])
+          data = dict(IUPAC_Name=c_name,SMILES=smiles, Predicted_LogS=pred_rf2, 
+          Mol_Liter=mol_liter2,Gram_Liter=Gram_liter1,Experiment_Solubility_PubChem=P_sol1)
+          df = pd.DataFrame(data, index=[0])
     #df.round(decimals = 3)
     #st.table(df)
 
@@ -370,15 +362,15 @@ if st.sidebar.button('Predict'):
 
 
     #df.round(4)
-    st.header('Predicted LogS values for single smiles')
-    st.table(df.style.format({"Predicted_LogS": "{:.2f}","Mol_Liter":"{:.2f}","Gram_Liter":"{:.2f}"}))
+         st.header('Predicted LogS values for single smiles')
+         st.table(df.style.format({"Predicted_LogS": "{:.2f}","Mol_Liter":"{:.2f}","Gram_Liter":"{:.2f}"}))
     #df
     #st.write('Good Morning') #displayed when the button is clicked
-    st.header('Computed molecular descriptors')
-    generated_descriptors1 # Skips the dummy first item
+         st.header('Computed molecular descriptors')
+         generated_descriptors1 # Skips the dummy first item
 
-else:
-    st.write('Note for users - 1>Enter Single smiles and click on predict button') #displayed when the button is unclicked
+    else:
+       st.write('Note for users - 1>Enter Single smiles and click on predict button') #displayed when the button is unclicked
 
 
 
@@ -397,25 +389,25 @@ else:
 #df_results1["Gram/Liter"]=Gram_liter1
 #df_results1["Experiment Solubility-PubChem"]=P_sol1
 
-st.sidebar.write("""---------**OR**---------""")
-st.sidebar.write("""**Upload a 'csv' file with a column named 'SMILES'** (Max:2000)""")
-uploaded_file = st.sidebar.file_uploader("Choose a file")
-if st.sidebar.button('Prediction for input file'):
+      st.sidebar.write("""---------**OR**---------""")
+      st.sidebar.write("""**Upload a 'csv' file with a column named 'SMILES'** (Max:2000)""")
+      uploaded_file = st.sidebar.file_uploader("Choose a file")
+      if st.sidebar.button('Prediction for input file'):
     #uploaded_file = st.sidebar.file_uploader("Choose a file")
     #data = pd.read_csv(uploaded_file)
     #SMILES=data["SMILES"]   
 
 #uploaded_file = st.sidebar.file_uploader("Choose a file")
 #if uploaded_file is not None:
-    data = pd.read_csv(uploaded_file)
+       data = pd.read_csv(uploaded_file)
     # data
-    SMILES=data["SMILES"]
-    generated_descriptors = generate(SMILES)
+        SMILES=data["SMILES"]
+        generated_descriptors = generate(SMILES)
     #rf_model_import = pickle.load(open('models/model_rf_93.pkl', 'rb'))
-    mols = [Chem.rdmolfiles.MolFromSmiles(SMILES_string) for SMILES_string in SMILES]
+        mols = [Chem.rdmolfiles.MolFromSmiles(SMILES_string) for SMILES_string in SMILES]
 #Convert training molecules into training fingerprints
-    bi = {}
-    fingerprints = [Chem.rdMolDescriptors.GetMorganFingerprintAsBitVect(m, radius=2, bitInfo= bi, nBits=512) for m in mols]
+        bi = {}
+        fingerprints = [Chem.rdMolDescriptors.GetMorganFingerprintAsBitVect(m, radius=2, bitInfo= bi, nBits=512) for m in mols]
 
 #Convert training fingerprints into binary, and put all training binaries into arrays
     import numpy as np 
@@ -495,6 +487,8 @@ if st.sidebar.button('Prediction for input file'):
     generated_descriptors # Skips the dummy first item  
 else:
     st.write('2>Click on browse files and enter csv files with more than one smiles and then click on predict with input files button')
+
+
 
 
 
