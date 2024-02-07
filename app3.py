@@ -122,65 +122,65 @@ def page5():
         #mol1 = Chem.MolFromSmiles(SMILES)
     
     # calculate the log octanol/water partition descriptor
-        single_MolLogP = Descriptors.MolLogP(mol1)
+    single_MolLogP = Descriptors.MolLogP(mol1)
     
     # calculate the molecular weight descriptor
-        single_MolWt   = Descriptors.MolWt(mol1)
+    single_MolWt   = Descriptors.MolWt(mol1)
     
     # calculate of the number of rotatable bonds descriptor
-        single_NumRotatableBonds = Descriptors.NumRotatableBonds(mol1)
+    single_NumRotatableBonds = Descriptors.NumRotatableBonds(mol1)
     
     # calculate the aromatic proportion descriptor
-        single_AP = getAromaticProportion(mol1)
+    single_AP = getAromaticProportion(mol1)
 
     # Calculate ring count 
-        single_RC= Descriptors.RingCount(mol1)
+    single_RC= Descriptors.RingCount(mol1)
 
     # Calculate TPSA 
-        single_TPSA=Descriptors.TPSA(mol1)
+    single_TPSA=Descriptors.TPSA(mol1)
 
     # Calculate H Donors  
-        single_Hdonors=Lipinski.NumHDonors(mol1)
+    single_Hdonors=Lipinski.NumHDonors(mol1)
 
     # Calculate saturated Rings 
-        single_SR= Lipinski.NumSaturatedRings(mol1) 
+    single_SR= Lipinski.NumSaturatedRings(mol1) 
 
     # Calculate Aliphatic rings 
-        single_AR =Lipinski.NumAliphaticRings(mol1)
+    single_AR =Lipinski.NumAliphaticRings(mol1)
     
     # Calculate Hydrogen Acceptors 
-        single_HA = Lipinski.NumHAcceptors(mol1)
+    single_HA = Lipinski.NumHAcceptors(mol1)
 
     # Calculate Heteroatoms
-        single_Heter = Lipinski.NumHeteroatoms(mol1)
+    single_Heter = Lipinski.NumHeteroatoms(mol1)
 
-        single_Max_Partial_Charge =  Descriptors.MaxPartialCharge(mol1)
-        single_FP_density =  Descriptors.FpDensityMorgan1(mol1)
-        single_num_valence_electrons = Descriptors.NumValenceElectrons(mol1)
-        single_NHOH_count = Lipinski.NHOHCount(mol1)
-        single_SP3_frac = Lipinski.FractionCSP3(mol1)
-        single_SP_bonds = len(mol1.GetSubstructMatches(Chem.MolFromSmarts('[^1]')))
+    single_Max_Partial_Charge =  Descriptors.MaxPartialCharge(mol1)
+    single_FP_density =  Descriptors.FpDensityMorgan1(mol1)
+    single_num_valence_electrons = Descriptors.NumValenceElectrons(mol1)
+    single_NHOH_count = Lipinski.NHOHCount(mol1)
+    single_SP3_frac = Lipinski.FractionCSP3(mol1)
+    single_SP_bonds = len(mol1.GetSubstructMatches(Chem.MolFromSmarts('[^1]')))
         
     
 
     # put the descriptors in a list
-        rows = np.array([single_MolLogP, single_MolWt, single_NumRotatableBonds, single_AP,single_RC,
-        single_TPSA,single_Hdonors,single_SR,single_AR,
-        single_HA,single_Heter,single_Max_Partial_Charge,single_FP_density,single_num_valence_electrons,
-        single_NHOH_count,single_SP3_frac,single_SP_bonds])
+    rows = np.array([single_MolLogP, single_MolWt, single_NumRotatableBonds, single_AP,single_RC,
+    single_TPSA,single_Hdonors,single_SR,single_AR,
+    single_HA,single_Heter,single_Max_Partial_Charge,single_FP_density,single_num_valence_electrons,
+    single_NHOH_count,single_SP3_frac,single_SP_bonds])
     
     # add the list to a pandas dataframe
     #single_df = pd.DataFrame(single_list).T
-        baseData = np.vstack([rows])
+    baseData = np.vstack([rows])
     # rename the header columns of the dataframe
     
     #columnNames = ["MolLogP", "MolWt", "NumRotatableBonds", "AromaticProportion","Ring_Count","TPSA","H_donors","Saturated_Rings","AliphaticRings","H_Acceptors","Heteroatoms"]
-        columnNames = ["MolP","MolWt", 
+    columnNames = ["MolP","MolWt", 
                    "NumRotatableBonds", "AromaticProportion"
                   ,"Ring_Count","TPSA","H_donors", "Saturated_Rings","AliphaticRings","H_Acceptors","Heteroatoms","Max_Partial_Charge",
                   "valence_electrons","FP_density","NHOH_count","SP3_frac","SP_bonds"]
  
-        descriptors1 = pd.DataFrame(data=baseData, columns=columnNames)
+    descriptors1 = pd.DataFrame(data=baseData, columns=columnNames)
        #return descriptors1 
        #def generate(smiles):
         moldata = []
