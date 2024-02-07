@@ -43,9 +43,9 @@ from bs4 import BeautifulSoup
 
 import streamlit as st
 def page5():
-	st.sidebar.write('**Type SMILES below**')
-	smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
-        #compounds = pcp.get_compounds(smiles, namespace='smiles')
+    st.sidebar.write('**Type SMILES below**')
+    smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
+    compounds = pcp.get_compounds(smiles, namespace='smiles')
         match = compounds[0]
         c_name=match.iupac_name
         mol = Chem.MolFromSmiles(smiles)
