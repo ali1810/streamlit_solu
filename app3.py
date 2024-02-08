@@ -54,8 +54,6 @@ def page1():
             st.header(" 3 D Structure  of the smiles")
             st.write("""Use mouse pointer to rotate the structure""")
 
-    st.sidebar.write('**Type SMILES below**')
-    SMILES = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
     prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
     x = list(map(lambda x: x["CID"], prop))
     y=x[0]
@@ -86,7 +84,8 @@ def page1():
     xyzview.zoomTo()
     xyzview.setStyle({style:{'color':'spectrum'}})
     #showmol(xyzview,height=300,width=400) 
-
+    st.write('**Type SMILES below**')
+    SMILES = st.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
 
 	
     # img=smiles_to_img(smiles)
