@@ -340,7 +340,7 @@ def page5():
 	    #P_sol1=solub
 #df_results = pd.DataFrame(df_results1)
     #render_mol(blk)
-            data = dict(IUPAC_Name=c_name,SMILES=smiles, Predicted_LogS=pred_rf2)
+            data = dict(IUPAC_Name=c_name,SMILES=smiles, Predicted_LogS=pred_rf2,
             Mol_Liter=mol_liter2,Gram_Liter=Gram_liter1,Experiment_Solubility_PubChem=P_sol1)
             df = pd.DataFrame(data, index=[0])
     #df.round(decimals = 3)
