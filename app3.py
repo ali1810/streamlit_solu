@@ -270,7 +270,7 @@ def page5():
 	    st.write("")
     with col3:
             st.header(" 3 D Structure  of the smiles")
-	    st.write("""Use mouse pointer to rotate the structure""")
+    st.write("""Use mouse pointer to rotate the structure""")
     col1, mid, col2 = st.columns([15,0.5,15])
     with col1:
         st.image(img, use_column_width=False)
