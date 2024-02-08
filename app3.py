@@ -340,9 +340,9 @@ def page5():
 	    #P_sol1=solub
 #df_results = pd.DataFrame(df_results1)
     #render_mol(blk)
-            data = dict(IUPAC_Name=c_name,SMILES=smiles, Predicted_LogS=pred_rf2,
-            Mol_Liter=mol_liter2,Gram_Liter=Gram_liter1,Experiment_Solubility_PubChem=P_sol1)
-            df = pd.DataFrame(data, index=[0])
+           data = dict(IUPAC_Name=c_name,SMILES=smiles, Predicted_LogS=pred_rf2,
+           Mol_Liter=mol_liter2,Gram_Liter=Gram_liter1,Experiment_Solubility_PubChem=P_sol1)
+           df = pd.DataFrame(data, index=[0])
     #df.round(decimals = 3)
     #st.table(df)
 
@@ -351,12 +351,12 @@ def page5():
 
 
     #df.round(4)
-            st.header('Predicted LogS values for single smiles')
-            st.table(df.style.format({"Predicted_LogS": "{:.2f}","Mol_Liter":"{:.2f}","Gram_Liter":"{:.2f}"}))
+           st.header('Predicted LogS values for single smiles')
+           st.table(df.style.format({"Predicted_LogS": "{:.2f}","Mol_Liter":"{:.2f}","Gram_Liter":"{:.2f}"}))
     #df
     #st.write('Good Morning') #displayed when the button is clicked
-            st.header('Computed molecular descriptors')
-            generated_descriptors1 # Skips the dummy first item
+           st.header('Computed molecular descriptors')
+           generated_descriptors1 # Skips the dummy first item
     else:
        st.write('Note for users - 1>Enter Single smiles and click on predict button') #displayed when the button is unclicked
 
@@ -387,7 +387,7 @@ def page5():
 
 #uploaded_file = st.sidebar.file_uploader("Choose a file")
 #if uploaded_file is not None:
-       data = pd.read_csv(uploaded_file)
+        data = pd.read_csv(uploaded_file)
     # data
         SMILES=data["SMILES"]
         generated_descriptors = generate(SMILES)
@@ -408,7 +408,7 @@ def page5():
           fingerprints_array.append(array)
 
           fingerprints_array=pd.DataFrame(fingerprints_array)
-         df1=pd.concat([fingerprints_array,generated_descriptors],axis=1)
+        df1=pd.concat([fingerprints_array,generated_descriptors],axis=1)
     #pred_rf = trained_model.predict(df1)
     #mol_liter =10**pred_rf
 
@@ -434,29 +434,29 @@ def page5():
  #   mol = Chem.MolFromSmiles(smiles)
   #  mol_list.append(mol)
 #MolWt = Chem.Descriptors.MolWt(mol_list)
-       MolWt = generated_descriptors["MolWt"]
-       Gram_liter=(10**pred_rf)*MolWt 
-       P_sol=[] ## List where I am storing the solubility data 
-       for i in range(len(SMILES)):
-         try:
+        MolWt = generated_descriptors["MolWt"]
+        Gram_liter=(10**pred_rf)*MolWt 
+        P_sol=[] ## List where I am storing the solubility data 
+        for i in range(len(SMILES)):
+          try:
     #time.sleep(1) # Sleep for 3 seconds
-          sol=smiles_to_sol(SMILES[i]) ### Function to get the data from PubChem 
-          P_sol.append(sol)
-         except AttributeError as e:
-           sol=='No string'
-           P_sol.append(sol)
+            sol=smiles_to_sol(SMILES[i]) ### Function to get the data from PubChem 
+            P_sol.append(sol)
+          except AttributeError as e:
+             sol=='No string'
+             P_sol.append(sol)
 #exp_sol = P_sol
 #calculate consensus
 #pred_consensus=(pred_mlp+pred_xgb+pred_rf)/3
 # predefined_models.get_errors(test_logS_list,pred_enseble)
 
 # results=np.column_stack([pred_mlp,pred_xgb,pred_rf,pred_consensus])
-       df_results = pd.DataFrame(SMILES, columns=['SMILES'])
-       df_results["Predicted - LogS"]=pred_rf
-       df_results=df_results.round(3)
-       df_results["Mol/Liter"]=mol_liter
-       df_results["Gram/Liter"]=Gram_liter
-       df_results["Experiment Solubility-PubChem"]=P_sol
+        df_results = pd.DataFrame(SMILES, columns=['SMILES'])
+        df_results["Predicted - LogS"]=pred_rf
+        df_results=df_results.round(3)
+        df_results["Mol/Liter"]=mol_liter
+        df_results["Gram/Liter"]=Gram_liter
+        df_results["Experiment Solubility-PubChem"]=P_sol
 
     #df
 # df_results.to_csv("results/predicted-"+test_data_name+".csv",index=False)
