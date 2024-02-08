@@ -44,6 +44,10 @@ from bs4 import BeautifulSoup
 import streamlit as st
 
 def page1():
+    st.write('**Type SMILES below**')
+    SMILES = st.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
+    style = st.selectbox('Chemical structure',['stick','ball-and-stick','line','cross','sphere'])
+    spin = st.checkbox('Spin', value = False)	
     col1, col2, col3 = st.columns([10,2,11.5])
 
     with col1:
@@ -53,8 +57,6 @@ def page1():
     with col3:
             st.header(" 3 D Structure  of the smiles")
             st.write("""Use mouse pointer to rotate the structure""")
-    st.write('**Type SMILES below**')
-    SMILES = st.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
     prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
     x = list(map(lambda x: x["CID"], prop))
     y=x[0]
@@ -72,8 +74,7 @@ def page1():
     xyzview.addModel(mblock,'mol')
     xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
     #bcolor = st.sidebar.color_picker('Pick background Color', '#0C0C0B')
-    style = st.sidebar.selectbox('Chemical structure',['stick','ball-and-stick','line','cross','sphere'])
-    spin = st.sidebar.checkbox('Spin', value = False)
+    
     spin = st.sidebar.checkbox('Animation', value = True)
     xyzview.spin(True)
     if spin:
