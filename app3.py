@@ -104,9 +104,9 @@ xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
 #else:
  #    xyzview.spin(False)
     #xyzview.setStyle({'sphere':{}})
-#xyzview.setBackgroundColor('#EAE5E5')
-#xyzview.zoomTo()
-#xyzview.setStyle({style:{'color':'spectrum'}})
+xyzview.setBackgroundColor('#EAE5E5')
+xyzview.zoomTo()
+xyzview.setStyle({style:{'color':'spectrum'}})
     
 
 
