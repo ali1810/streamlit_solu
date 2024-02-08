@@ -269,7 +269,7 @@ def page5():
 	    st.write("")
     with col3:
             st.header(" 3 D Structure  of the smiles")
-	  st.write("""Use mouse pointer to rotate the structure""")
+	    st.write("""Use mouse pointer to rotate the structure""")
 
 ######################
 # Input molecules (Side Panel)
