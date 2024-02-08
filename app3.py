@@ -256,7 +256,23 @@ def page5():
 #with col3:	
         #st.write("")
 	
-	
+      xyzview = py3Dmol.view(width=400,height=300)
+    #xyzview = py3Dmol.view(query=′pdb:1A2C′)
+      xyzview.addModel(xyz,'mol')
+      xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
+    #bcolor = st.sidebar.color_picker('Pick background Color', '#0C0C0B')
+      style = st.sidebar.selectbox('Chemical structure',['stick','ball-and-stick','line','cross','sphere'])
+#spin = st.sidebar.checkbox('Spin', value = False)
+      spin = st.sidebar.checkbox('Animation', value = True)
+      xyzview.spin(True)
+      if spin:
+           xyzview.spin(True)
+      else:
+           xyzview.spin(False)
+    #xyzview.setStyle({'sphere':{}})
+            xyzview.setBackgroundColor('#EAE5E5')
+            xyzview.zoomTo()
+            xyzview.setStyle({style:{'color':'spectrum'}})	
 	
        #st.header("    2D and 3D Structure of the smiles      ")
 #st.image("https://i.imgflip.com/amucx.jpg")
@@ -276,23 +292,6 @@ def page5():
         st.image(img, use_column_width=False)
     with col2:
         blk=mblock
-	xyzview = py3Dmol.view(width=400,height=300)
-    #xyzview = py3Dmol.view(query=′pdb:1A2C′)
-        xyzview.addModel(xyz,'mol')
-        xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
-    #bcolor = st.sidebar.color_picker('Pick background Color', '#0C0C0B')
-        style = st.sidebar.selectbox('Chemical structure',['stick','ball-and-stick','line','cross','sphere'])
-#spin = st.sidebar.checkbox('Spin', value = False)
-        spin = st.sidebar.checkbox('Animation', value = True)
-        xyzview.spin(True)
-        if spin:
-           xyzview.spin(True)
-        else:
-            xyzview.spin(False)
-    #xyzview.setStyle({'sphere':{}})
-            xyzview.setBackgroundColor('#EAE5E5')
-            xyzview.zoomTo()
-            xyzview.setStyle({style:{'color':'spectrum'}})
         showmol(xyzview,height=300,width=400) 
     
 	    
