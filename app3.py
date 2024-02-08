@@ -91,6 +91,7 @@ def page5():
       solub=solubility.find_next_sibling('Information').find(name='String').string
       #return solub
       #def smiles_to_img(SMILES):
+    	
     prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
     x = list(map(lambda x: x["CID"], prop))
     y=x[0]
@@ -336,7 +337,7 @@ def page5():
            Gram_liter1  =(10**pred_rf1)*MolWt1
     #Gram_liter1 = round(Gram_liter1,2) 	
            #P_sol1 =smiles_to_sol(smiles) ## calling function to get the solubility from <pubchem
-	    P_sol1=solub
+	    #P_sol1=solub
 #df_results = pd.DataFrame(df_results1)
     #render_mol(blk)
             data = dict(IUPAC_Name=c_name,SMILES=smiles, Predicted_LogS=pred_rf2)
