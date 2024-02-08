@@ -80,6 +80,7 @@ with col2:
 with col3:
         st.write(" 3 D Structure  of the smiles")
         st.write("""Use mouse pointer to rotate the structure""")
+
 prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
 x = list(map(lambda x: x["CID"], prop)) 
 y=x[0]
