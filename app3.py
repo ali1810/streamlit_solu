@@ -297,7 +297,7 @@ def page5():
     #st.image(render_mol(blk), use_column_width=False)
 #blk=makeblock(smiles)
 #render_mol(blk)	
-          if st.sidebar.button('Predict'):
+    if st.sidebar.button('Predict'):
     #st.header("Structure of the smiles")
     #s=blk=makeblock(smiles)	
            generated_descriptors1= predictSingle(smiles)
@@ -331,16 +331,16 @@ def page5():
  #   mol = Chem.MolFromSmiles(smiles)
   #  mol_list.append(mol)
 #MolWt = Chem.Descriptors.MolWt(mol_list)
-          MolWt1     = generated_descriptors1["MolWt"]
+           MolWt1     = generated_descriptors1["MolWt"]
 #print(MolWt1)
-          Gram_liter1  =(10**pred_rf1)*MolWt1
+           Gram_liter1  =(10**pred_rf1)*MolWt1
     #Gram_liter1 = round(Gram_liter1,2) 	
-          P_sol1 =smiles_to_sol(smiles) ## calling function to get the solubility from <pubchem
+           P_sol1 =smiles_to_sol(smiles) ## calling function to get the solubility from <pubchem
 #df_results = pd.DataFrame(df_results1)
     #render_mol(blk)
-          data = dict(IUPAC_Name=c_name,SMILES=smiles, Predicted_LogS=pred_rf2, 
-          Mol_Liter=mol_liter2,Gram_Liter=Gram_liter1,Experiment_Solubility_PubChem=P_sol1)
-          df = pd.DataFrame(data, index=[0])
+           data = dict(IUPAC_Name=c_name,SMILES=smiles, Predicted_LogS=pred_rf2, 
+           Mol_Liter=mol_liter2,Gram_Liter=Gram_liter1,Experiment_Solubility_PubChem=P_sol1)
+           df = pd.DataFrame(data, index=[0])
     #df.round(decimals = 3)
     #st.table(df)
 
@@ -349,12 +349,12 @@ def page5():
 
 
     #df.round(4)
-         st.header('Predicted LogS values for single smiles')
-         st.table(df.style.format({"Predicted_LogS": "{:.2f}","Mol_Liter":"{:.2f}","Gram_Liter":"{:.2f}"}))
+           st.header('Predicted LogS values for single smiles')
+           st.table(df.style.format({"Predicted_LogS": "{:.2f}","Mol_Liter":"{:.2f}","Gram_Liter":"{:.2f}"}))
     #df
     #st.write('Good Morning') #displayed when the button is clicked
-         st.header('Computed molecular descriptors')
-         generated_descriptors1 # Skips the dummy first item
+           st.header('Computed molecular descriptors')
+           generated_descriptors1 # Skips the dummy first item
 
     else:
        st.write('Note for users - 1>Enter Single smiles and click on predict button') #displayed when the button is unclicked
