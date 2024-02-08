@@ -633,7 +633,7 @@ def main():
     button3_clicked = st.sidebar.button("Contact Details")
     
     if button1_clicked:
-         page5()
+         page1()
 	          
     if button2_clicked:
          page2()
