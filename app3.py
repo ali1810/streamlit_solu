@@ -61,7 +61,7 @@ def page1():
       x = list(map(lambda x: x["CID"], prop)) 
       y=x[0]
     #print(y) 
-      x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/%s/PNG?image_size=200x300"
+      x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/%s/PNG?image_size=300x300"
       url=(x % y)
 #print(url)
       img = Image.open(urlopen(url))
@@ -69,7 +69,7 @@ def page1():
       mol = Chem.AddHs(mol)
       AllChem.EmbedMolecule(mol)
       mblock = Chem.MolToMolBlock(mol)
-      xyzview = py3Dmol.view(width=200,height=300)
+      xyzview = py3Dmol.view(width=300,height=300)
     #xyzview = py3Dmol.view(query=′pdb:1A2C′)
       xyzview.addModel(mblock,'mol')
       xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
