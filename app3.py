@@ -260,14 +260,14 @@ def page5():
 #st.image("https://i.imgflip.com/amucx.jpg")
         #st.write("")
 
-   col1, col2, col3 = st.columns([10,2,11.5])
+    col1, col2, col3 = st.columns([10,2,11.5])
 
-   with col1:
+    with col1:
 	   st.header("   2 D Structure of the smiles  ")
 
-   with col2:
+    with col2:
 	st.write("")
-   with col3:
+    with col3:
            st.header(" 3 D Structure  of the smiles")
 	   st.write("""Use mouse pointer to rotate the structure""")
 
