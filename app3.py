@@ -45,10 +45,10 @@ import streamlit as st
 def page5():
     st.sidebar.write('**Type SMILES below**')
     smiles = st.sidebar.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
-    compounds = pcp.get_compounds(smiles, namespace='smiles')
+    #compounds = pcp.get_compounds(smiles, namespace='smiles')
     #compounds = pcp.get_compounds(sm, namespace='smiles')	
-    match = compounds[0]
-    c_name=match.iupac_name
+    #match = compounds[0]
+    #c_name=match.iupac_name
     mol = Chem.MolFromSmiles(smiles)
     mol = Chem.AddHs(mol)
     AllChem.EmbedMolecule(mol)
@@ -301,7 +301,11 @@ def page5():
 #render_mol(blk)	
     if st.sidebar.button('Predict'):
     #st.header("Structure of the smiles")
-    #s=blk=makeblock(smiles)	
+    #s=blk=makeblock(smiles)
+	   compounds = pcp.get_compounds(smiles, namespace='smiles')
+    #compounds = pcp.get_compounds(sm, namespace='smiles')	
+           match = compounds[0]
+           c_name=match.iupac_name 
            generated_descriptors1= predictSingle(smiles)
            mol = Chem.MolFromSmiles(smiles)
            fp = AllChem.GetMorganFingerprintAsBitVect(mol, 2, nBits=512)
