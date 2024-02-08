@@ -89,7 +89,7 @@ def page5():
 #sol.append(solub)
     else:
       solub=solubility.find_next_sibling('Information').find(name='String').string
-      return solub
+      #return solub
       #def smiles_to_img(SMILES):
     prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
     x = list(map(lambda x: x["CID"], prop))
@@ -335,7 +335,8 @@ def page5():
 #print(MolWt1)
            Gram_liter1  =(10**pred_rf1)*MolWt1
     #Gram_liter1 = round(Gram_liter1,2) 	
-           P_sol1 =smiles_to_sol(smiles) ## calling function to get the solubility from <pubchem
+           #P_sol1 =smiles_to_sol(smiles) ## calling function to get the solubility from <pubchem
+	    P_sol1=solub
 #df_results = pd.DataFrame(df_results1)
     #render_mol(blk)
            data = dict(IUPAC_Name=c_name,SMILES=smiles, Predicted_LogS=pred_rf2, 
@@ -376,10 +377,10 @@ def page5():
 #df_results1["Gram/Liter"]=Gram_liter1
 #df_results1["Experiment Solubility-PubChem"]=P_sol1
 
-      st.sidebar.write("""---------**OR**---------""")
-      st.sidebar.write("""**Upload a 'csv' file with a column named 'SMILES'** (Max:2000)""")
-      uploaded_file = st.sidebar.file_uploader("Choose a file")
-      if st.sidebar.button('Prediction for input file'):
+    st.sidebar.write("""---------**OR**---------""")
+    st.sidebar.write("""**Upload a 'csv' file with a column named 'SMILES'** (Max:2000)""")
+    uploaded_file = st.sidebar.file_uploader("Choose a file")
+    if st.sidebar.button('Prediction for input file'):
     #uploaded_file = st.sidebar.file_uploader("Choose a file")
     #data = pd.read_csv(uploaded_file)
     #SMILES=data["SMILES"]   
@@ -406,8 +407,8 @@ def page5():
           DataStructs.ConvertToNumpyArray(fingerprint, array)
           fingerprints_array.append(array)
 
-        fingerprints_array=pd.DataFrame(fingerprints_array)
-        df1=pd.concat([fingerprints_array,generated_descriptors],axis=1)
+          fingerprints_array=pd.DataFrame(fingerprints_array)
+         df1=pd.concat([fingerprints_array,generated_descriptors],axis=1)
     #pred_rf = trained_model.predict(df1)
     #mol_liter =10**pred_rf
 
