@@ -462,24 +462,19 @@ def page5():
 # df_results.to_csv("results/predicted-"+test_data_name+".csv",index=False)
 #st.header('Predicted LogS values for single smiles')
 #df
-      st.header('Predicted LogS values for a file')
+        st.header('Predicted LogS values for a file')
 #df_results # Skips the dummy first item
-      df_results
+        #df_results
 
-      csv = df_results.to_csv(index=False)
-      b64 = base64.b64encode(csv.encode()).decode()  # some strings
-      linko= f'<a href="data:file/csv;base64,{b64}" download="aqsolpred_predictions.csv">Download csv file</a>'
-      st.markdown(linko, unsafe_allow_html=True)
+        csv = df_results.to_csv(index=False)
+        b64 = base64.b64encode(csv.encode()).decode()  # some strings
+        linko= f'<a href="data:file/csv;base64,{b64}" download="aqsolpred_predictions.csv">Download csv file</a>'
+        st.markdown(linko, unsafe_allow_html=True)
  
-      st.header('Computed molecular descriptors')
-      generated_descriptors # Skips the dummy first item  
-      else:
+        st.header('Computed molecular descriptors')
+        generated_descriptors # Skips the dummy first item  
+    else:
         st.write('2>Click on browse files and enter csv files with more than one smiles and then click on predict with input files button')
-
-
-
-
-
 
 def page1():
     col1, col2, col3 = st.columns([10,2,11.5])
