@@ -88,33 +88,33 @@ x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/%s/PNG?image_size=40
 url=(x % y)
 #print(url)
 img = Image.open(urlopen(url))
-
-#showmol(xyzview,height=300,width=400) 
+mol = Chem.MolFromSmiles(SMILES)
+mol = Chem.AddHs(mol)
+AllChem.EmbedMolecule(mol)
+mblock = Chem.MolToMolBlock(mol)
+xyzview = py3Dmol.view(width=400,height=300)
+    #xyzview = py3Dmol.view(query=′pdb:1A2C′)
+xyzview.addModel(mblock,'mol')
+xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
     #bcolor = st.sidebar.color_picker('Pick background Color', '#0C0C0B')
-    
-#spin = st.checkbox('Animation', value = True)
-#xyzview.spin(True)
-#if spin:
- #   xyzview.spin(True)
-#else:
- #   xyzview.spin(False)
-#xyzview.setStyle({'sphere':{}})
-#xyzview.setBackgroundColor('#EAE5E5')
-#xyzview.zoomTo()
-#xyzview.setStyle({style:{'color':'spectrum'}})
-#showmol(xyzview,height=300,width=400) 
+xyzview.spin(True)
+if spin:
+    xyzview.spin(True)
+else:
+     xyzview.spin(False)
+    #xyzview.setStyle({'sphere':{}})
+xyzview.setBackgroundColor('#EAE5E5')
+xyzview.zoomTo()
+xyzview.setStyle({style:{'color':'spectrum'}})
     
 
-	
-    # img=smiles_to_img(smiles)
-#st.write("a logo and text next to eachother")
+
 col1, mid, col2 = st.columns([15,0.5,15])
 #col1, mid, col2 = st.columns([15,0.5,15])
 with col1:
     st.image(img, use_column_width=False)
 with col2:
-    blk=makeblock(SMILES)
-    render_mol(blk)
+    showmol(xyzview,height=300,width=400) 
 
 #def page1():   
    
