@@ -88,14 +88,7 @@ x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/%s/PNG?image_size=40
 url=(x % y)
 #print(url)
 img = Image.open(urlopen(url))
-mol = Chem.MolFromSmiles(SMILES)
-mol = Chem.AddHs(mol)
-AllChem.EmbedMolecule(mol)
-mblock = Chem.MolToMolBlock(mol)	
-xyzview = py3Dmol.view(width=400,height=300)
-    #xyzview = py3Dmol.view(query=′pdb:1A2C′)
-xyzview.addModel(mblock,'mol')
-xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
+
 #showmol(xyzview,height=300,width=400) 
     #bcolor = st.sidebar.color_picker('Pick background Color', '#0C0C0B')
     
@@ -116,18 +109,15 @@ xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
     # img=smiles_to_img(smiles)
 #st.write("a logo and text next to eachother")
 col1, mid, col2 = st.columns([15,0.5,15])
+#col1, mid, col2 = st.columns([15,0.5,15])
 with col1:
-	st.image(img, use_column_width=False)
+    st.image(img, use_column_width=False)
 with col2:
-        showmol(xyzview,height=300,width=400) 
-           #render_mol(blk)
+    blk=makeblock(smiles)
+    render_mol(blk)
 
-#def page1():
-    
+#def page1():   
    
-
-
-
 def page2():
     #st.title("Page 2")
     #st.write("This is the page for project details")
