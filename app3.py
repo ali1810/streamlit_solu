@@ -42,35 +42,10 @@ from bs4 import BeautifulSoup
 #from streamlit.components.v1 import ComponentMeta
 
 import streamlit as st
-def makeblock(smi):
-    mol = Chem.MolFromSmiles(smi)
-    mol = Chem.AddHs(mol)
-    AllChem.EmbedMolecule(mol)
-    mblock = Chem.MolToMolBlock(mol)
-    return mblock
-
-def render_mol(xyz):
-    xyzview = py3Dmol.view(width=400,height=300)
-    #xyzview = py3Dmol.view(query=′pdb:1A2C′)
-    xyzview.addModel(xyz,'mol')
-    xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
-    #bcolor = st.sidebar.color_picker('Pick background Color', '#0C0C0B')
-    style = st.selectbox('Chemical structure',['stick','ball-and-stick','line','cross','sphere'])
-    style = 'stick'
-#spin = st.sidebar.checkbox('Spin', value = False)
-    spin = st.checkbox('Animation', value = True)
-    xyzview.spin(True)
-    if spin:
-      xyzview.spin(True)
-    else:
-      xyzview.spin(False)
-    #xyzview.setStyle({'sphere':{}})
-    xyzview.setBackgroundColor('#EAE5E5')
-    xyzview.zoomTo()
-    xyzview.setStyle({style:{'color':'spectrum'}})
-    showmol(xyzview,height=300,width=400) 
-st.write('**Type SMILES below**')
-SMILES = st.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
+def page1():
+	
+      st.write('**Type SMILES below**')
+      SMILES = st.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
 #style = st.selectbox('Chemical structure',['stick','ball-and-stick','line','cross','sphere'])
 #spin = st.checkbox('Spin', value = False)	
 #col1, col2, col3 = st.columns([10,2,11.5])
@@ -82,23 +57,23 @@ SMILES = st.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(
  #       st.write(" 3 D Structure  of the smiles")
  #       st.write("""Use mouse pointer to rotate the structure""")
 
-prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
-x = list(map(lambda x: x["CID"], prop)) 
-y=x[0]
+     prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
+     x = list(map(lambda x: x["CID"], prop)) 
+     y=x[0]
     #print(y) 
-x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/%s/PNG?image_size=400x300"
-url=(x % y)
+    x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/%s/PNG?image_size=400x300"
+    url=(x % y)
 #print(url)
-img = Image.open(urlopen(url))
-mol = Chem.MolFromSmiles(SMILES)
-mol = Chem.AddHs(mol)
-AllChem.EmbedMolecule(mol)
-mblock = Chem.MolToMolBlock(mol)
-xyzview = py3Dmol.view(width=400,height=300)
+    img = Image.open(urlopen(url))
+    mol = Chem.MolFromSmiles(SMILES)
+    mol = Chem.AddHs(mol)
+    AllChem.EmbedMolecule(mol)
+    mblock = Chem.MolToMolBlock(mol)
+    xyzview = py3Dmol.view(width=400,height=300)
     #xyzview = py3Dmol.view(query=′pdb:1A2C′)
-xyzview.addModel(mblock,'mol')
-xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
-style = 'stick'
+    xyzview.addModel(mblock,'mol')
+    xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
+    style = 'stick'
 #bcolor = st.sidebar.color_picker('Pick background Color', '#0C0C0B')
 #xyzview.spin(True)
 #if spin:
@@ -106,18 +81,18 @@ style = 'stick'
 #else:
  #    xyzview.spin(False)
     #xyzview.setStyle({'sphere':{}})
-xyzview.setBackgroundColor('#EAE5E5')
-xyzview.zoomTo()
-xyzview.setStyle({style:{'color':'spectrum'}})
+    xyzview.setBackgroundColor('#EAE5E5')
+    xyzview.zoomTo()
+    xyzview.setStyle({style:{'color':'spectrum'}})
     
 
 
-col1, mid, col2 = st.columns([15,0.5,15])
+    col1, mid, col2 = st.columns([15,2.5,15])
 #col1, mid, col2 = st.columns([15,0.5,15])
-with col1:
-    st.image(img, use_column_width=False)
-with col2:
-    showmol(xyzview,height=300,width=400) 
+    with col1:
+        st.image(img, use_column_width=False)
+    with col2:
+        showmol(xyzview,height=300,width=400) 
 
 #def page1():   
    
