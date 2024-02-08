@@ -56,6 +56,7 @@ def render_mol(xyz):
     xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
     #bcolor = st.sidebar.color_picker('Pick background Color', '#0C0C0B')
     style = st.selectbox('Chemical structure',['stick','ball-and-stick','line','cross','sphere'])
+    style = 'stick'
 #spin = st.sidebar.checkbox('Spin', value = False)
     spin = st.checkbox('Animation', value = True)
     xyzview.spin(True)
@@ -97,7 +98,8 @@ xyzview = py3Dmol.view(width=400,height=300)
     #xyzview = py3Dmol.view(query=′pdb:1A2C′)
 xyzview.addModel(mblock,'mol')
 xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
-    #bcolor = st.sidebar.color_picker('Pick background Color', '#0C0C0B')
+style = 'stick'
+#bcolor = st.sidebar.color_picker('Pick background Color', '#0C0C0B')
 #xyzview.spin(True)
 #if spin:
  #   xyzview.spin(True)
