@@ -49,11 +49,11 @@ SMILES = st.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(
 #spin = st.checkbox('Spin', value = False)	
 col1, col2, col3 = st.columns([10,2,11.5])
 with col1:	
-	st.header("   2 D Structure of the smiles  ")
+	st.write("   2 D Structure of the smiles  ")
 with col2:
 	st.write("")
 with col3:
-        st.header(" 3 D Structure  of the smiles")
+        st.write(" 3 D Structure  of the smiles")
         st.write("""Use mouse pointer to rotate the structure""")
 prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
 x = list(map(lambda x: x["CID"], prop)) 
