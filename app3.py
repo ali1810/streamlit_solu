@@ -300,13 +300,11 @@ def page5():
 #blk=makeblock(smiles)
 #render_mol(blk)	
     if st.sidebar.button('Predict'):
-    #st.header("Structure of the smiles")
-    #s=blk=makeblock(smiles)
-	   compounds = pcp.get_compounds(smiles, namespace='smiles')
+	compounds = pcp.get_compounds(smiles, namespace='smiles')
     #compounds = pcp.get_compounds(sm, namespace='smiles')	
-           match = compounds[0]
-           c_name=match.iupac_name 
-           generated_descriptors1= predictSingle(smiles)
+        match = compounds[0]
+        c_name=match.iupac_name 
+        generated_descriptors1= predictSingle(smiles)
            mol = Chem.MolFromSmiles(smiles)
            fp = AllChem.GetMorganFingerprintAsBitVect(mol, 2, nBits=512)
            arr = np.zeros((0,), dtype=np.int8)
