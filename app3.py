@@ -45,8 +45,8 @@ import streamlit as st
 
 st.write('**Type SMILES below**')
 SMILES = st.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
-style = st.selectbox('Chemical structure',['stick','ball-and-stick','line','cross','sphere'])
-spin = st.checkbox('Spin', value = False)	
+#style = st.selectbox('Chemical structure',['stick','ball-and-stick','line','cross','sphere'])
+#spin = st.checkbox('Spin', value = False)	
 col1, col2, col3 = st.columns([10,2,11.5])
 with col1:	
 	st.header("   2 D Structure of the smiles  ")
@@ -71,19 +71,20 @@ xyzview = py3Dmol.view(width=400,height=300)
     #xyzview = py3Dmol.view(query=′pdb:1A2C′)
 xyzview.addModel(mblock,'mol')
 xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
+#showmol(xyzview,height=300,width=400) 
     #bcolor = st.sidebar.color_picker('Pick background Color', '#0C0C0B')
     
-spin = st.checkbox('Animation', value = True)
-xyzview.spin(True)
-if spin:
-    xyzview.spin(True)
-else:
-    xyzview.spin(False)
-xyzview.setStyle({'sphere':{}})
-xyzview.setBackgroundColor('#EAE5E5')
-xyzview.zoomTo()
-xyzview.setStyle({style:{'color':'spectrum'}})
-showmol(xyzview,height=300,width=400) 
+#spin = st.checkbox('Animation', value = True)
+#xyzview.spin(True)
+#if spin:
+ #   xyzview.spin(True)
+#else:
+ #   xyzview.spin(False)
+#xyzview.setStyle({'sphere':{}})
+#xyzview.setBackgroundColor('#EAE5E5')
+#xyzview.zoomTo()
+#xyzview.setStyle({style:{'color':'spectrum'}})
+#showmol(xyzview,height=300,width=400) 
     
 
 	
