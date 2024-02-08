@@ -339,9 +339,9 @@ def page5():
 	    P_sol1=solub
 #df_results = pd.DataFrame(df_results1)
     #render_mol(blk)
-           data = dict(IUPAC_Name=c_name,SMILES=smiles, Predicted_LogS=pred_rf2, 
-           Mol_Liter=mol_liter2,Gram_Liter=Gram_liter1,Experiment_Solubility_PubChem=P_sol1)
-           df = pd.DataFrame(data, index=[0])
+            data = dict(IUPAC_Name=c_name,SMILES=smiles, Predicted_LogS=pred_rf2, 
+            Mol_Liter=mol_liter2,Gram_Liter=Gram_liter1,Experiment_Solubility_PubChem=P_sol1)
+            df = pd.DataFrame(data, index=[0])
     #df.round(decimals = 3)
     #st.table(df)
 
@@ -350,13 +350,12 @@ def page5():
 
 
     #df.round(4)
-           st.header('Predicted LogS values for single smiles')
-           st.table(df.style.format({"Predicted_LogS": "{:.2f}","Mol_Liter":"{:.2f}","Gram_Liter":"{:.2f}"}))
+            st.header('Predicted LogS values for single smiles')
+            st.table(df.style.format({"Predicted_LogS": "{:.2f}","Mol_Liter":"{:.2f}","Gram_Liter":"{:.2f}"}))
     #df
     #st.write('Good Morning') #displayed when the button is clicked
-           st.header('Computed molecular descriptors')
-           generated_descriptors1 # Skips the dummy first item
-
+            st.header('Computed molecular descriptors')
+            generated_descriptors1 # Skips the dummy first item
     else:
        st.write('Note for users - 1>Enter Single smiles and click on predict button') #displayed when the button is unclicked
 
