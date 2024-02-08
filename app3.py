@@ -56,7 +56,7 @@ with col3:
         st.header(" 3 D Structure  of the smiles")
         st.write("""Use mouse pointer to rotate the structure""")
 prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
-x = list(map(lambda x: x["CID"], prop)] 
+x = list(map(lambda x: x["CID"], prop) 
 y=x[0]
     #print(y) 
 x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/%s/PNG?image_size=400x300"
