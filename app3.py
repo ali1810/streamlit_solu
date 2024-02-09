@@ -95,7 +95,7 @@ def page1():
           showmol(xyzview,height=300,width=400) 
       if st.button("predict"):
           #page1()
-          st.write("work in Progress") 
+              st.write("work in Progress") 
 #def page1():   
    
 def page2():
