@@ -93,7 +93,7 @@ def page1():
           st.image(img, use_column_width=False)
       with col2:
           showmol(xyzview,height=300,width=400) 
-
+      if st.sidebar.button('Predict'):
 #def page1():   
    
 def page2():
