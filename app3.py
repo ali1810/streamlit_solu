@@ -170,7 +170,7 @@ def main():
     button1_clicked = st.sidebar.button("Solubility Prediction 1")
     button2_clicked = st.sidebar.button("Project details")
     button3_clicked = st.sidebar.button("Contact Details")
-    button4_clicked = st.sidebar.button("predict")
+    button4_clicked = st.button("predict")
     
     if button1_clicked:
          page1()
