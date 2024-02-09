@@ -50,11 +50,11 @@ def page1():
 #spin = st.checkbox('Spin', value = False)	
       col1, col2, col3 = st.columns([10,2,11.5])
       with col1:	
-	   st.write("   2 D Structure of the smiles  ")
+	     st.write("   2 D Structure of the smiles  ")
       with col2:
-	   st.write("")
+	     st.write("")
       with col3:
-           st.write(" 3 D Structure  of the smiles")
+             st.write(" 3 D Structure  of the smiles")
  #       st.write("""Use mouse pointer to rotate the structure""")
 
       prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
