@@ -188,7 +188,7 @@ def main():
 	    container = st.container()
 	    with container:
               #st.write("This is some initial content on the page.")
-            page1()
+                page1()
 	 
     
     # Initial content on the page
