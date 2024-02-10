@@ -160,7 +160,7 @@ def main():
         # Add more content to the container dynamically
             with container:
             #st.write("Additional content added!")
-            st.write("This content is added dynamically without affecting the existing content.")
+               st.write("This content is added dynamically without affecting the existing content.")
 
     
 	
