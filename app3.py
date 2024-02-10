@@ -176,8 +176,7 @@ def main():
     
     if button1_clicked:
          page1()
-	 if st.button("predict"):
-          #page1()
+         if st.button("predict"):
               st.write("work in Progress") 
     
     if button2_clicked:
