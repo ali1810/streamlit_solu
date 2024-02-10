@@ -105,17 +105,6 @@ def page2():
     #st.title("Page 2")
     #st.write("This is the page for project details")
     image = Image.open('flow7.jpeg')
-    #image_path = 'flow5.jpeg'
-    #col1, mid, col2 = st.columns([10,1,2])
-    #with col1:
-            #st.write("")
-	#    st.image(image, use_column_width=False)
-    #with mid:
-           #showmol(xyzview,height=300,width=400)
-	    #st.image(image, use_column_width=3)
-	#    st.write("")
-    #with col2:
-	#    st.write("")
 	    
     col1, mid, col2 = st.columns([40,0.5,0.5])
     with col1:
@@ -123,25 +112,7 @@ def page2():
     with col2:
             #showmol(xyzview,height=300,width=400)
 	    st.write("")
-           #render_mol(blk)
-
-
-
-
-
-    #col1, col2, col3 = st.columns([0.001,2,1])
-    #with col1:
-	#    st.write("")
-    #with col2:
-	#    st.image(image, use_column_width=2)
-    #with col3:	
-     #       st.write("")
-    #st.markdown(
-     #   f'<div style="display: flex; justify-content: center;">'
-      #  f'<img src="{image_path}" style="width: 50%; height: auto;">'
-      #  f'</div>',
-       # unsafe_allow_html=True
-    #)	
+           
 def page3():
     #st.title("Page 3")
     #st.write("This is the content of Institute and contact details .")
@@ -175,16 +146,37 @@ def main():
     button1_clicked = st.sidebar.button("Solubility Prediction 1")
     button2_clicked = st.sidebar.button("Project details")
     button3_clicked = st.sidebar.button("Contact Details")
+    st.title("Streamlit Dynamic Content Example")
+    
+    # Create a container to hold the content
+    container = st.container()
+    
+    # Initial content on the page
+    with container:
+        st.write("This is some initial content on the page.")
+    
+    # Button to trigger the addition of more content
+    if st.button("Add Additional Content"):
+        # Add more content to the container dynamically
+        with container:
+            st.write("Additional content added!")
+            st.write("This content is added dynamically without affecting the existing content.")
+
+
     
     
+	
+
+
     if button1_clicked:
 	    container = st.container()
 	    with container:
               #st.write("This is some initial content on the page.")
                 page1()
-    if st.button("Add Additional Content"):
+		    
+         if st.button("Add Additional Content"):
         # Add more content to the container dynamically
-        with container:
+            with container:
            st.write("Additional content added!")
            page1()		
                #st.write("This content is added dynamically without affecting the existing content.")
