@@ -99,8 +99,7 @@ def page1():
         	      
           #page1()
       #        st.write("work in Progress") 
-#def page1():   
-   
+#def page1():      
 def page2():
     #st.title("Page 2")
     #st.write("This is the page for project details")
@@ -151,7 +150,7 @@ def main():
     # Create a container to hold the content
     if button1_clicked:
          page1()
-	 container = st.container()
+    container = st.container()
     
     # Initial content on the page
          with container:
