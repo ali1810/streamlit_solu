@@ -147,13 +147,13 @@ def main():
     
     # Create a container to hold the content
     if button1_clicked:
-         container = st.container()
-	  #page1()    
+         #container = st.container()
+	  page1()    
     
     # Initial content on the page
-         with container:
+         #with container:
         #st.write("This is some initial content on the page.")
-           page1() 
+          # page1() 
     # Button to trigger the addition of more content
     if st.button("Predict"):
         # Add more content to the container dynamically
