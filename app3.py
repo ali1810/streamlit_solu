@@ -95,7 +95,7 @@ def page1():
           showmol(xyzview,height=300,width=400) 
       #if st.button("predict"):
       if st.button("Predict"):
-	   st.write("This is some content that should remain on the page.")
+	    st.write("This is some content that should remain on the page.")
         	      
           #page1()
       #        st.write("work in Progress") 
