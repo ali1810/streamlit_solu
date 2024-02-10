@@ -153,7 +153,7 @@ def main():
     
     # Initial content on the page
     with container:
-        st.write("This is some initial content on the page.")
+        #st.write("This is some initial content on the page.")
         page1()
     # Button to trigger the addition of more content
     if st.button("predict"):
