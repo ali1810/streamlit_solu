@@ -185,12 +185,14 @@ def main():
     
     
     if button1_clicked:
-         page1()
-	 container = st.container()
+	    container = st.container()
+	    with container:
+              #st.write("This is some initial content on the page.")
+            page1()
+	 
     
     # Initial content on the page
-        with container:
-            st.write("This is some initial content on the page.")
+
 
          #show_dynamic_button = False
     
