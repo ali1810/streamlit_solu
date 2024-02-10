@@ -93,9 +93,9 @@ def page1():
           st.image(img, use_column_width=False)
       with col2:
           showmol(xyzview,height=300,width=400) 
-      if st.button("predict"):
+      #if st.button("predict"):
           #page1()
-              st.write("work in Progress") 
+      #        st.write("work in Progress") 
 #def page1():   
    
 def page2():
@@ -176,6 +176,9 @@ def main():
     
     if button1_clicked:
          page1()
+	 if st.button("predict"):
+          #page1()
+              st.write("work in Progress") 
     
     if button2_clicked:
          page2()
