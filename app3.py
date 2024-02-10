@@ -151,15 +151,15 @@ def main():
 	 page1()    
     
     # Initial content on the page
-    with container:
-        #st.write("This is some initial content on the page.")
-        page1() 
-    # Button to trigger the addition of more content
-    if st.button("Predict"):
-        # Add more content to the container dynamically
         with container:
+        #st.write("This is some initial content on the page.")
+           page1() 
+    # Button to trigger the addition of more content
+        if st.button("Predict"):
+        # Add more content to the container dynamically
+           with container:
             #st.write("Additional content added!")
-            st.write("This content is added dynamically without affecting the existing content.")
+              st.write("This content is added dynamically without affecting the existing content.")
 
 
     
