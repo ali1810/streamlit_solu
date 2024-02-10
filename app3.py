@@ -95,14 +95,8 @@ def page1():
           showmol(xyzview,height=300,width=400) 
       #if st.button("predict"):
       if st.button("Predict"):
-        # Set the flag to True when the trigger button is clicked
-        show_dynamic_button = True
-      if show_dynamic_button:
-        # Button to appear dynamically
-        #dynamic_button_clicked = st.button("Predict")
         
-        # Content to remain on the page
-        st.write("This is some content that should remain on the page.")
+         st.write("This is some content that should remain on the page.")
         	      
           #page1()
       #        st.write("work in Progress") 
