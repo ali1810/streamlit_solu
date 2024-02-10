@@ -157,9 +157,10 @@ def main():
     # Button to trigger the addition of more content
     if st.button("Predict"):
         # Add more content to the container dynamically
-            with container:
+	    page1() 
+            #with container:
             #st.write("Additional content added!")
-               st.write("This content is added dynamically without affecting the existing content.")
+            st.write("This content is added dynamically without affecting the existing content.")
 
 
     
