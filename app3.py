@@ -99,7 +99,7 @@ def page1():
         show_dynamic_button = True
       if show_dynamic_button:
         # Button to appear dynamically
-        dynamic_button_clicked = st.button("Predict")
+        #dynamic_button_clicked = st.button("Predict")
         
         # Content to remain on the page
         st.write("This is some content that should remain on the page.")
