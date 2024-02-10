@@ -97,7 +97,7 @@ def page1():
       if st.button("Predict"):
         # Set the flag to True when the trigger button is clicked
         show_dynamic_button = True
-     if show_dynamic_button:
+      if show_dynamic_button:
         # Button to appear dynamically
         dynamic_button_clicked = st.button("Predict")
         
