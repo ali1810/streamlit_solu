@@ -94,8 +94,8 @@ def page1():
       with col2:
           showmol(xyzview,height=300,width=400) 
       #if st.button("predict"):
-      if st.button("Predict"):
-	      st.write("This is some content that should remain on the page.")
+     # if st.button("Predict"):
+	#      st.write("This is some content that should remain on the page.")
         	      
           #page1()
       #        st.write("work in Progress") 
@@ -154,12 +154,12 @@ def main():
     # Initial content on the page
     with container:
         st.write("This is some initial content on the page.")
-    
+        page1()
     # Button to trigger the addition of more content
-    if st.button("Add Additional Content"):
+    if st.button("predict"):
         # Add more content to the container dynamically
         with container:
-            st.write("Additional content added!")
+            #st.write("Additional content added!")
             st.write("This content is added dynamically without affecting the existing content.")
 
 
