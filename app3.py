@@ -147,7 +147,7 @@ def main():
     
     # Create a container to hold the content
     if button1_clicked:
-	    container = st.container()
+	    #container = st.container()
 	    page1()    
     
     # Initial content on the page
