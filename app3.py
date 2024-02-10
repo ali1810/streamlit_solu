@@ -94,6 +94,16 @@ def page1():
       with col2:
           showmol(xyzview,height=300,width=400) 
       #if st.button("predict"):
+      if st.button("Predict"):
+        # Set the flag to True when the trigger button is clicked
+        show_dynamic_button = True
+     if show_dynamic_button:
+        # Button to appear dynamically
+        dynamic_button_clicked = st.button("Predict")
+        
+        # Content to remain on the page
+        st.write("This is some content that should remain on the page.")
+        	      
           #page1()
       #        st.write("work in Progress") 
 #def page1():   
@@ -176,8 +186,7 @@ def main():
     
     if button1_clicked:
          page1()
-         if st.button("predict"):
-            st.write("work in Progress") 
+         show_dynamic_button = False
     
     if button2_clicked:
          page2()
