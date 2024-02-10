@@ -149,16 +149,18 @@ def main():
     #st.title("Streamlit Dynamic Content Example")
     
     # Create a container to hold the content
-    container = st.container()
+    if button1_clicked:
+         page1()
+	container = st.container()
     
     # Initial content on the page
-    with container:
-        #st.write("This is some initial content on the page.")
-        page1()
-    # Button to trigger the addition of more content
-    if st.button("predict"):
-        # Add more content to the container dynamically
         with container:
+        #st.write("This is some initial content on the page.")
+           page1()
+    # Button to trigger the addition of more content
+        if st.button("predict"):
+        # Add more content to the container dynamically
+           with container:
             #st.write("Additional content added!")
             st.write("This content is added dynamically without affecting the existing content.")
 
