@@ -146,7 +146,7 @@ def main():
     button1_clicked = st.sidebar.button("Solubility Prediction 1")
     button2_clicked = st.sidebar.button("Project details")
     button3_clicked = st.sidebar.button("Contact Details")
-    st.title("Streamlit Dynamic Content Example")
+    #st.title("Streamlit Dynamic Content Example")
     
     # Create a container to hold the content
     container = st.container()
