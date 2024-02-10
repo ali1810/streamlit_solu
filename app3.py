@@ -95,8 +95,7 @@ def page1():
           showmol(xyzview,height=300,width=400) 
       #if st.button("predict"):
      # if st.button("Predict"):
-	#      st.write("This is some content that should remain on the page.")
-        	      
+	#      st.write("This is some content that should remain on the page.")        	      
           #page1()
       #        st.write("work in Progress") 
 #def page1():      
@@ -110,8 +109,7 @@ def page2():
             st.image(image,use_column_width=False)
     with col2:
             #showmol(xyzview,height=300,width=400)
-	    st.write("")
-           
+	    st.write("")           
 def page3():
     #st.title("Page 3")
     #st.write("This is the content of Institute and contact details .")
@@ -153,18 +151,16 @@ def main():
     container = st.container()
     
     # Initial content on the page
-        with container:
+         with container:
         #st.write("This is some initial content on the page.")
            page1()
     # Button to trigger the addition of more content
-        if st.button("predict"):
+         if st.button("predict"):
         # Add more content to the container dynamically
             with container:
             #st.write("Additional content added!")
             st.write("This content is added dynamically without affecting the existing content.")
 
-
-    
     
 	
 
