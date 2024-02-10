@@ -7,7 +7,7 @@ class SessionState:
 
 # Main function to define the Streamlit app
 def main():
-    st.title("Multi-Page Streamlit App")
+    #st.title("Multi-Page Streamlit App")
 
     # Initialize SessionState
     session_state = SessionState(page=None)
@@ -20,7 +20,7 @@ def main():
     }
 
     # Sidebar to select pages
-    selected_page = st.sidebar.radio("Select Page", list(page_contents.keys()))
+    selected_page = st.sidebar.button("Select Page", list(page_contents.keys()))
 
     # Display content based on selected page
     if selected_page:
