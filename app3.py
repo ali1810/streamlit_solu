@@ -186,7 +186,7 @@ def main():
     
     if button1_clicked:
          page1()
-         show_dynamic_button = False
+         #show_dynamic_button = False
     
     if button2_clicked:
          page2()
