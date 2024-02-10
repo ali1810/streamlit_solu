@@ -186,6 +186,12 @@ def main():
     
     if button1_clicked:
          page1()
+	 container = st.container()
+    
+    # Initial content on the page
+        with container:
+            st.write("This is some initial content on the page.")
+
          #show_dynamic_button = False
     
     if button2_clicked:
