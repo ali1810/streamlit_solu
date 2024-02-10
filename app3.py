@@ -168,20 +168,7 @@ def main():
 	
 
 
-    if button1_clicked:
-	    container = st.container()
-	    with container:
-              #st.write("This is some initial content on the page.")
-                page1()
-		    
-         if st.button("Add Additional Content"):
-        # Add more content to the container dynamically
-            with container:
-           st.write("Additional content added!")
-           page1()		
-               #st.write("This content is added dynamically without affecting the existing content.")
-		    
-	 
+
     
     # Initial content on the page
 
