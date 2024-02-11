@@ -20,7 +20,23 @@ class MultiApp:
                       default_index=1, 
                       styles= {"container":{"padding":"5!important" ,"background-color":"black"},
                                             "icon":{"color":"white","font-size":"23px"},
-                                             "nav-link":{"color":"white","font-size":"20px","text-align":"left","margin":"0px"},
-                                                    "nav-link_selected":{"background-color":"#02ab21"},}
+                                             "nav-link": {"color":"white","font-size": "20px", "text-align": "left", "margin":"0px", "--hover-color": "blue"},
+                                             "nav-link-selected": {"background-color": "#02ab21"},}
+                
+
                                             )
-    
+    if app == "Home":
+            home.app()
+        if app == "Project":
+            test.app()    
+        if app == "Contact":
+            trending.app()        
+        #if app == 'Your Posts':
+         #   your.app()
+        #if app == 'about':
+         #   about.app()    
+             
+          
+             
+    run()            
+         
