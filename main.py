@@ -19,7 +19,7 @@ class MultiApp:
                       menu_icon ='chat-text-fill',
                       default_index=1, 
                       styles= {"container":{"padding":"5!important" ,"background-color":'black',
-                                            "icon":{"color":"white","font-size","20px","text-align":"left",
+                                            "icon":{"color":"white","font-size":"20px","text-align":"left",
                                                     "nav-link_selected":{"background-color":"#02ab21"}}
                                             )
     
