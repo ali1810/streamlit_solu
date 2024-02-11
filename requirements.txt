@@ -1,6 +1,6 @@
 firebase_admin
 #streamlit
-streamlit-option-menu
+streamlit_option_menu
 Pillow
 stmol==0.0.9
 py3Dmol==2.0.4
