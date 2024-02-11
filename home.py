@@ -96,4 +96,8 @@ def app():
 	#      st.write("This is some content that should remain on the page.")        	      
           #page1()
       #        st.write("work in Progress") 
-#def page1():      
+if st.button("Predict"):
+        # Add more content to the container dynamically
+	    #page1()
+	    st.write("This content is added dynamically without affecting the existing content.")
+  
