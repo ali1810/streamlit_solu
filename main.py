@@ -25,7 +25,7 @@ class MultiApp:
             app = option_menu(
                 menu_title='Solubility Prediction ',
                 options=['Home','Project','Contact'],
-                icons=['house-fill','person-circle','phone'],
+                icons=['house-fill','person-circle','telephone'],
                 menu_icon='chat-text-fill',
                 default_index=1,
                 styles={
