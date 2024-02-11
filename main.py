@@ -5,7 +5,7 @@ from streamlit_option_menu import option_menu
 
 import home, project, contact
 st.set_page_config(
-        page_title="Pondering",
+        page_title="Solubility Prediction",
 )
 
 
@@ -26,8 +26,8 @@ class MultiApp:
         # app = st.sidebar(
         with st.sidebar:        
             app = option_menu(
-                menu_title='Pondering ',
-                options=['Home','Project','ContactTrending'],
+                menu_title='Solubility Prediction ',
+                options=['Home','Project','Contact'],
                 icons=['house-fill','person-circle','info-circle-fill'],
                 menu_icon='chat-text-fill',
                 default_index=1,
