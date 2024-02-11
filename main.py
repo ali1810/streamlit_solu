@@ -28,9 +28,9 @@ class MultiApp:
     if app == "Home":
             home.app()
         if app == "Project":
-            test.app()    
+            project.app()    
         if app == "Contact":
-            trending.app()        
+            contact.app()        
         #if app == 'Your Posts':
          #   your.app()
         #if app == 'about':
