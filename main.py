@@ -26,11 +26,11 @@ class MultiApp:
 
                                             )
     if app == "Home":
-            home.app()
-        if app == "Project":
-            project.app()    
-        if app == "Contact":
-            contact.app()        
+          home.app()
+    if app == "Project":
+          project.app()    
+    if app == "Contact":
+          contact.app()        
         #if app == 'Your Posts':
          #   your.app()
         #if app == 'about':
