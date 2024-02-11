@@ -1,4 +1,6 @@
 import streamlit as st 
+from PIL import Image
+
 def app():
     #st.title("Page 2")
     #st.write("This is the page for project details")
