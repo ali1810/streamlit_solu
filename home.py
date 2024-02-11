@@ -98,6 +98,7 @@ def app():
       #        st.write("work in Progress") 
       if st.button("Predict"):
 	      
+	      
 	      prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
               x = list(map(lambda x: x["CID"], prop))
               y=x[0]
@@ -110,7 +111,7 @@ def app():
               if solubility ==None:
                  Sol= None
 #sol.append(solub)
-             else:
+              else:
 		 solub=solubility.find_next_sibling('Information').find(name='String').string
                  Sol=solub
 
