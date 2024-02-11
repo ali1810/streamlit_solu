@@ -4,13 +4,13 @@ from streamlit_option_menu import option_menu
 
 import contact,home,project
 
-st.set_page_config(page_titel="Solubility Prediction",)
+st.set_page_config(page_title="Solubility Prediction",)
 
 class MultiApp:
   def _init_(self):
     self.apps=[]
-  def add_app(self,titel,function):
-    seld.apps.append({ "titel":titel,"function":function})
+  def add_app(self,title,function):
+    seld.apps.append({ "title":title,"function":function})
 
   def run():
     with st.sidebar:
