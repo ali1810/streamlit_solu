@@ -110,8 +110,8 @@ def app():
                         Sol= None
 #sol.append(solub)
              else:
-                 solub=solubility.find_next_sibling('Information').find(name='String').string
-                 Sol=solub
+		     solub=solubility.find_next_sibling('Information').find(name='String').string
+                     Sol=solub
 
 	      
         # Add more content to the container dynamically
