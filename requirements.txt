@@ -1,5 +1,5 @@
 firebase_admin
-streamlit
+#streamlit
 streamlit_option_menu
 Pillow
 stmol==0.0.9
@@ -8,7 +8,7 @@ py3Dmol==2.0.4
 #stmol
 pandas~=1.4.2
 #streamlit~=1.12.2  
-#streamlit~=1.21.0  
+streamlit~=1.28.0  
 #streamlit_option_menu
 shap~=0.41.0
 xgboost~=1.6.1
