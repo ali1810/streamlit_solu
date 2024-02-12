@@ -21,5 +21,5 @@ def app():
    This web app is developed based on the tutorials and the template of [DataProfessor's repository](https://github.com/dataprofessor/code/tree/master/streamlit/part7). 
 
    ** For any feedback or suggestion please write me -- mushtaq.ali@kit.edu                                                                                         
-   **Contact over Linkdin :** [Mushtaq Ali](www.linkedin.com/in/mushtaq-ali/)	""")
+   **Contact over Linkdin :** [Mushtaq Ali](https://www.linkedin.com/in/mushtaq-ali/)	""")
 
