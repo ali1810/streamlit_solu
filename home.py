@@ -98,8 +98,8 @@ def app():
       #        st.write("work in Progress") 
       if st.button("Predict"):
 	      prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
-              x = list(map(lambda x: x["CID"], prop))
-              y=x[0]
+              #x = list(map(lambda x: x["CID"], prop))
+              #y=x[0]
               #x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/%s/xml"
               #data=requests.get(x % y)
     
