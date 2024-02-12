@@ -97,15 +97,11 @@ def app():
           #page1()
       #        st.write("work in Progress") 
       if st.button("Predict"):
-	      
-	      
 	      prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
               x = list(map(lambda x: x["CID"], prop))
               y=x[0]
-   #print(y)
               x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/%s/xml"
               data=requests.get(x % y)
-              #print(data)
               html = BeautifulSoup(data.content, "xml")
               solubility = html.find(name='TOCHeading', string='Solubility')
               if solubility ==None:
