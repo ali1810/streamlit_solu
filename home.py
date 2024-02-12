@@ -102,5 +102,5 @@ def app():
 	      
         # Add more content to the container dynamically
 	    #page1()
-	       st.write("Work is in progress...":,Sol)
+	  st.write("Work is in progress...":,Sol)
   
