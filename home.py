@@ -115,5 +115,5 @@ def app():
 	      
         # Add more content to the container dynamically
 	    #page1()
-	       st.write("This content is added dynamically without affecting the existing content.")
+	       st.write("Work is in progress...")
   
