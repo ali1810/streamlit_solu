@@ -97,20 +97,20 @@ def app():
           #page1()
       #        st.write("work in Progress") 
       if st.button("Predict"):
-	      prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
-              # x = list(map(lambda x: x["CID"], prop))
-              #y=x[0]
-              #x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/%s/xml"
-              #data=requests.get(x % y)
+	      #prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
+              x = list(map(lambda x: x["CID"], prop))
+              y=x[0]
+              x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/%s/xml"
+              data=requests.get(x % y)
     
-              #html = BeautifulSoup(data.content, "xml")
-              #solubility = html.find(name='TOCHeading', string='Solubility')
-              #if solubility ==None:
-               #     return None
+              html = BeautifulSoup(data.content, "xml")
+              solubility = html.find(name='TOCHeading', string='Solubility')
+              if solubility ==None:
+                    Sol= None
 #sol.append(solub)
-             #else:
-              #   solub=solubility.find_next_sibling('Information').find(name='String').string
-               #  return solub
+             else:
+                solub=solubility.find_next_sibling('Information').find(name='String').string
+                 Sol= solub
 
 
 	      
@@ -121,5 +121,5 @@ def app():
 	      
         # Add more content to the container dynamically
 	    #page1()
-	      st.write("Work is in progress...cccc")
+	      st.write("Work is in progress...cccc",Sol)
   
