@@ -100,11 +100,11 @@ def app():
 	      prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
               x = list(map(lambda x: x["CID"], prop))
               y=x[0]
-              x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/%s/xml"
-              data=requests.get(x % y)
+              #x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/%s/xml"
+              #data=requests.get(x % y)
     
-              html = BeautifulSoup(data.content, "xml")
-              solubility = html.find(name='TOCHeading', string='Solubility')
+              #html = BeautifulSoup(data.content, "xml")
+              #solubility = html.find(name='TOCHeading', string='Solubility')
               #if solubility ==None:
                #     return None
 #sol.append(solub)
