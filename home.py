@@ -97,20 +97,19 @@ def app():
           #page1()
       #        st.write("work in Progress") 
       if st.button("Predict"):
-	  #mol = Chem.MolFromSmiles(SMILES)
-	      #prop1=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
-          #x1 = list(map(lambda x: x["CID"], prop))
-          #y1=x1[0]
-          #x1 = "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/%s/xml"
-	  #data1=requests.get(x1 % y1)
-          #html = BeautifulSoup(data1.content, "xml")
-          #solubility = html.find(name='TOCHeading', string='Solubility')
-	  #if solubility ==None:
-           #  Sol= None
+	  prop1=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
+          x1 = list(map(lambda x: x["CID"], prop))
+          y1=x1[0]
+          x1 = "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/%s/xml"
+	  data1=requests.get(x1 % y1)
+          html = BeautifulSoup(data1.content, "xml")
+          solubility = html.find(name='TOCHeading', string='Solubility')
+	  if solubility ==None:
+             Sol= None
 #sol.append(solub)
-          #else:
-	   #  solub=solubility.find_next_sibling('Information').find(name='String').string
-            # Sol=solub
+          else:
+	     solub=solubility.find_next_sibling('Information').find(name='String').string
+             Sol=solub
 
 	      
         # Add more content to the container dynamically
