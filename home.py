@@ -107,8 +107,8 @@ def app():
              Sol= None
       else:
 	      
-	      solub=solubility.find_next_sibling('Information').find(name='String').string
-              Sol=solub
+	  solub=solubility.find_next_sibling('Information').find(name='String').string
+          Sol=solub
       if st.button("Predict"):
 	  
 
