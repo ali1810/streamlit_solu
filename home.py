@@ -97,6 +97,10 @@ def app():
           #page1()
       #        st.write("work in Progress") 
       if st.button("Predict"):
+	      prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
+              #x = list(map(lambda x: x["CID"], prop))
+              #y=x[0]
+
 	      
 	      
 	      
