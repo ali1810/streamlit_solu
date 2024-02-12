@@ -97,10 +97,11 @@ def app():
           #page1()
       #        st.write("work in Progress") 
       if st.button("Predict"):
+	      
 	  
 
 	      
         # Add more content to the container dynamically
 	    #page1()
-	  st.write("Work is in progress...":,Sol)
+	       st.write("Work is in progress...":,Sol)
   
