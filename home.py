@@ -98,7 +98,7 @@ def app():
       #        st.write("work in Progress") 
       if st.button("Predict"):
 	      prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
-              #x = list(map(lambda x: x["CID"], prop))
+              x = list(map(lambda x: x["CID"], prop))
               #y=x[0]
               #x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/%s/xml"
               #data=requests.get(x % y)
@@ -121,5 +121,5 @@ def app():
 	      
         # Add more content to the container dynamically
 	    #page1()
-	      st.write("Work is in progress...ccc")
+	      st.write("Work is in progress...cccc")
   
