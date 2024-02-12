@@ -104,15 +104,15 @@ def app():
 	  data1=requests.get(x1 % y1)
           html = BeautifulSoup(data1.content, "xml")
           solubility = html.find(name='TOCHeading', string='Solubility')
-	  if solubility ==None:
-             Sol= None
+	  #if solubility ==None:
+           #  Sol= None
 #sol.append(solub)
-          else:
-	     solub=solubility.find_next_sibling('Information').find(name='String').string
-             Sol=solub
+          #else:
+	   #  solub=solubility.find_next_sibling('Information').find(name='String').string
+            # Sol=solub
 
 	      
         # Add more content to the container dynamically
 	    #page1()
-	  st.write("This content is added dynamically without affecting the existing content.",Sol)
+	  st.write("This content is added dynamically without affecting the existing content.",solubility)
   
