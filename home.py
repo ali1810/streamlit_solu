@@ -108,7 +108,7 @@ def app():
               if solubility ==None:
                     Sol= None
 #sol.append(solub)
-             else:
+              else:
                 solub=solubility.find_next_sibling('Information').find(name='String').string
                  Sol= solub
 
