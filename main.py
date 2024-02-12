@@ -29,7 +29,7 @@ class MultiApp:
                 menu_icon='chat-text-fill',
                 default_index=1,
                 styles={
-                    "container": {"padding": "5!important","background-color":'white'},
+                  #  "container": {"padding": "5!important","background-color":'white'},
         "icon": {"color": "black", "font-size": "20px"}, 
         "nav-link": {"color":"black","font-size": "15px", "text-align": "left", "margin":"1px", "--hover-color": "blue"},
         "nav-link-selected": {"background-color": "#02ab21"},}
