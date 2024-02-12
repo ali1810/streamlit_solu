@@ -97,22 +97,22 @@ def app():
           #page1()
       #        st.write("work in Progress") 
       if st.button("Predict"):
-	      #prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
-              #x = list(map(lambda x: x["CID"], prop))
-              #y=x[0]
-              #x = "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/%s/xml"
-              #data=requests.get(x % y)
-              #html = BeautifulSoup(data.content, "xml")
-              #solubility = html.find(name='TOCHeading', string='Solubility')
-              #if solubility ==None:
-               #  Sol= None
+	      #prop1=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
+              x1 = list(map(lambda x: x["CID"], prop))
+              y1=x1[0]
+              x1 = "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/%s/xml"
+              data1=requests.get(x1 % y1)
+              html = BeautifulSoup(data1.content, "xml")
+              solubility = html.find(name='TOCHeading', string='Solubility')
+              if solubility ==None:
+                Sol= None
 #sol.append(solub)
-              #else:
-		# solub=solubility.find_next_sibling('Information').find(name='String').string
-                # Sol=solub
+              else:
+		solub=solubility.find_next_sibling('Information').find(name='String').string
+                Sol=solub
 
 	      
         # Add more content to the container dynamically
 	    #page1()
-	      st.write("This content is added dynamically without affecting the existing content.")
+	      st.write("This content is added dynamically without affecting the existing content.",Sol)
   
