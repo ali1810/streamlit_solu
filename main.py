@@ -38,11 +38,11 @@ class MultiApp:
 
         
         if app == "Home":
-            home.app()
+            1_home.app()
         if app == "Project":
-            project.app()    
+            2_project.app()    
         if app == "Contact":
-            contact.app()        
+            3_contact.app()        
       
              
     run()            
