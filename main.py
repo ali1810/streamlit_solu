@@ -38,7 +38,7 @@ class MultiApp:
 
         
         if app == "Home":
-            home1.app()
+            home.app()
         if app == "Project":
             project.app()    
         if app == "Contact":
