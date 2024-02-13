@@ -43,8 +43,7 @@ class MultiApp:
             project.app()    
         if app == "Contact":
             contact.app()        
-        
-          
+      
              
     run()            
          
