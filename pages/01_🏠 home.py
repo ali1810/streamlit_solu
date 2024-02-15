@@ -74,12 +74,14 @@ xyzview = py3Dmol.view(width=300,height=300)
 xyzview.addModel(mblock,'mol')
 xyzview.setStyle({'model': -1}, {"cartoon": {'color': 'spectrum'}})
 style = 'stick'
+spin = st.checkbox('Animation', value = True)
+
 #bcolor = st.sidebar.color_picker('Pick background Color', '#0C0C0B')
-#xyzview.spin(True)
-#if spin:
- #   xyzview.spin(True)
-#else:
- #    xyzview.spin(False)
+xyzview.spin(True)
+if spin:
+    xyzview.spin(True)
+else:
+    xyzview.spin(False)
     #xyzview.setStyle({'sphere':{}})
 xyzview.setBackgroundColor('#EAE5E5')
 xyzview.zoomTo()
