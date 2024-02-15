@@ -381,7 +381,7 @@ if st.button('Prediction for input file'):
 
            st.write('Predicted LogS values')
 #df_results # Skips the dummy first item
-#df_results
+           df_results
 # download=st.button('Download Results File')
 # if download:
            csv = df_results.to_csv(index=False)
@@ -390,9 +390,9 @@ if st.button('Prediction for input file'):
            st.markdown(linko, unsafe_allow_html=True)
  
            st.write('Computed molecular descriptors')
-           df2 = pd.DataFrame(descriptors, index=[0])
-              #descriptors1 # Skips the dummy first item
-           st.table(df2)
+           #df2 = pd.DataFrame(descriptors, index=[0])
+           descriptors # Skips the dummy first item
+           #st.table(df2)
            #descriptors # Skips the dummy first item
 
       
