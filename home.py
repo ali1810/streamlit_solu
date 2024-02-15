@@ -112,7 +112,7 @@ def app():
               else:
                 solub=solubility.find_next_sibling('Information').find(name='String').string
                 sol= solub
-                st.write("Work is in progress...cccc::", sol)
+               # st.write("Work is in progress...cccc::", sol)
               mol1 = Chem.MolFromSmiles(SMILES)
     
                # calculate the log octanol/water partition descriptor
