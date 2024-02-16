@@ -232,8 +232,10 @@ if st.button("Predict"):
               df = pd.DataFrame(data, index=[0])
 
               st.write('Predicted LogS values for single smiles')
-              st.table(df.style.format({"Predicted_LogS": "{:.2f}","Mol_Liter":"{:.2f}","Gram_Liter":"{:.2f}"}))
-              st.write('Computed molecular descriptors')
+              #st.table(df.style.format({"Predicted_LogS": "{:.2f}","Mol_Liter":"{:.2f}","Gram_Liter":"{:.2f}"}))
+              st.write(df)
+	      st.write('Computed molecular descriptors')
+	      
               df1 = pd.DataFrame(descriptors1, index=[0])
               #descriptors1 # Skips the dummy first item
               st.table(df1)
