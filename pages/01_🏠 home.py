@@ -233,10 +233,10 @@ if st.button("Predict"):
               st.write('Predicted LogS values for single smiles')
               st.table(df.style.format({"Predicted_LogS": "{:.2f}","Mol_Liter":"{:.2f}","Gram_Liter":"{:.2f}"}))
               #st.table(df)
-	      st.write('Computed molecular descriptors')
-              df1 = pd.DataFrame(descriptors1, index=[0])
+	       st.write('Computed molecular descriptors')
+               df1 = pd.DataFrame(descriptors1, index=[0])
               #descriptors1 # Skips the dummy first item
-              st.table(df1)
+               st.table(df1)
 def getAromaticProportion(m):
          aromatic_list = [m.GetAtomWithIdx(i).GetIsAromatic() for i in range(m.GetNumAtoms())]
          aromatic = 0
