@@ -41,6 +41,7 @@ import streamlit as st
 from bs4 import BeautifulSoup
 
 #import support
+st.header("Aquous Solubility Prediction")
 def calculate_aromatic_proportion(smiles):
     # Parse SMILES string and generate molecular representation
     mol = Chem.MolFromSmiles(smiles)
