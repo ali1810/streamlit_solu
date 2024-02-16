@@ -41,27 +41,29 @@ import streamlit as st
 from bs4 import BeautifulSoup
 
 #import support
-
+def calculate_aromatic_proportion(smiles):
+    # Parse SMILES string and generate molecular representation
+    mol = Chem.MolFromSmiles(smiles)
+    if mol is None:
+        return None  # Invalid SMILES
+    
+    # Identify aromatic atoms
+    aromatic_atoms = [atom.GetAtomicNum() for atom in mol.GetAtoms() if atom.GetIsAromatic()]
+    
+    # Calculate aromatic proportion
+    total_atoms = mol.GetNumAtoms()
+    aromatic_proportion = len(aromatic_atoms) / total_atoms
+    
+    return aromatic_proportion
 
 #def app():
 st.write('**Type SMILES below**')
 SMILES = st.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(=O)O")
-#style = st.selectbox('Chemical structure',['stick','ball-and-stick','line','cross','sphere'])
-#spin = st.checkbox('Spin', value = False)	
-      #col1, col2, col3 = st.columns([10,2,11.5])
-      #with col1:	
-	#  st.write("   2 D Structure of the smiles  ")
-      #with col2:
-	#  st.write("")
-      #with col3:
-       #   st.write(" 3 D Structure  of the smiles")
- #       st.write("""Use mouse pointer to rotate the structure""")
-#valid = [sm for sm in smiles if MolFromSmiles(sm)]
-#valid = MolFromSmiles(SMILES)
-#if len(valid) == len(SMILES):
- #   st.write("Given SMILES are valid!")
-#else :
- #   st.write( "Some input the valid SMILES are invalid!")      
+aromatic_proportion = calculate_aromatic_proportion(SMILES)
+if aromatic_proportion is not None:
+    st.write("Given smiles is Valid")
+else:
+    st.write("Invalid SMILES")
 prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
 x = list(map(lambda x: x["CID"], prop)) 
 y=x[0]
