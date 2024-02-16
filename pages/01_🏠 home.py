@@ -230,11 +230,10 @@ if st.button("Predict"):
               data = dict(SMILES=SMILES, Predicted_LogS=pred_rf2, 
               Mol_Liter=mol_liter2,Gram_Liter=Gram_liter1,Experiment_Solubility_PubChem=sol)
               df = pd.DataFrame(data, index=[0])
-
               st.write('Predicted LogS values for single smiles')
               st.table(df.style.format({"Predicted_LogS": "{:.2f}","Mol_Liter":"{:.2f}","Gram_Liter":"{:.2f}"}))
               st.table(df)
-	      st.write('Computed molecular descriptors')
+	      #st.write('Computed molecular descriptors')
               df1 = pd.DataFrame(descriptors1, index=[0])
               #descriptors1 # Skips the dummy first item
               st.table(df1)
