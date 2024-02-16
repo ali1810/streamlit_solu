@@ -61,7 +61,7 @@ valid = MolFromSmiles(SMILES)
 if len(valid) == len(SMILES):
     st.write("Given SMILES are valid!")
 else :
-    st.write( "Some input the valid SMILES are invalid! !"      
+    st.write( "Some input the valid SMILES are invalid!")      
 prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
 x = list(map(lambda x: x["CID"], prop)) 
 y=x[0]
