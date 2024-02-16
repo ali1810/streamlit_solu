@@ -56,7 +56,12 @@ SMILES = st.text_input('then press predict button', value ="CC(=O)OC1=CC=CC=C1C(
       #with col3:
        #   st.write(" 3 D Structure  of the smiles")
  #       st.write("""Use mouse pointer to rotate the structure""")
-      
+#valid = [sm for sm in smiles if MolFromSmiles(sm)]
+valid = MolFromSmiles(SMILES)
+if len(valid) == len(SMILES):
+    st.write("Given SMILES are valid!")
+else :
+    st.write( "Some input the valid SMILES are invalid! !"      
 prop=pcp.get_properties([ 'MolecularWeight'], SMILES, 'smiles')
 x = list(map(lambda x: x["CID"], prop)) 
 y=x[0]
