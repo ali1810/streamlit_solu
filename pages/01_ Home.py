@@ -40,8 +40,18 @@ import requests
 import streamlit as st
 from bs4 import BeautifulSoup
 
-#import support
+col1, mid, col2 = st.columns([15,2.5,15])
+#col1, mid, col2 = st.columns([5,2.0,5])
+with col1:
         st.header("Aquous Solubility Prediction")
+with col2:
+        st.write() 
+      #if st.button("predict"):
+     # if st.button("Predict"):
+	#      st.write("This is some content that should remain on the page.")        	      
+          #page1()
+      #        st.write("work in Progress") 
+        
 def calculate_aromatic_proportion(smiles):
     # Parse SMILES string and generate molecular representation
     mol = Chem.MolFromSmiles(smiles)
