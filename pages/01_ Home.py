@@ -69,7 +69,7 @@ def calculate_aromatic_proportion(smiles):
 
 #def app():
 st.write('**Type SMILES below**...then press predict button')
-SMILES = st.text_input(value ="CC(=O)OC1=CC=CC=C1C(=O)O")
+SMILES = st.text_input('s',value = "CC(=O)OC1=CC=CC=C1C(=O)O")
 aromatic_proportion = calculate_aromatic_proportion(SMILES)
 if aromatic_proportion is not None:
     st.write("Given smiles is Valid")
